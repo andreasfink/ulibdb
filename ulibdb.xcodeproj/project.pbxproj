@@ -1,0 +1,560 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2206CE2A18B21E350051C70D /* UMDbStorageType.h in Headers */ = {isa = PBXBuildFile; fileRef = 2206CE2818B21E350051C70D /* UMDbStorageType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2206CE2B18B21E350051C70D /* UMDbStorageType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2206CE2918B21E350051C70D /* UMDbStorageType.m */; };
+		22356C0F18915F8900EF4074 /* UMDbRedisSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 22356C0D18915F8900EF4074 /* UMDbRedisSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		22356C1018915F8900EF4074 /* UMDbRedisSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 22356C0E18915F8900EF4074 /* UMDbRedisSession.m */; };
+		2293864B18B3A298000D9DF2 /* UMDbFieldDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2293864A18B3A298000D9DF2 /* UMDbFieldDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6793DCA1934B08F0090FC94 /* ulib.framework */; };
+		A6019BAE1AC15C2800854472 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = A6019BAD1AC15C2800854472 /* VERSION */; };
+		A610866216352F2100D0D9C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A610865E16352F2100D0D9C6 /* InfoPlist.strings */; };
+		A61B97DC193472F7008AD2D4 /* ulibdb_defines.h in Headers */ = {isa = PBXBuildFile; fileRef = A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A65536C81AC4613F00FB1428 /* libmysqlclient.18.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A65536C71AC4613F00FB1428 /* libmysqlclient.18.dylib */; };
+		A65536CA1AC4615200FB1428 /* libpq.5.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A65536C91AC4615200FB1428 /* libpq.5.5.dylib */; };
+		A66538EE1950FE6700C10E07 /* UMDbFileSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A66538EC1950FE6700C10E07 /* UMDbFileSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A66538EF1950FE6700C10E07 /* UMDbFileSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A66538ED1950FE6700C10E07 /* UMDbFileSession.m */; };
+		A6793E131934BD440090FC94 /* UMMySQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6793E141934BD660090FC94 /* UMPgSQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A696867C1921951000217100 /* UMDbTableDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867A1921951000217100 /* UMDbTableDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A696867D1921951000217100 /* UMDbTableDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = A696867B1921951000217100 /* UMDbTableDefinition.m */; };
+		A69686801921953400217100 /* UMDbFieldDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867E1921953400217100 /* UMDbFieldDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A69686811921953400217100 /* UMDbFieldDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = A696867F1921953400217100 /* UMDbFieldDefinition.m */; };
+		A6A143F2149B4EA400B007D0 /* ulibdb.h in Headers */ = {isa = PBXBuildFile; fileRef = A6A143F0149B4EA400B007D0 /* ulibdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD2A149AC77E0029E9CF /* UMDbTable.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC52149A9FBE0029E9CF /* UMDbTable.m */; };
+		A6D8AD2B149AC77E0029E9CF /* UMDbDriverType.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */; };
+		A6D8AD2C149AC77E0029E9CF /* UMDbPool.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC20149A95670029E9CF /* UMDbPool.m */; };
+		A6D8AD2D149AC77E0029E9CF /* UMDbQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC22149A95670029E9CF /* UMDbQuery.m */; };
+		A6D8AD2E149AC77E0029E9CF /* UMDbQueryCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC24149A95670029E9CF /* UMDbQueryCondition.m */; };
+		A6D8AD2F149AC77E0029E9CF /* UMDbQueryPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC26149A95670029E9CF /* UMDbQueryPlaceholder.m */; };
+		A6D8AD30149AC77E0029E9CF /* UMDbQueryType.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC28149A95670029E9CF /* UMDbQueryType.m */; };
+		A6D8AD31149AC77E0029E9CF /* UMDbResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC2A149A95670029E9CF /* UMDbResult.m */; };
+		A6D8AD32149AC77E0029E9CF /* UMDbSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC2C149A95670029E9CF /* UMDbSession.m */; };
+		A6D8AD33149AC77E0029E9CF /* UMMySQLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC2E149A95670029E9CF /* UMMySQLSession.m */; };
+		A6D8AD34149AC77E0029E9CF /* UMPgSQLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC30149A95670029E9CF /* UMPgSQLSession.m */; };
+		A6D8AD35149AC77E0029E9CF /* UMSqLiteSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC32149A95670029E9CF /* UMSqLiteSession.m */; };
+		A6D8AD3C149AC77E0029E9CF /* UMDbTable.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC51149A9FBD0029E9CF /* UMDbTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD3D149AC77E0029E9CF /* UMDbDriverType.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD3E149AC77E0029E9CF /* UMDbPool.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC1F149A95670029E9CF /* UMDbPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD3F149AC77E0029E9CF /* UMDbQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC21149A95670029E9CF /* UMDbQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD40149AC77E0029E9CF /* UMDbQueryCondition.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC23149A95670029E9CF /* UMDbQueryCondition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD41149AC77E0029E9CF /* UMDbQueryPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC25149A95670029E9CF /* UMDbQueryPlaceholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD42149AC77E0029E9CF /* UMDbQueryType.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC27149A95670029E9CF /* UMDbQueryType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD43149AC77E0029E9CF /* UMDbResult.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC29149A95670029E9CF /* UMDbResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD44149AC77E0029E9CF /* UMDbSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2B149A95670029E9CF /* UMDbSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD47149AC77E0029E9CF /* UMSqLiteSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC31149A95670029E9CF /* UMSqLiteSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6D8AD64149AC8A20029E9CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D8AB0C149A769B0029E9CF /* Foundation.framework */; };
+		A6DB3E72191E41220090FC94 /* ulibdb.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DB3E71191E41220090FC94 /* ulibdb.m */; };
+		A6DFF69D1952B729008D0983 /* UMDbMySqlInProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6DFF69E1952B729008D0983 /* UMDbMySqlInProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */; };
+		A6F693EC1B4E830C0090FC94 /* configure.in in Resources */ = {isa = PBXBuildFile; fileRef = A6F693EB1B4E830C0090FC94 /* configure.in */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2206CE2818B21E350051C70D /* UMDbStorageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbStorageType.h; sourceTree = "<group>"; };
+		2206CE2918B21E350051C70D /* UMDbStorageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbStorageType.m; sourceTree = "<group>"; };
+		22356C0D18915F8900EF4074 /* UMDbRedisSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbRedisSession.h; sourceTree = "<group>"; };
+		22356C0E18915F8900EF4074 /* UMDbRedisSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbRedisSession.m; sourceTree = "<group>"; };
+		2293864A18B3A298000D9DF2 /* UMDbFieldDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinitions.h; sourceTree = "<group>"; };
+		229869F1196AC98C0016CF77 /* libulib.1.2.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libulib.1.2.1.dylib; path = ../../../usr/local/lib/libulib.1.2.1.dylib; sourceTree = "<group>"; };
+		A6019BAD1AC15C2800854472 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		A610865F16352F2100D0D9C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_defines.h; sourceTree = "<group>"; };
+		A65536C71AC4613F00FB1428 /* libmysqlclient.18.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmysqlclient.18.dylib; path = ../../../../../usr/local/mysqlclient/lib/libmysqlclient.18.dylib; sourceTree = "<group>"; };
+		A65536C91AC4615200FB1428 /* libpq.5.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpq.5.5.dylib; path = ../../../../../usr/local/postgresclient/lib/libpq.5.5.dylib; sourceTree = "<group>"; };
+		A66538EC1950FE6700C10E07 /* UMDbFileSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFileSession.h; sourceTree = "<group>"; };
+		A66538ED1950FE6700C10E07 /* UMDbFileSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFileSession.m; sourceTree = "<group>"; };
+		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = ../../../../../Library/Frameworks/ulib.framework; sourceTree = "<group>"; };
+		A696867A1921951000217100 /* UMDbTableDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbTableDefinition.h; sourceTree = "<group>"; };
+		A696867B1921951000217100 /* UMDbTableDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbTableDefinition.m; sourceTree = "<group>"; };
+		A696867E1921953400217100 /* UMDbFieldDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinition.h; sourceTree = "<group>"; };
+		A696867F1921953400217100 /* UMDbFieldDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFieldDefinition.m; sourceTree = "<group>"; };
+		A6A143F0149B4EA400B007D0 /* ulibdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb.h; sourceTree = "<group>"; };
+		A6D8AB0C149A769B0029E9CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A6D8AB1D149A769B0029E9CF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbDriverType.h; sourceTree = "<group>"; };
+		A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbDriverType.m; sourceTree = "<group>"; };
+		A6D8AC1F149A95670029E9CF /* UMDbPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbPool.h; sourceTree = "<group>"; };
+		A6D8AC20149A95670029E9CF /* UMDbPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbPool.m; sourceTree = "<group>"; };
+		A6D8AC21149A95670029E9CF /* UMDbQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbQuery.h; sourceTree = "<group>"; };
+		A6D8AC22149A95670029E9CF /* UMDbQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbQuery.m; sourceTree = "<group>"; };
+		A6D8AC23149A95670029E9CF /* UMDbQueryCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbQueryCondition.h; sourceTree = "<group>"; };
+		A6D8AC24149A95670029E9CF /* UMDbQueryCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbQueryCondition.m; sourceTree = "<group>"; };
+		A6D8AC25149A95670029E9CF /* UMDbQueryPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbQueryPlaceholder.h; sourceTree = "<group>"; };
+		A6D8AC26149A95670029E9CF /* UMDbQueryPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbQueryPlaceholder.m; sourceTree = "<group>"; };
+		A6D8AC27149A95670029E9CF /* UMDbQueryType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbQueryType.h; sourceTree = "<group>"; };
+		A6D8AC28149A95670029E9CF /* UMDbQueryType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbQueryType.m; sourceTree = "<group>"; };
+		A6D8AC29149A95670029E9CF /* UMDbResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbResult.h; sourceTree = "<group>"; };
+		A6D8AC2A149A95670029E9CF /* UMDbResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbResult.m; sourceTree = "<group>"; };
+		A6D8AC2B149A95670029E9CF /* UMDbSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbSession.h; sourceTree = "<group>"; };
+		A6D8AC2C149A95670029E9CF /* UMDbSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbSession.m; sourceTree = "<group>"; };
+		A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMMySQLSession.h; sourceTree = "<group>"; };
+		A6D8AC2E149A95670029E9CF /* UMMySQLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMMySQLSession.m; sourceTree = "<group>"; };
+		A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMPgSQLSession.h; sourceTree = "<group>"; };
+		A6D8AC30149A95670029E9CF /* UMPgSQLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMPgSQLSession.m; sourceTree = "<group>"; };
+		A6D8AC31149A95670029E9CF /* UMSqLiteSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSqLiteSession.h; sourceTree = "<group>"; };
+		A6D8AC32149A95670029E9CF /* UMSqLiteSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSqLiteSession.m; sourceTree = "<group>"; };
+		A6D8AC51149A9FBD0029E9CF /* UMDbTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbTable.h; sourceTree = "<group>"; };
+		A6D8AC52149A9FBE0029E9CF /* UMDbTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbTable.m; sourceTree = "<group>"; };
+		A6D8AD4D149AC77E0029E9CF /* ulibdb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ulibdb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6DB3E71191E41220090FC94 /* ulibdb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ulibdb.m; sourceTree = "<group>"; };
+		A6DDD9A11635FEBC002FA7CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6DDD9A21635FEBC002FA7CC /* ulibdb-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ulibdb-Prefix.pch"; sourceTree = "<group>"; };
+		A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbMySqlInProgress.h; sourceTree = "<group>"; };
+		A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbMySqlInProgress.m; sourceTree = "<group>"; };
+		A6F693EB1B4E830C0090FC94 /* configure.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = configure.in; sourceTree = "<group>"; };
+		A6F694151B4E85180090FC94 /* Makefile.linux.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.linux.in; sourceTree = "<group>"; };
+		A6F694161B4E85180090FC94 /* Makefile.osx.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.osx.in; sourceTree = "<group>"; };
+		A6F694171B4E85180090FC94 /* ulibdb.pc.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = ulibdb.pc.in; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A6D8AD36149AC77E0029E9CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65536C81AC4613F00FB1428 /* libmysqlclient.18.dylib in Frameworks */,
+				2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */,
+				A6D8AD64149AC8A20029E9CF /* Foundation.framework in Frameworks */,
+				A65536CA1AC4615200FB1428 /* libpq.5.5.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A610865D16352F2100D0D9C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A610865E16352F2100D0D9C6 /* InfoPlist.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A6D8AAF8149A769A0029E9CF = {
+			isa = PBXGroup;
+			children = (
+				A6019BAD1AC15C2800854472 /* VERSION */,
+				A6F694151B4E85180090FC94 /* Makefile.linux.in */,
+				A6F694161B4E85180090FC94 /* Makefile.osx.in */,
+				A6F694171B4E85180090FC94 /* ulibdb.pc.in */,
+				A6F693EB1B4E830C0090FC94 /* configure.in */,
+				A6D8AB34149A76BB0029E9CF /* Classes */,
+				A6D8AD60149AC8590029E9CF /* Libraries */,
+				A6D8AB06149A769B0029E9CF /* Frameworks */,
+				A6D8AB05149A769B0029E9CF /* Products */,
+				A6DDD9A01635FEBC002FA7CC /* SupportingFiles */,
+				A610865D16352F2100D0D9C6 /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		A6D8AB05149A769B0029E9CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8AD4D149AC77E0029E9CF /* ulibdb.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A6D8AB06149A769B0029E9CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				229869F1196AC98C0016CF77 /* libulib.1.2.1.dylib */,
+				A6793DCA1934B08F0090FC94 /* ulib.framework */,
+				A6D8AB0C149A769B0029E9CF /* Foundation.framework */,
+				A6D8AB1D149A769B0029E9CF /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6D8AB34149A76BB0029E9CF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A6A143F0149B4EA400B007D0 /* ulibdb.h */,
+				A6DB3E71191E41220090FC94 /* ulibdb.m */,
+				A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */,
+				A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */,
+				A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */,
+				A696867E1921953400217100 /* UMDbFieldDefinition.h */,
+				2293864A18B3A298000D9DF2 /* UMDbFieldDefinitions.h */,
+				A696867F1921953400217100 /* UMDbFieldDefinition.m */,
+				A6D8AC1F149A95670029E9CF /* UMDbPool.h */,
+				A6D8AC20149A95670029E9CF /* UMDbPool.m */,
+				A6D8AC21149A95670029E9CF /* UMDbQuery.h */,
+				A6D8AC22149A95670029E9CF /* UMDbQuery.m */,
+				A6D8AC23149A95670029E9CF /* UMDbQueryCondition.h */,
+				A6D8AC24149A95670029E9CF /* UMDbQueryCondition.m */,
+				A6D8AC25149A95670029E9CF /* UMDbQueryPlaceholder.h */,
+				A6D8AC26149A95670029E9CF /* UMDbQueryPlaceholder.m */,
+				A6D8AC27149A95670029E9CF /* UMDbQueryType.h */,
+				A6D8AC28149A95670029E9CF /* UMDbQueryType.m */,
+				22356C0D18915F8900EF4074 /* UMDbRedisSession.h */,
+				22356C0E18915F8900EF4074 /* UMDbRedisSession.m */,
+				A66538EC1950FE6700C10E07 /* UMDbFileSession.h */,
+				A66538ED1950FE6700C10E07 /* UMDbFileSession.m */,
+				A6D8AC29149A95670029E9CF /* UMDbResult.h */,
+				A6D8AC2A149A95670029E9CF /* UMDbResult.m */,
+				A6D8AC2B149A95670029E9CF /* UMDbSession.h */,
+				A6D8AC2C149A95670029E9CF /* UMDbSession.m */,
+				2206CE2818B21E350051C70D /* UMDbStorageType.h */,
+				2206CE2918B21E350051C70D /* UMDbStorageType.m */,
+				A6D8AC51149A9FBD0029E9CF /* UMDbTable.h */,
+				A6D8AC52149A9FBE0029E9CF /* UMDbTable.m */,
+				A696867A1921951000217100 /* UMDbTableDefinition.h */,
+				A696867B1921951000217100 /* UMDbTableDefinition.m */,
+				A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */,
+				A6D8AC2E149A95670029E9CF /* UMMySQLSession.m */,
+				A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */,
+				A6D8AC30149A95670029E9CF /* UMPgSQLSession.m */,
+				A6D8AC31149A95670029E9CF /* UMSqLiteSession.h */,
+				A6D8AC32149A95670029E9CF /* UMSqLiteSession.m */,
+				A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */,
+				A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */,
+			);
+			path = Classes;
+			sourceTree = SOURCE_ROOT;
+		};
+		A6D8AD60149AC8590029E9CF /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A65536C91AC4615200FB1428 /* libpq.5.5.dylib */,
+				A65536C71AC4613F00FB1428 /* libmysqlclient.18.dylib */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		A6DDD9A01635FEBC002FA7CC /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A6DDD9A11635FEBC002FA7CC /* Info.plist */,
+				A6DDD9A21635FEBC002FA7CC /* ulibdb-Prefix.pch */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A6D8AD3B149AC77E0029E9CF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6A143F2149B4EA400B007D0 /* ulibdb.h in Headers */,
+				A61B97DC193472F7008AD2D4 /* ulibdb_defines.h in Headers */,
+				A6D8AD3C149AC77E0029E9CF /* UMDbTable.h in Headers */,
+				A6D8AD3D149AC77E0029E9CF /* UMDbDriverType.h in Headers */,
+				A6D8AD3E149AC77E0029E9CF /* UMDbPool.h in Headers */,
+				A6D8AD3F149AC77E0029E9CF /* UMDbQuery.h in Headers */,
+				A6D8AD40149AC77E0029E9CF /* UMDbQueryCondition.h in Headers */,
+				A6D8AD41149AC77E0029E9CF /* UMDbQueryPlaceholder.h in Headers */,
+				A6D8AD42149AC77E0029E9CF /* UMDbQueryType.h in Headers */,
+				A6D8AD43149AC77E0029E9CF /* UMDbResult.h in Headers */,
+				A6D8AD44149AC77E0029E9CF /* UMDbSession.h in Headers */,
+				2293864B18B3A298000D9DF2 /* UMDbFieldDefinitions.h in Headers */,
+				2206CE2A18B21E350051C70D /* UMDbStorageType.h in Headers */,
+				22356C0F18915F8900EF4074 /* UMDbRedisSession.h in Headers */,
+				A69686801921953400217100 /* UMDbFieldDefinition.h in Headers */,
+				A696867C1921951000217100 /* UMDbTableDefinition.h in Headers */,
+				A6D8AD47149AC77E0029E9CF /* UMSqLiteSession.h in Headers */,
+				A66538EE1950FE6700C10E07 /* UMDbFileSession.h in Headers */,
+				A6DFF69D1952B729008D0983 /* UMDbMySqlInProgress.h in Headers */,
+				A6793E141934BD660090FC94 /* UMPgSQLSession.h in Headers */,
+				A6793E131934BD440090FC94 /* UMMySQLSession.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A6D8AD28149AC77E0029E9CF /* ulibdb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6D8AD4A149AC77E0029E9CF /* Build configuration list for PBXNativeTarget "ulibdb" */;
+			buildPhases = (
+				A675980A1B1C62690090FC94 /* ShellScript */,
+				A6D8AD29149AC77E0029E9CF /* Sources */,
+				A6D8AD36149AC77E0029E9CF /* Frameworks */,
+				A6D8AD3B149AC77E0029E9CF /* Headers */,
+				A6D8AD48149AC77E0029E9CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ulibdb;
+			productName = ulibdb;
+			productReference = A6D8AD4D149AC77E0029E9CF /* ulibdb.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6D8AAFA149A769A0029E9CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
+				TargetAttributes = {
+					A6D8AD28149AC77E0029E9CF = {
+						DevelopmentTeam = 2GSNWPNR77;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A6D8AAFD149A769A0029E9CF /* Build configuration list for PBXProject "ulibdb" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A6D8AAF8149A769A0029E9CF;
+			productRefGroup = A6D8AB05149A769B0029E9CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6D8AD28149AC77E0029E9CF /* ulibdb */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6D8AD48149AC77E0029E9CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A610866216352F2100D0D9C6 /* InfoPlist.strings in Resources */,
+				A6019BAE1AC15C2800854472 /* VERSION in Resources */,
+				A6F693EC1B4E830C0090FC94 /* configure.in in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A675980A1B1C62690090FC94 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/VERSION",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/version.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f version.h ]\nthen\n  if [ VERSION -nt version.h ]\n  then\n      ./configure\n   fi\nelse\n   ./configure\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6D8AD29149AC77E0029E9CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6D8AD2A149AC77E0029E9CF /* UMDbTable.m in Sources */,
+				A6D8AD2B149AC77E0029E9CF /* UMDbDriverType.m in Sources */,
+				A66538EF1950FE6700C10E07 /* UMDbFileSession.m in Sources */,
+				A6D8AD2C149AC77E0029E9CF /* UMDbPool.m in Sources */,
+				A69686811921953400217100 /* UMDbFieldDefinition.m in Sources */,
+				A6D8AD2D149AC77E0029E9CF /* UMDbQuery.m in Sources */,
+				A6D8AD2E149AC77E0029E9CF /* UMDbQueryCondition.m in Sources */,
+				2206CE2B18B21E350051C70D /* UMDbStorageType.m in Sources */,
+				A6D8AD2F149AC77E0029E9CF /* UMDbQueryPlaceholder.m in Sources */,
+				A6D8AD30149AC77E0029E9CF /* UMDbQueryType.m in Sources */,
+				A6D8AD31149AC77E0029E9CF /* UMDbResult.m in Sources */,
+				A696867D1921951000217100 /* UMDbTableDefinition.m in Sources */,
+				A6DB3E72191E41220090FC94 /* ulibdb.m in Sources */,
+				A6D8AD32149AC77E0029E9CF /* UMDbSession.m in Sources */,
+				22356C1018915F8900EF4074 /* UMDbRedisSession.m in Sources */,
+				A6D8AD33149AC77E0029E9CF /* UMMySQLSession.m in Sources */,
+				A6D8AD34149AC77E0029E9CF /* UMPgSQLSession.m in Sources */,
+				A6DFF69E1952B729008D0983 /* UMDbMySqlInProgress.m in Sources */,
+				A6D8AD35149AC77E0029E9CF /* UMSqLiteSession.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A610865E16352F2100D0D9C6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A610865F16352F2100D0D9C6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A6D8AB2C149A769B0029E9CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DSTROOT = /;
+				DYLIB_COMPATIBILITY_VERSION = 1.5.1;
+				DYLIB_CURRENT_VERSION = 1.5.1;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PROFILING_CODE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/postgresclient/include,
+					/usr/local/mysqlclient/include,
+				);
+				INSTALL_PATH = /Library/Frameworks;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mysqlclient/lib/ /usr/local/postgresclient/lib/";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DULIBDB_CONFIG=Debug";
+				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		A6D8AB2D149A769B0029E9CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DSTROOT = /;
+				DYLIB_COMPATIBILITY_VERSION = 1.5.1;
+				DYLIB_CURRENT_VERSION = 1.5.1;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PROFILING_CODE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/postgresclient/include,
+					/usr/local/mysqlclient/include,
+				);
+				INSTALL_PATH = /Library/Frameworks/;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mysqlclient/lib/ /usr/local/postgresclient/lib/";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-DULIBDB_CONFIG=Release";
+				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Release;
+		};
+		A6D8AD4B149AC77E0029E9CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
+				INFOPLIST_FILE = SupportingFiles/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libraries",
+					/usr/local/mysqlclient/lib,
+					/usr/local/postgresclient/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = me.fink.ulibdb;
+				PRODUCT_NAME = ulibdb;
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		A6D8AD4C149AC77E0029E9CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				DSTROOT = /;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
+				INFOPLIST_FILE = SupportingFiles/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libraries",
+					/usr/local/mysqlclient/lib,
+					/usr/local/postgresclient/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = me.fink.ulibdb;
+				PRODUCT_NAME = ulibdb;
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A6D8AAFD149A769A0029E9CF /* Build configuration list for PBXProject "ulibdb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6D8AB2C149A769B0029E9CF /* Debug */,
+				A6D8AB2D149A769B0029E9CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A6D8AD4A149AC77E0029E9CF /* Build configuration list for PBXNativeTarget "ulibdb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6D8AD4B149AC77E0029E9CF /* Debug */,
+				A6D8AD4C149AC77E0029E9CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A6D8AAFA149A769A0029E9CF /* Project object */;
+}

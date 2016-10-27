@@ -1,0 +1,41 @@
+# File: Makefile
+# Project "ulibdb"
+# (c) 2016 Andreas Fink
+# Create: Andreas Fink (andreas@fink.org)
+#
+#
+
+CC=@CC@
+CFLAGS=@CFLAGS@
+LDFLAGS=@LDFLAGS@
+
+LIB=libulibdb.so
+PKGCONFIGFILE=ulibdb.pc
+
+MFILES = $(wildcard Classes/*.m) $(wildcard Classes/*/*.m)
+HFILES = version.h $(wildcard Classes/*.h) $(wildcard Classes/*/*.h)
+MOFILES  = $(MFILES:.m=.m.o)
+OFILES = $(MOFILES)
+
+INCLUDEDIRS = -I Classes
+
+${LIB}: ${OFILES}
+	./make_version
+	${CC} -shared -o ${LIB}  ${LDFLAGS} ${OFILES} ${LIBS} ${STATIC_LIBS}
+
+install: ${LIB}
+	-mkdir -p ${DESTDIR}/usr/local/lib/pkgconfig
+	-install -b -g root -o root -m 644 ${LIB} ${DESTDIR}/usr/local/lib/
+	-install -b -g root -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
+	-mkdir -p ${DESTDIR}/usr/local/include/ulibdb
+	cp $(HFILES) ${DESTDIR}/usr/local/include/ulibdb
+
+clean:
+	rm -f $(LIB) $(OFILES)
+
+.SUFFIXES: .m.o .o .m .c
+
+%.m.o:	%.m
+	${CC} -c ${CFLAGS} -x objective-c -fobjc-arc $< ${INCLUDEDIRS} -o $@
+
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+       <key>group</key>
+       <dict>
+                <key>type</key>
+                <string>string</string>
+                <key>required</key>
+                <string>YES</string>
+                <key>default</key>
+                <string>3</string>
+        </dict>
+	<key>host</key>
+	<dict>
+		<key>type</key>
+		<string>string</string>
+		<key>required</key>
+		<string>YES</string>
+		<key>default</key>
+		<string>3</string>
+	 </dict>
+	 <key>database</key>
+	 <dict>
+		<key>type</key>
+		<string>string</string>
+		<key>required</key>
+		<string>YES</string>
+		<key>default</key>
+		<string>3</string>
+	 </dict>
+	 <key>user</key>
+	 <dict>
+	        <key>type</key>
+	        <string>string</string>
+	        <key>required</key>
+	        <string>YES</string>
+	        <key>default</key>
+	        <string>3</string>
+	 </dict>
+	 <key>pass</key>
+	 <dict>
+	        <key>type</key>
+	        <string>string</string>
+	        <key>required</key>
+	        <string>YES</string>
+	        <key>default</key>
+	        <string>3</string>
+	 </dict>
+</dict>
+</plist>
