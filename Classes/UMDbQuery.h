@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 Andreas Fink
 
 #import "ulib/ulib.h"
+#import "ulibdb_config.h"
 
 #import "UMDbQueryType.h"
 #import "UMDbDriverType.h"

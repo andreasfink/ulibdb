@@ -4,8 +4,8 @@
  * (c) 2002-2016, Andreas Fink
  */ 
 
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef ULIBDB_CONFIG_H
+#define ULIBDB_CONFIG_H
 
 /* Define if you have the ANSI C header files.  */
 #undef STDC_HEADERS
@@ -137,6 +137,16 @@
 
 /* Define if you have getline() */
 #undef HAVE_GETLINE
+
+
+/* define if you have MYSQL Support */
+#undef HAVE_MYSQL
+
+/* define if you have postgres Support */
+#undef HAVE_PGSQL
+
+/* define if you have SQLite support */
+#undef HAVE_SQLITE
 
 /* if sockadd.sin_len is existing */
 #undef HAVE_SOCKADDR_SIN_LEN

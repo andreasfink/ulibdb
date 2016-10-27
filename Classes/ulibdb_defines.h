@@ -6,7 +6,5 @@
 //  Copyright (c) 2012 Andreas Fink. All rights reserved.
 //
 
-#define HAVE_MYSQL   1
-#define HAVE_PGSQL   1
-#define HAVE_SQLITE  1
+#include "../ulibdb_config.h"
 

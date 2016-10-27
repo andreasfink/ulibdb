@@ -586,6 +586,8 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+HAVE_PGSQL
+HAVE_MYSQL
 INSTALL_DATA
 INSTALL_SCRIPT
 INSTALL_PROGRAM
@@ -3499,6 +3501,8 @@ MYSQL="yes"
 
 
 ./make_version
+
+
 
 ac_config_files="$ac_config_files Makefile.osx"
 

@@ -7,6 +7,7 @@
 
 #import "ulib/ulib.h"
 #import "ulibdb_defines.h"
+#import "ulibdb_config.h"
 #import "UMDbPool.h"
 #import "UMDbSession.h"
 #import "UMMySQLSession.h"
