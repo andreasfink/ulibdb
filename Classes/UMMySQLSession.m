@@ -32,13 +32,14 @@
 
 - (UMDbSession *)initWithPool:(UMDbPool *)p
 {
+
     @autoreleasepool
     {
         if (!p)
         {
             return nil;
         }
-        self=[super init];
+        self=[super initWithPool:p];
         if(self)
         {
             mysql_init(&mysql);
