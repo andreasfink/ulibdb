@@ -6,6 +6,7 @@
 build/
 DerivedData/
 
+config.status
 ## Various settings
 *.pbxuser
 !default.pbxuser
