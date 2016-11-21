@@ -1855,7 +1855,7 @@ PROJECT_NAME="ulibdb"
 AUTHOR="Andreas Fink <andreas@fink.org>"
 CONFIG_DEFINE="ULIBDB_CONFIG"
 VERSION=`head -n 1 VERSION`
-CONFIG_HEADER=ulibdb_config.h
+CONFIG_HEADER=Classes/ulibdb_config.h
 DEPENDENT_PKGCONFIGS="ulib"
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export PKG_CONFIG_PATH
