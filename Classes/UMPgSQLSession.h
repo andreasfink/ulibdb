@@ -9,7 +9,7 @@
 
 #ifdef HAVE_PGSQL
 
-#import "libpq-fe.h"
+#import <postgresql/libpq-fe.h>
 
 #define DEFAULT_PGSQL_PORT 5432
 //#define PGSQL_DEBUG 1
