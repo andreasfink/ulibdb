@@ -6,5 +6,5 @@
 //  Copyright (c) 2012 Andreas Fink. All rights reserved.
 //
 
-#include "../ulibdb_config.h"
+#include "ulibdb_config.h"
 
