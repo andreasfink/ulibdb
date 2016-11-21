@@ -20,6 +20,8 @@
 		A65536CA1AC4615200FB1428 /* libpq.5.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A65536C91AC4615200FB1428 /* libpq.5.5.dylib */; };
 		A66538EE1950FE6700C10E07 /* UMDbFileSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A66538EC1950FE6700C10E07 /* UMDbFileSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A66538EF1950FE6700C10E07 /* UMDbFileSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A66538ED1950FE6700C10E07 /* UMDbFileSession.m */; };
+		A673535B1DE3B3E100161EAD /* ulibdb_config.h in Headers */ = {isa = PBXBuildFile; fileRef = A67353591DE3B3E100161EAD /* ulibdb_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A673535C1DE3B3E100161EAD /* ulibdb_config.h.in in Resources */ = {isa = PBXBuildFile; fileRef = A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */; };
 		A6793E131934BD440090FC94 /* UMMySQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E141934BD660090FC94 /* UMPgSQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A696867C1921951000217100 /* UMDbTableDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867A1921951000217100 /* UMDbTableDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,6 +72,8 @@
 		A65536C91AC4615200FB1428 /* libpq.5.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpq.5.5.dylib; path = ../../../../../usr/local/postgresclient/lib/libpq.5.5.dylib; sourceTree = "<group>"; };
 		A66538EC1950FE6700C10E07 /* UMDbFileSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFileSession.h; sourceTree = "<group>"; };
 		A66538ED1950FE6700C10E07 /* UMDbFileSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFileSession.m; sourceTree = "<group>"; };
+		A67353591DE3B3E100161EAD /* ulibdb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_config.h; sourceTree = "<group>"; };
+		A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulibdb_config.h.in; sourceTree = "<group>"; };
 		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = ../../../../../Library/Frameworks/ulib.framework; sourceTree = "<group>"; };
 		A696867A1921951000217100 /* UMDbTableDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbTableDefinition.h; sourceTree = "<group>"; };
 		A696867B1921951000217100 /* UMDbTableDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbTableDefinition.m; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				A6A143F0149B4EA400B007D0 /* ulibdb.h */,
 				A6DB3E71191E41220090FC94 /* ulibdb.m */,
 				A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */,
+				A67353591DE3B3E100161EAD /* ulibdb_config.h */,
+				A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */,
 				A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */,
 				A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */,
 				A696867E1921953400217100 /* UMDbFieldDefinition.h */,
@@ -245,6 +251,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A673535B1DE3B3E100161EAD /* ulibdb_config.h in Headers */,
 				A6A143F2149B4EA400B007D0 /* ulibdb.h in Headers */,
 				A61B97DC193472F7008AD2D4 /* ulibdb_defines.h in Headers */,
 				A6D8AD3C149AC77E0029E9CF /* UMDbTable.h in Headers */,
@@ -328,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A673535C1DE3B3E100161EAD /* ulibdb_config.h.in in Resources */,
 				A610866216352F2100D0D9C6 /* InfoPlist.strings in Resources */,
 				A6019BAE1AC15C2800854472 /* VERSION in Resources */,
 				A6F693EC1B4E830C0090FC94 /* configure.in in Resources */,
