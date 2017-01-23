@@ -349,12 +349,17 @@
         case CR_NEW_STMT_METADATA:
             s = @"CR_NEW_STMT_METADATA";
             break;
+#ifdef CR_ALREADY_CONNECTED
         case CR_ALREADY_CONNECTED:
             s = @"CR_ALREADY_CONNECTED";
             break;
+#endif
+
+#ifdef
         case CR_AUTH_PLUGIN_CANNOT_LOAD:
             s = @"CR_AUTH_PLUGIN_CANNOT_LOAD";
             break;
+#endif
     }
     if(s)
     {
