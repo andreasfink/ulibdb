@@ -355,7 +355,7 @@
             break;
 #endif
 
-#ifdef
+#ifdef CR_AUTH_PLUGIN_CANNOT_LOAD
         case CR_AUTH_PLUGIN_CANNOT_LOAD:
             s = @"CR_AUTH_PLUGIN_CANNOT_LOAD";
             break;
