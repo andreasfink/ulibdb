@@ -263,9 +263,7 @@ void umdbpool_null_session_returned(void)
 {
     dbDriverType = UMDBDRIVER_NULL;
     [self stopIdler];
-    [poolSleeper terminate];
     poolSleeper = NULL;
-//    UMLOCK_DESTROY(poolLock);
 }
 
 - (void)startIdler
