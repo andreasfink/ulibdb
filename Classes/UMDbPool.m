@@ -129,6 +129,7 @@ void umdbpool_null_session_returned(void)
         self.delayRedisUpdates = [[UMAverageDelay alloc]init];
         self.delayDels = [[UMAverageDelay alloc]init];
         self.poolSleeper =[[UMSleeper alloc]initFromFile:__FILE__ line:__LINE__ function:__func__];
+        [self.poolSleeper prepare];
         self.waitTimeout2 = 30;
         self.waitTimeout1 = 3;
         self.minSessions = 3;
@@ -532,6 +533,7 @@ void umdbpool_null_session_returned(void)
             else
             {
                 UMSleeper   *sleeper = [[UMSleeper alloc]initFromFile:__FILE__ line:__LINE__ function:__func__];
+                [sleeper prepare];
                 if((now - start) <= waitTimeout1)
                 {
                     long long msdelay = random() % 50000 + 100000;/* sleep something like 100ms */
@@ -543,7 +545,6 @@ void umdbpool_null_session_returned(void)
                     [sleeper sleep:msdelay];
                     wait1hit=YES;
                 }
-                [sleeper terminate];
                 sleeper = NULL;
             }
         }
