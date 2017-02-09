@@ -1,6 +1,6 @@
 dnl /* ==================================================================== 
 dnl  * Project "ulibdb"
-dnl  * (c) 2016 Andreas Fink
+dnl  * Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 dnl  * ====================================================================
 dnl  */ 
 
@@ -11,7 +11,7 @@ AC_PREREQ([2.69])
 AC_INIT([ulibdb],[1.5.2],[andreas@fink.org])
 
 dnl generic parameters
-COPYRIGHT="Copyright 2016 Andreas Fink"
+COPYRIGHT="Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved."
 PROJECT_NAME="ulibdb"
 AUTHOR="Andreas Fink <andreas@fink.org>"
 CONFIG_DEFINE="ULIBDB_CONFIG"

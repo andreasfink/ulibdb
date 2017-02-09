@@ -3,7 +3,7 @@
 //  ulibdb.framework
 //
 //  Created by Andreas Fink on 24.10.11.
-//  Copyright (c) 2011 Andreas Fink
+//  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
 #import "ulib/ulib.h"
 #import "UMDbPool.h"

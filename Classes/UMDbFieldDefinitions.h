@@ -3,7 +3,7 @@
 //  smsclient
 //
 //  Created by Andreas Fink on 03.12.12.
-//  Copyright (c) 2012 Andreas Fink. All rights reserved.
+//  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 //
 
 #import <ulib/ulib.h>

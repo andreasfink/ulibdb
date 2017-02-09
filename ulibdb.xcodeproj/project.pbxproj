@@ -306,6 +306,7 @@
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Andreas Fink (andreas@fink.org)";
 				TargetAttributes = {
 					A6D8AD28149AC77E0029E9CF = {
 						DevelopmentTeam = 2GSNWPNR77;
@@ -437,7 +438,7 @@
 				INSTALL_PATH = /Library/Frameworks;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mysqlclient/lib/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Debug";
 				SDKROOT = macosx;
@@ -476,7 +477,7 @@
 				INSTALL_PATH = /Library/Frameworks/;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mysqlclient/lib/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Release";
 				SDKROOT = macosx;

@@ -2,7 +2,7 @@
 /* ==================================================================== 
  * config.h
  * Project "ulib"
- * (c) 2002-2016, Andreas Fink
+ * Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
  */ 
 
 #ifndef ULIBDB_CONFIG_H
