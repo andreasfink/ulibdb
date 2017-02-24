@@ -29,6 +29,7 @@ install: ${LIB}
 	-install -b -g root -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
 	-mkdir -p ${DESTDIR}/usr/local/include/ulibdb
 	cp $(HFILES) ${DESTDIR}/usr/local/include/ulibdb
+	ldconfig
 
 clean:
 	rm -f $(LIB) $(OFILES)
