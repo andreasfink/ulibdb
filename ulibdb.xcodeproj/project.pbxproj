@@ -64,7 +64,6 @@
 		22356C0D18915F8900EF4074 /* UMDbRedisSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbRedisSession.h; sourceTree = "<group>"; };
 		22356C0E18915F8900EF4074 /* UMDbRedisSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbRedisSession.m; sourceTree = "<group>"; };
 		2293864A18B3A298000D9DF2 /* UMDbFieldDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinitions.h; sourceTree = "<group>"; };
-		229869F1196AC98C0016CF77 /* libulib.1.2.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libulib.1.2.1.dylib; path = ../../../usr/local/lib/libulib.1.2.1.dylib; sourceTree = "<group>"; };
 		A6019BAD1AC15C2800854472 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		A610865F16352F2100D0D9C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_defines.h; sourceTree = "<group>"; };
@@ -74,7 +73,7 @@
 		A66538ED1950FE6700C10E07 /* UMDbFileSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFileSession.m; sourceTree = "<group>"; };
 		A67353591DE3B3E100161EAD /* ulibdb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_config.h; sourceTree = "<group>"; };
 		A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulibdb_config.h.in; sourceTree = "<group>"; };
-		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = ../../../../../Library/Frameworks/ulib.framework; sourceTree = "<group>"; };
+		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = /Library/Frameworks/ulib.framework; sourceTree = "<absolute>"; };
 		A696867A1921951000217100 /* UMDbTableDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbTableDefinition.h; sourceTree = "<group>"; };
 		A696867B1921951000217100 /* UMDbTableDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbTableDefinition.m; sourceTree = "<group>"; };
 		A696867E1921953400217100 /* UMDbFieldDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinition.h; sourceTree = "<group>"; };
@@ -169,7 +168,6 @@
 		A6D8AB06149A769B0029E9CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				229869F1196AC98C0016CF77 /* libulib.1.2.1.dylib */,
 				A6793DCA1934B08F0090FC94 /* ulib.framework */,
 				A6D8AB0C149A769B0029E9CF /* Foundation.framework */,
 				A6D8AB1D149A769B0029E9CF /* SenTestingKit.framework */,
