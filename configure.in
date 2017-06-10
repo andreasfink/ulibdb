@@ -16,6 +16,9 @@ PROJECT_NAME="ulibdb"
 AUTHOR="Andreas Fink <andreas@fink.org>"
 CONFIG_DEFINE="ULIBDB_CONFIG"
 VERSION=`head -n 1 VERSION`
+MAJORVER=`echo $VERSION | cut -f1 -d.`
+MINORVER=`echo $VERSION | cut -f2 -d.`
+REVISION=`echo $VERSION | cut -f3 -d.`
 CONFIG_HEADER=Classes/ulibdb_config.h
 DEPENDENT_PKGCONFIGS="ulib"
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
@@ -56,6 +59,7 @@ case "$host" in
 	LDFLAGS="-framework CoreFoundation -framework IOKit -framework Security -F/Library/Frameworks -framework ulib"
 	LIBTOOL="libtool -static -o" 
 	LIBS="$LIBS"
+	SHARED_LIBRARY_EXTENSION=dylib
     ;;
 
   *-linux-*)
@@ -235,6 +239,11 @@ dnl Final Output
 AC_SUBST(PROJECT_NAME)
 AC_SUBST(HAVE_MYSQL)
 AC_SUBST(HAVE_PGSQL)
+AC_SUBST(VERSION)
+AC_SUBST(MAJORVER)
+AC_SUBST(MINORVER)
+AC_SUBST(REVISION)
+AC_SUBST(SHARED_LIBRARY_EXTENSION)
 AC_CONFIG_FILES([Makefile.osx])
 AC_CONFIG_FILES([Makefile.linux])
 AC_CONFIG_FILES([ulibdb.pc])

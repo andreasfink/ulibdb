@@ -586,6 +586,10 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+SHARED_LIBRARY_EXTENSION
+REVISION
+MINORVER
+MAJORVER
 HAVE_PGSQL
 HAVE_MYSQL
 INSTALL_DATA
@@ -1850,11 +1854,14 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-COPYRIGHT="Copyright 2016 Andreas Fink"
+COPYRIGHT="Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved."
 PROJECT_NAME="ulibdb"
 AUTHOR="Andreas Fink <andreas@fink.org>"
 CONFIG_DEFINE="ULIBDB_CONFIG"
 VERSION=`head -n 1 VERSION`
+MAJORVER=`echo $VERSION | cut -f1 -d.`
+MINORVER=`echo $VERSION | cut -f2 -d.`
+REVISION=`echo $VERSION | cut -f3 -d.`
 CONFIG_HEADER=Classes/ulibdb_config.h
 DEPENDENT_PKGCONFIGS="ulib"
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
@@ -2012,6 +2019,7 @@ case "$host" in
 	LDFLAGS="-framework CoreFoundation -framework IOKit -framework Security -F/Library/Frameworks -framework ulib"
 	LIBTOOL="libtool -static -o"
 	LIBS="$LIBS"
+	SHARED_LIBRARY_EXTENSION=dylib
     ;;
 
   *-linux-*)
@@ -3501,6 +3509,11 @@ MYSQL="yes"
 
 
 ./make_version
+
+
+
+
+
 
 
 
