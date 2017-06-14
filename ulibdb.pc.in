@@ -6,7 +6,7 @@ libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
 Cflags: -I${includedir} -I/usr/include/postgresql -I/usr/include/mysql
-Libs: -L${libdir} -lulibdb -lmysqlclient_r -lpq -ldl -lstdc++
+Libs: -L${libdir} -l:libulibdb.so.@MAJORVER@.@MINORVER@ -lmysqlclient_r -lpq -ldl -lstdc++
 
 Name: ulibdb
 Description: universal database library
