@@ -540,7 +540,6 @@
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/libraries",
 					/usr/local/mysqlclient/lib,
 					/usr/local/postgresclient/lib,
 				);
@@ -569,7 +568,6 @@
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/libraries",
 					/usr/local/mysqlclient/lib,
 					/usr/local/postgresclient/lib,
 				);
