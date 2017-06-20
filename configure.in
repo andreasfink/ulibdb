@@ -20,7 +20,7 @@ MAJORVER=`echo $VERSION | cut -f1 -d.`
 MINORVER=`echo $VERSION | cut -f2 -d.`
 REVISION=`echo $VERSION | cut -f3 -d.`
 CONFIG_HEADER=Classes/ulibdb_config.h
-DEPENDENT_PKGCONFIGS="ulib"
+DEPENDENT_PKGCONFIGS="ulib mariadbclient libpq"
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export PKG_CONFIG_PATH
 
@@ -159,77 +159,6 @@ then
 fi
 
 
-AC_CONFIG_SECTION([Checking for MySQL support])
-mysqlloc=""
-dnl Implement the --with-mysql option.
-AC_ARG_WITH(mysql,
-[  --with-mysql=<dir>  where to look for MySQL libs and header files
-                      <dir> points to the installation [[/usr/local/mysqlclien]]
-],
-[ if test -d "$withval"
-  then
- 	mysqlloc="$withval"
-  else
-      AC_MSG_ERROR([ --with-mysql=$withval: directory doesnt exist])
-  fi
-
-])
-
-if [[ "$mysqlloc" = "" ]]
-then
-
-dnl AC_MSG_CHECKING([for MySQL client support in])
-AC_CHECK_FILE("/usr/local/mysqlclient/include/mysql/mysql.h",[VARIANT=1;LOC="/usr/local/mysqlclient"],
- [AC_CHECK_FILE("/usr/local/mysqlclient/include/mysql.h",[VARIANT=2;LOC="/usr/local/mysqlclient"],
-  [AC_CHECK_FILE("/usr/local/mysql/include/mysql/mysql.h",[VARIANT=1;LOC="/usr/local/mysql"],
-   [AC_CHECK_FILE("/usr/local/mysql/include/mysql.h",[VARIANT=2;LOC="/usr/local/mysql"],
-    [AC_CHECK_FILE("/usr/local/include/mysql/mysql.h",[VARIANT=1;LOC="/usr/local"],
-     [AC_CHECK_FILE("/usr/local/include/mysql.h",[VARIANT=2;LOC="/usr/local"],
-      [AC_CHECK_FILE("/usr/include/mysql/mysql.h",[VARIANT=1;LOC="/usr"],
-       [AC_CHECK_FILE("/usr/include/mysql.h",[VARIANT=2;LOC="/usr"],[VARIANT=0;LOC=""])
-      ])
-     ])
-    ])
-   ])
-  ])
- ])
-])
-
-else
-
-dnl AC_MSG_CHECKING([for MySQL client support in])
-AC_CHECK_FILE("$mysqlloc/include/mysql/mysql.h",[VARIANT=1;LOC="$mysqlloc"],
- [AC_CHECK_FILE("$mysqlloc/include/mysql.h",[VARIANT=2;LOC="$mysqlloc"],[VARIANT=0;LOC=""])
- ])
- 
-fi
- 
-mysqlloc=$LOC
-if [[ "$VARIANT" = "0" ]]
-then
-    AC_MSG_ERROR([Could not find mysql.h anywhere])
-fi
-
-LIBS="$LIBS `mysql_config --libs`"
-CFLAGS="$CFLAGS `mysql_config --cflags`"
-
-AC_DEFINE(HAVE_MYSQL)
-AC_DEFINE(HAVE_MYSQL_VERSION_H)
-
-AC_CHECK_HEADERS(mysql.h,,,
-[[#if HAVE_MYSQL_H
-# include <mysql/mysql.h>
-#endif 
-]]) 
-
-AC_CHECK_HEADERS(mysql_version.h,,,
-[[#if HAVE_MYSQL_H
-# include <mysql/mysql.h>
-#endif 
-#if HAVE_MYSQL_VERSION_H
-# include <mysql/mysql_version.h>
-#endif 
-]]) 
 
 AC_DEFINE(HAVE_MYSQL)
 MYSQL="yes"
