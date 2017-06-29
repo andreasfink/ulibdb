@@ -46,6 +46,6 @@ clean:
 .SUFFIXES: .m.o .o .m .c
 
 %.m.o:	%.m
-	${CC} -c ${CFLAGS} -x objective-c -fobjc-arc $< ${INCLUDEDIRS} -o $@
+	${CC} -c ${CFLAGS} -DULIBDB_FRAMEWORK_COMPILATION=1 -x objective-c -fobjc-arc $< ${INCLUDEDIRS} -o $@
 
 

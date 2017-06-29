@@ -48,6 +48,12 @@
     return [self initWithConfig:NULL andPools:NULL];
 }
 
+
+- (UMDbTable *)initWithPool
+{
+    return [self initWithConfig:NULL andPools:NULL];
+}
+
 - (UMDbTable *)initWithConfig:(NSDictionary *)config
                      andPools:(UMSynchronizedDictionary *)newPools
 {

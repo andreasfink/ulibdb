@@ -19,8 +19,20 @@
 #import "UMDbQueryPlaceholder.h"
 #import "UMDbResult.h"
 #import "UMDbSession.h"
+
+/*
+ we dont want to include the requirement of having to find the mysql.h
+ into a project which only uses ulibdb directly and doesnt ever call
+ mysql directly, So only during compilation of the library this is included.
+ a user of ulibdb would only deal with the abstract superclass view
+*/
+
+#if defined(ULIBDB_FRAMEWORK_COMPILATION)
 #import "UMMySQLSession.h"
 #import "UMPgSQLSession.h"
+#endif
+
+
 #import "UMSqLiteSession.h"
 #import "UMDbRedisSession.h"
 #import "UMDbMySqlInProgress.h"
