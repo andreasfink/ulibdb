@@ -544,6 +544,10 @@
 					/usr/local/postgresclient/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CFLAGS = (
+					"-DULIBDB_FRAMEWORK_COMPILATION=1",
+					"-DULIBDB_CONFIG=Debug",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.fink.ulibdb;
 				PRODUCT_NAME = ulibdb;
 				PROVISIONING_PROFILE = "";
@@ -572,6 +576,10 @@
 					/usr/local/postgresclient/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CFLAGS = (
+					"-DULIBDB_FRAMEWORK_COMPILATION=1",
+					"-DULIBDB_CONFIG=Release",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.fink.ulibdb;
 				PRODUCT_NAME = ulibdb;
 				PROVISIONING_PROFILE = "";
