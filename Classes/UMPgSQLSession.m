@@ -165,7 +165,7 @@
             else 
             {
                 NSString *s =@(PQgetvalue(res, row_loop, field_loop));
-                s = [s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
+                s = [s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 [row addObject:s];
             }
         }
