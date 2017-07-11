@@ -19,8 +19,9 @@
 {
     @autoreleasepool
     {
-        NSString *fileName = @(file);
-        fileName = [fileName lastPathComponent];
+//        NSString *fileName = @(file);
+//        fileName = [fileName lastPathComponent];
+#pragma unused(file)
         self = [super init];
         if(self)
         {
