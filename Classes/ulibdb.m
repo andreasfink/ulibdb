@@ -38,7 +38,7 @@ void ulibdb_startup()
 {
     if (mysql_library_init(0, NULL, NULL))
     {
-        NSLog(@"could not initialize MySQL library");
+        fprintf(stderr,"could not initialize MySQL library");
         exit(1);
     }
     if( mysql_thread_safe() == 0)
