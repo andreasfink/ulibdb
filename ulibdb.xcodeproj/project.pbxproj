@@ -457,7 +457,7 @@
 				INSTALL_PATH = /Library/Frameworks;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mysqlclient/lib/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Debug";
 				SDKROOT = macosx;
@@ -516,7 +516,7 @@
 				INSTALL_PATH = /Library/Frameworks/;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mysqlclient/lib/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Release";
 				SDKROOT = macosx;
