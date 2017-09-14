@@ -151,29 +151,29 @@
             //   unsigned int timeout = 1800;
             //   mysql_options(connection, MYSQL_OPT_READ_TIMEOUT,&timeout);
             
-            const char *query = "show variables like 'version'";
+            query = "show variables like 'version'";
             self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
             state = mysql_query(connection,query);
             [lastInProgress completed];
             
             mysql_set_character_set(connection, "utf8");
             
-            const char *query = "SET NAMES utf8";
+            query = "SET NAMES utf8";
             self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
             state = mysql_query(connection,query);
             [lastInProgress completed];
 
-            const char *query = "SET CHARACTER SET utf8";
+            query = "SET CHARACTER SET utf8";
             self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
             state = mysql_query(connection,query);
             [lastInProgress completed];
 
-            const char *query = "SET character_set_server = 'utf8'";
+            query = "SET character_set_server = 'utf8'";
             self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
             state = mysql_query(connection,query);
             [lastInProgress completed];
             
-            const char *query = "SET character_set_connection = 'utf8'";
+            query = "SET character_set_connection = 'utf8'";
             self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
             state = mysql_query(connection,query);
             [lastInProgress completed];
