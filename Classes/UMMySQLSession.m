@@ -430,7 +430,7 @@
             {
                 mysql_free_result(r);
                 NSString *s = [NSString stringWithFormat:@"we are getting a result while we are not expecting one\nQuery: %@",sql];
-                @throw [NSException exceptionWithName:@"NSObjectInaccessibleException" reason:s userInfo:nil];
+                fprintf(stderr,"ERROR: %s",s.UTF8String);// [NSException exceptionWithName:@"NSObjectInaccessibleException" reason:s userInfo:nil];
             }
             [lastInProgress completed];
             [self errorCheck:state forSql:sql];
