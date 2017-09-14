@@ -150,33 +150,13 @@
             //    mysql_options(connection, MYSQL_OPT_COMPRESS,NULL); /* enable compression */
             //   unsigned int timeout = 1800;
             //   mysql_options(connection, MYSQL_OPT_READ_TIMEOUT,&timeout);
-            
-            query = "show variables like 'version'";
-            self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
-            state = mysql_query(connection,query);
-            [lastInProgress completed];
-            
-            mysql_set_character_set(connection, "utf8");
-            
-            query = "SET NAMES utf8";
-            self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
-            state = mysql_query(connection,query);
-            [lastInProgress completed];
 
-            query = "SET CHARACTER SET utf8";
-            self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
-            state = mysql_query(connection,query);
-            [lastInProgress completed];
+            state = mysql_query(connection,"SET NAMES utf8");
+            state = mysql_query(connection,"SET CHARACTER SET utf8");
+            state = mysql_query(connection,"SET character_set_server = 'utf8'");
+            state = mysql_query(connection,"SET character_set_connection = 'utf8'");
 
-            query = "SET character_set_server = 'utf8'";
-            self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
-            state = mysql_query(connection,query);
-            [lastInProgress completed];
-            
-            query = "SET character_set_connection = 'utf8'";
-            self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
-            state = mysql_query(connection,query);
-            [lastInProgress completed];
+           
         }
         return YES;
     }
