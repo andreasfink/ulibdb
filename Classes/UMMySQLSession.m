@@ -151,10 +151,10 @@
             //   unsigned int timeout = 1800;
             //   mysql_options(connection, MYSQL_OPT_READ_TIMEOUT,&timeout);
 
-            state = mysql_query(connection,"SET NAMES utf8");
-            state = mysql_query(connection,"SET CHARACTER SET utf8");
-            state = mysql_query(connection,"SET character_set_server = 'utf8'");
-            state = mysql_query(connection,"SET character_set_connection = 'utf8'");
+            mysql_query(connection,"SET NAMES utf8");
+            mysql_query(connection,"SET CHARACTER SET utf8");
+            mysql_query(connection,"SET character_set_server = 'utf8'");
+            mysql_query(connection,"SET character_set_connection = 'utf8'");
 
            
         }
