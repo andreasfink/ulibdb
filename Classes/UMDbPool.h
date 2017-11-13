@@ -77,6 +77,7 @@ typedef enum idle_status_T
 
     idleStatus           idleTaskStatus;
     UMSleeper           *poolSleeper;
+    UMMutex *_poolLock;
 }
 
 //@property(strong)               UMLock          *poolLock;

@@ -326,20 +326,20 @@ void umdbpool_null_session_returned(void)
 
 - (void) idleTask
 {
-    @synchronized(self)
-    {
-        [self addConnectedSessions];
-        [self removeDisconnectedSessions];
-        [self pingAllUnusedSessions];
-        [self pingAllDisconnectedSessions];
-    }
+    [_poolLock lock];
+    [self addConnectedSessions];
+    [self removeDisconnectedSessions];
+    [self pingAllUnusedSessions];
+    [self pingAllDisconnectedSessions];
+    [_poolLock unlock];
 }
 
 // Move connected sessions to list of available sessions
 
 - (void) addConnectedSessions
 {
-    @synchronized(self)
+    [_poolLock lock];
+    @try
     {
         UMDbSession *result = nil;
         BOOL isConnected = NO;
@@ -359,12 +359,17 @@ void umdbpool_null_session_returned(void)
             }
         }
     }
+    @finally
+    {
+        [_poolLock unlock];
+    }
  }
 
 // Drop disconnected sessions from available connections
 - (void) removeDisconnectedSessions
 {
-    @synchronized(self)
+    [_poolLock lock];
+    @try
     {
         UMDbSession *result = nil;
         BOOL isConnected = NO;
@@ -388,12 +393,17 @@ void umdbpool_null_session_returned(void)
             }
         }
     }
+    @finally
+    {
+        [_poolLock unlock];
+    }
 }
 
 // Ping all unused sessions and mark discoonected, if ping did not work
 - (void) pingAllUnusedSessions
 {
-    @synchronized(self)
+    [_poolLock lock];
+    @try
     {
         UMDbSession *s = nil;
 
@@ -412,13 +422,18 @@ void umdbpool_null_session_returned(void)
             }
         }
     }
+    @finally
+    {
+        [_poolLock unlock];
+    }
 }
 
 /* Return disconnect session to available pool, if ping successes and if there are no queries to redone.
  * Session returns into available pool only when all required resends are done.*/
 - (void) pingAllDisconnectedSessions
 {
-    @synchronized(self)
+    [_poolLock lock];
+    @try
     {
         
         UMDbSession *s = nil;
@@ -438,12 +453,17 @@ void umdbpool_null_session_returned(void)
             }
         }
     }
+    @finally
+    {
+        [_poolLock unlock];
+    }
 }
 
 
 - (UMDbSession *)newSession
 {
-    @synchronized(self)
+    [_poolLock lock];
+    @try
     {
         UMDbSession *session = NULL;
         switch (dbDriverType)
@@ -475,6 +495,10 @@ void umdbpool_null_session_returned(void)
         [session connect];
         return session;
     }
+    @finally
+    {
+        [_poolLock unlock];
+    }
 }
 
 - (UMDbSession *)grabSession:(const char *)file line:(int)line func:(const char *)func
@@ -494,32 +518,32 @@ void umdbpool_null_session_returned(void)
     {
         noSessionAvailable=NO;
 
-        @synchronized(self)
+        [_poolLock lock];
+        if(self.sessionsAvailableCount>0)
         {
-            if(self.sessionsAvailableCount>0)
+            result = [sessionsAvailable getFirst];
+            [sessionsInUse append:result];
+            endNow = YES;
+        }
+        else
+        {
+            umdbpool_out_of_sessions();
+            if(self.sessionsInUseCount < self.maxSessions)
             {
-                result = [sessionsAvailable getFirst];
-                [sessionsInUse append:result];
-                endNow = YES;
+                result = [self newSession];
+                if(result)
+                {
+                    [sessionsInUse append:result];
+                    endNow = YES;
+                }
             }
             else
             {
-                umdbpool_out_of_sessions();
-                if(self.sessionsInUseCount < self.maxSessions)
-                {
-                    result = [self newSession];
-                    if(result)
-                    {
-                        [sessionsInUse append:result];
-                        endNow = YES;
-                    }
-                }
-                else
-                {
-                    noSessionAvailable=YES;
-                }
+                noSessionAvailable=YES;
             }
         }
+        [_poolLock unlock];
+
         
         if(noSessionAvailable)
         {
@@ -583,21 +607,19 @@ void umdbpool_null_session_returned(void)
 
 - (void)returnSession:(UMDbSession *)session file:(const char *)file line:(long)line func:(const char *)func
 {
-    @synchronized(self)
+
+    if(session)
     {
-        if(session==NULL)
-        {
-            NSLog(@"We can't return a NULL session");
-        }
-        else
-        {
-            if(session)
-            {
-                [sessionsInUse removeObject:session];
-                [session setUsedFrom:file line:line func:func];
-                [sessionsAvailable append:session];
-            }
-        }
+        [_poolLock lock];
+        [sessionsInUse removeObject:session];
+        [session setUsedFrom:file line:line func:func];
+        [sessionsAvailable append:session];
+        [_poolLock unlock];
+
+    }
+    else
+    {
+        NSLog(@"We can't return a NULL session");
     }
 }
 
@@ -611,34 +633,32 @@ void umdbpool_null_session_returned(void)
 
 - (void) startSessions
 {
-    @synchronized(self)
+    [_poolLock lock];
+    for (int i=0;i<minSessions;i++)
     {
-        for (int i=0;i<minSessions;i++)
-        {
-            UMDbSession *session = [self newSession];
-            [sessionsAvailable append:session];
-        }
+        UMDbSession *session = [self newSession];
+        [sessionsAvailable append:session];
     }
+    [_poolLock unlock];
 }
 
 - (void) stopSessions
 {
-    @synchronized(self)
+    [_poolLock lock];
+    UMDbSession *session = [sessionsInUse getFirst];
+    while(session)
     {
-        UMDbSession *session = [sessionsInUse getFirst];
-        while(session)
-        {
-            [session disconnect];
-            session = [sessionsInUse getFirst];
-        }
-    
-        session = [sessionsAvailable getFirst];
-        while(session)
-        {
-            [session disconnect];
-            session = [sessionsAvailable getFirst];
-        }
+        [session disconnect];
+        session = [sessionsInUse getFirst];
     }
+
+    session = [sessionsAvailable getFirst];
+    while(session)
+    {
+        [session disconnect];
+        session = [sessionsAvailable getFirst];
+    }
+    [_poolLock unlock];
 }
 
 - (void) removeSessions
@@ -666,10 +686,7 @@ void umdbpool_null_session_returned(void)
 
 - (double) queriesPerSec:(int)timespan
 {
- @synchronized(self)
-    {
-        
-    }return [tcAllQueries getSpeedForSeconds:timespan];
+    return [tcAllQueries getSpeedForSeconds:timespan];
 }
 
 - (double) selectQueriesPerSec:(int)timespan
@@ -846,16 +863,14 @@ void umdbpool_null_session_returned(void)
 - (NSString *)inUseDescription
 {
     NSMutableString *s = [NSMutableString stringWithString:[super description]];
-
-    @synchronized(self)
+    [_poolLock lock];
+    UMDbSession *session = [sessionsInUse getFirst];
+    while(session)
     {
-        UMDbSession *session = [sessionsInUse getFirst];
-        while(session)
-        {
-            [s appendFormat:@"%@\n",[session inUseDescription]];
-            [sessionsInUse append:session];
-        }
+        [s appendFormat:@"%@\n",[session inUseDescription]];
+        [sessionsInUse append:session];
     }
+    [_poolLock unlock];
     return s;
 }
 @end

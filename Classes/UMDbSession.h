@@ -39,6 +39,7 @@ typedef enum UMDbSessionStatus
     NSString            *lastUsedFunction;
     NSString            *lastUsedQuery;
     NSString            *name;
+    UMMutex             *_sessionLock;
 }
 
 @property (readwrite,weak)      UMDbPool    *pool;

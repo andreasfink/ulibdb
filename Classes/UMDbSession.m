@@ -37,6 +37,7 @@
     if(self)
     {
         pool = dbpool;
+        _sessionLock = [[UMMutex alloc]init];
     }
     return self;
 }
@@ -133,7 +134,8 @@
         UMAssert(0,@"Query returns result but we are not expecting any");
     }
 
-    @synchronized(self)
+    [_sessionLock lock];
+    @try
     {
         NSString *sql = [query sqlForType:[query type] forDriver:[pool dbDriverType] parameters:array primaryKeyValue:primaryKeyValue];
         [pool increaseCountersForType:[query type] table:[query table]];
@@ -146,6 +148,10 @@
         long long stop = [UMUtil milisecondClock];
         double delay = ((double)(stop - start))/1000000.0;
         [pool addStatDelay:delay query:[query type] table:[query table]];
+    }
+    @finally
+    {
+        [_sessionLock unlock];
     }
     return result;
 }
@@ -193,7 +199,8 @@
         UMAssert(0,@"Query does not result but we are expecting a result");
     }
 
-    @synchronized(self)
+    [_sessionLock lock];
+    @try
     {
         NSString *sql = NULL;
         if (!query)
@@ -216,6 +223,10 @@
         
         double delay = ((double)(stop - start))/1000000.0;
         [pool addStatDelay:delay query:[query type] table:[query table]];
+    }
+    @finally
+    {
+        [_sessionLock unlock];
     }
     return result;
 

@@ -74,8 +74,9 @@
         MYSQL_RES	*res;
         MYSQL_ROW	row;
         int     state;
-        
-        @synchronized(self)
+
+        [_sessionLock lock];
+        @try
         {
             
             my_bool  my_true = 1;
@@ -157,6 +158,10 @@
             mysql_query(connection,"SET character_set_connection = 'utf8'");
 
            
+        }
+        @finally
+        {
+            [_sessionLock unlock];
         }
         return YES;
     }
@@ -387,7 +392,8 @@
     @autoreleasepool
     {
         BOOL success = YES;
-        @synchronized(self)
+        [_sessionLock lock];
+        @try
         {
             
             
@@ -452,6 +458,10 @@
             }
 #endif
         }
+        @finally
+        {
+            [_sessionLock unlock];
+        }
         return success;
     }
 }
@@ -471,7 +481,8 @@
     {
         
         UMDbResult* result = NULL;
-        @synchronized(self)
+        [_sessionLock lock];
+        @try
         {
             MYSQL_RES *r = NULL;
 #ifdef MYSQL_DEBUG
@@ -558,6 +569,10 @@
                 mysql_free_result(r);
             }
         }
+        @finally
+        {
+            [_sessionLock unlock];
+        }
         return result;
     }
 }
@@ -572,7 +587,8 @@
         }
     
         long state;
-        @synchronized(self)
+        [_sessionLock lock];
+        @try
         {
             self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:"ping" previousQuery:lastInProgress];
             state = mysql_ping(connection);
@@ -582,6 +598,10 @@
                 [logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"mysql_error [%s] while executing ping",mysql_error(connection)]];
                 return NO;
             }
+        }
+        @finally
+        {
+            [_sessionLock unlock];
         }
         return YES;
     }
