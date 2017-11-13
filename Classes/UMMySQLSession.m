@@ -392,76 +392,67 @@
     @autoreleasepool
     {
         BOOL success = YES;
-        [_sessionLock lock];
-        @try
+        //[_sessionLock lock];
+#ifdef MYSQL_DEBUG
+        NSLog(@"SQL: %@",sql);
+#endif
+        sql = [sql stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if([sql length]==0)
         {
-            
-            
-#ifdef MYSQL_DEBUG
-            NSLog(@"SQL: %@",sql);
-#endif
-            sql = [sql stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            if([sql length]==0)
+            return YES;
+        }
+        [logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"MYSQL_QUERY: *** %s***\n\n",[sql UTF8String]]];
+        
+        self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithString:sql previousQuery:lastInProgress];
+        
+        int state = mysql_query(connection,[sql UTF8String]);
+        
+        MYSQL_RES *r = mysql_store_result(connection);
+        if(r)
+        {
+            mysql_free_result(r);
+            NSString *s = [NSString stringWithFormat:@"we are getting a result while we are not expecting one\nQuery: %@",sql];
+            fprintf(stderr,"ERROR: %s",s.UTF8String);// [NSException exceptionWithName:@"NSObjectInaccessibleException" reason:s userInfo:nil];
+        }
+        [lastInProgress completed];
+        [self errorCheck:state forSql:sql];
+        if(state==0)
+        {
+            /*success */
+            if(count!=NULL)
             {
-                return YES;
+                *count = (unsigned long long) mysql_affected_rows(connection);
             }
-            [logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"MYSQL_QUERY: *** %s***\n\n",[sql UTF8String]]];
+        }
+        [logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"STATE: %d\n\n",state]];
+        
+        if(state != 0)
+        {
+            success = NO;
             
-            self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithString:sql previousQuery:lastInProgress];
-            
-            int state = mysql_query(connection,[sql UTF8String]);
-            
-            MYSQL_RES *r = mysql_store_result(connection);
-            if(r)
+            if(!allowFail)
             {
-                mysql_free_result(r);
-                NSString *s = [NSString stringWithFormat:@"we are getting a result while we are not expecting one\nQuery: %@",sql];
-                fprintf(stderr,"ERROR: %s",s.UTF8String);// [NSException exceptionWithName:@"NSObjectInaccessibleException" reason:s userInfo:nil];
-            }
-            [lastInProgress completed];
-            [self errorCheck:state forSql:sql];
-            if(state==0)
-            {
-                /*success */
-                if(count!=NULL)
-                {
-                    *count = (unsigned long long) mysql_affected_rows(connection);
-                }
-            }
-            [logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"STATE: %d\n\n",state]];
-            
-            if(state != 0)
-            {
-                success = NO;
-                
-                if(!allowFail)
-                {
-                    NSString *reason = [NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)];
-                    @throw [NSException exceptionWithName:@"NSObjectInaccessibleException" reason:reason userInfo:nil];
-                }
-                else
-                {
-#if (ULIBDB_CONFIG==Debug)
-                    [logFeed majorError:0 withText:[NSString stringWithFormat:@"query failed, sql = \"%@\", error=%s",sql,mysql_error(connection)]];
-#endif
-                    ;
-                }
-            }
-#ifdef MYSQL_DEBUG
-            if(success)
-            {
-                [logFeed debug:0 inSubsection:@"mysql" withText:@"==SUCCESS=="];
+                NSString *reason = [NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)];
+                @throw [NSException exceptionWithName:@"NSObjectInaccessibleException" reason:reason userInfo:nil];
             }
             else
             {
-                [logFeed debug:0 inSubsection:@"mysql" withText:@"==FAILURE=="];
-            }
+#if (ULIBDB_CONFIG==Debug)
+                [logFeed majorError:0 withText:[NSString stringWithFormat:@"query failed, sql = \"%@\", error=%s",sql,mysql_error(connection)]];
 #endif
+                ;
+            }
         }
-        @finally
+#ifdef MYSQL_DEBUG
+        if(success)
         {
-            [_sessionLock unlock];
+            [logFeed debug:0 inSubsection:@"mysql" withText:@"==SUCCESS=="];
         }
+        else
+        {
+            [logFeed debug:0 inSubsection:@"mysql" withText:@"==FAILURE=="];
+        }
+#endif
         return success;
     }
 }
@@ -481,97 +472,89 @@
     {
         
         UMDbResult* result = NULL;
-        [_sessionLock lock];
-        @try
-        {
-            MYSQL_RES *r = NULL;
+        MYSQL_RES *r = NULL;
 #ifdef MYSQL_DEBUG
-            NSLog(@"SQL: %@",sql);
+        NSLog(@"SQL: %@",sql);
 #endif
-            if([sql length]==0)
+        if([sql length]==0)
+        {
+            return NULL;
+        }
+        
+        self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithString:sql previousQuery:lastInProgress];
+        int state = mysql_query(connection,[sql UTF8String]);
+        r = mysql_store_result(connection);
+        
+        [lastInProgress completed];
+        [self errorCheck:state forSql:sql];
+        if(state != 0)
+        {
+            if(failPermission)
             {
-                return NULL;
-            }
-            
-            self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithString:sql previousQuery:lastInProgress];
-            int state = mysql_query(connection,[sql UTF8String]);
-            r = mysql_store_result(connection);
-            
-            [lastInProgress completed];
-            [self errorCheck:state forSql:sql];
-            if(state != 0)
-            {
-                if(failPermission)
-                {
 #if (ULIBDB_CONFIG==Debug)
-                    [logFeed minorError:0 withText:[NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)]]
+                [logFeed minorError:0 withText:[NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)]]
 #endif
-                    ;
-                }
-                else
-                {
-                    NSString *reason = [NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)];
-                    @throw [NSException exceptionWithName:@"NSObjectNotAvailableException" reason:reason userInfo:nil];
-                }
-                return NULL;
-            }
-            
-            
-            if(r==NULL)
-            {
-                NSString *reason = [NSString stringWithFormat:@"mysql_store_result() failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)];
-                @throw [NSException exceptionWithName:@"NSObjectNotAvailableException" reason:reason userInfo:nil];
-            }
-            my_ulonglong affected = mysql_affected_rows(connection);
-            if(file)
-            {
-                result = [[UMDbResult alloc]initForFile:file line:line];
+                ;
             }
             else
             {
-                result = [[UMDbResult alloc]init];
+                NSString *reason = [NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)];
+                @throw [NSException exceptionWithName:@"NSObjectNotAvailableException" reason:reason userInfo:nil];
             }
-            [result setAffectedRows: affected];
-            if(r && affected > 0)
+            return NULL;
+        }
+        
+        
+        if(r==NULL)
+        {
+            NSString *reason = [NSString stringWithFormat:@"mysql_store_result() failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)];
+            @throw [NSException exceptionWithName:@"NSObjectNotAvailableException" reason:reason userInfo:nil];
+        }
+        my_ulonglong affected = mysql_affected_rows(connection);
+        if(file)
+        {
+            result = [[UMDbResult alloc]initForFile:file line:line];
+        }
+        else
+        {
+            result = [[UMDbResult alloc]init];
+        }
+        [result setAffectedRows: affected];
+        if(r && affected > 0)
+        {
+            long columnsCount = mysql_num_fields(r);
+            MYSQL_ROW row;
+            while((row = mysql_fetch_row(r)))
             {
-                long columnsCount = mysql_num_fields(r);
-                MYSQL_ROW row;
-                while((row = mysql_fetch_row(r)))
+                NSMutableArray *arr = [[NSMutableArray alloc]init];
+                for(long i=0;i<columnsCount;i++)
                 {
-                    NSMutableArray *arr = [[NSMutableArray alloc]init];
-                    for(long i=0;i<columnsCount;i++)
+                    char *cstr = row[i];
+                    NSString *value = cstr ? @(cstr) : @"NULL";
+                    if(value)
                     {
-                        char *cstr = row[i];
-                        NSString *value = cstr ? @(cstr) : @"NULL";
-                        if(value)
-                        {
-                            [arr addObject:value];
-                        }
-                        else
-                        {
-                            [arr addObject:@""];
-                        }
+                        [arr addObject:value];
                     }
-                    [result addRow:arr];
+                    else
+                    {
+                        [arr addObject:@""];
+                    }
                 }
-                
-                MYSQL_FIELD *field;
-                long i = 0;
-                while((field = mysql_fetch_field(r)))
-                {
-                    NSString *ourName = @(field->name);
-                    [result setColumName:ourName forIndex:i];
-                    ++i;
-                }
+                [result addRow:arr];
             }
-            if(r)
+            
+            MYSQL_FIELD *field;
+            long i = 0;
+            while((field = mysql_fetch_field(r)))
             {
-                mysql_free_result(r);
+                NSString *ourName = @(field->name);
+                [result setColumName:ourName forIndex:i];
+                ++i;
             }
         }
-        @finally
+        if(r)
         {
-            [_sessionLock unlock];
+            mysql_free_result(r);
         }
         return result;
     }

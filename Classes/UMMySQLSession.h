@@ -22,7 +22,6 @@
 	NSString		  *type;
     UMLogHandler	  *loghandler;
     UMDbMySqlInProgress *lastInProgress;
-
 }
 
 @property(readwrite,strong)		NSString			*type;
