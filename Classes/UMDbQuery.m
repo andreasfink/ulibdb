@@ -430,6 +430,16 @@ static NSMutableDictionary *cachedQueries = NULL;
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with an empty fields table, cannot create query" userInfo:nil];
         }
+        if (!params)
+        {
+            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with nil params table, cannot create query" userInfo:nil];
+        }
+        if((params.count % fields.count) != 0)
+        {
+            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting count of parameters is not a multiple of nubmer of fields" userInfo:nil];
+        }
+        NSUInteger record_count = params.count / fields.count ;
+
         for(NSString *field in fields)
         {
             if (!field)
@@ -466,56 +476,52 @@ static NSMutableDictionary *cachedQueries = NULL;
             }
         }
         [sql appendFormat:@") VALUES ("];
-        NSUInteger n = [fields count];
-        if (!params)
+        
+        NSUInteger n = fields.count;
+        for(NSUInteger record_index=0;record_index<record_count;record_index++)
         {
-            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with nil params table, cannot create query" userInfo:nil];
-        }
-        if ([params count] == 0)
-        {
-            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with an empty params table, cannot create query" userInfo:nil];
-        }
-        if ([params count] != n)
-        {
-            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"count of fields is not equal to count of parameters" userInfo:nil];
-        }
-        for(int i=0;i<n;i++)
-        {
-            if(i!=0)
+            if(record_index>0)
             {
-                [sql appendString:@","];
+                [sql appendString:@"),("];
             }
-            id param = params[i];
-            if (param==NULL)
+            for(int i=0;i<n;i++)
             {
-                [sql appendString:@"NULL"];
-            }
-            else if([param isKindOfClass: [NSNull class]])
-            {
-                [sql appendString:@"NULL"];
-            }
-            else if([param isKindOfClass: [NSString class]])
-            {
-                NSString *s = [NSString stringWithString:param];
-                NSString *escaped = [s sqlEscaped];
-                [sql appendFormat:@"'%@'",escaped];
-            }
-            else if([param isKindOfClass: [NSNumber class]])
-            {
-                [sql appendFormat:@"'%@'",param];
-            }
-            else if([param isKindOfClass: [NSDate class]])
-            {
-                NSString *s = [NSString stringWithStandardDate:param];
-                [sql appendFormat:@"'%@'",s];
-            }
-            else if([param isKindOfClass: [NSArray class]])
-            {
-                [sql appendFormat:@"'%@'",[[param componentsJoinedByString:@" "]sqlEscaped]];
-            }
-            else
-            {
-                [sql appendString:@"''"];
+                if(i!=0)
+                {
+                    [sql appendString:@","];
+                }
+                id param = params[(record_index * n) + i];
+                if (param==NULL)
+                {
+                    [sql appendString:@"NULL"];
+                }
+                else if([param isKindOfClass: [NSNull class]])
+                {
+                    [sql appendString:@"NULL"];
+                }
+                else if([param isKindOfClass: [NSString class]])
+                {
+                    NSString *s = [NSString stringWithString:param];
+                    NSString *escaped = [s sqlEscaped];
+                    [sql appendFormat:@"'%@'",escaped];
+                }
+                else if([param isKindOfClass: [NSNumber class]])
+                {
+                    [sql appendFormat:@"'%@'",param];
+                }
+                else if([param isKindOfClass: [NSDate class]])
+                {
+                    NSString *s = [NSString stringWithStandardDate:param];
+                    [sql appendFormat:@"'%@'",s];
+                }
+                else if([param isKindOfClass: [NSArray class]])
+                {
+                    [sql appendFormat:@"'%@'",[[param componentsJoinedByString:@" "]sqlEscaped]];
+                }
+                else
+                {
+                    [sql appendString:@"''"];
+                }
             }
         }
         [sql appendString:@")"];
