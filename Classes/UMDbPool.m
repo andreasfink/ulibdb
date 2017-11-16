@@ -23,7 +23,7 @@
 void umdbpool_out_of_sessions(void)
 {
     /* break in debugger on this function:  break set -b umdbpool_out_of_sessions */
-    NSLog(@"We run out of sessions, connecting new one");
+    //NSLog(@"We run out of sessions, connecting new one");
     
 }
 
