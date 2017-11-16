@@ -440,12 +440,20 @@ static NSMutableDictionary *cachedQueries = NULL;
         }
         NSUInteger record_count = params.count / fields.count ;
 
-        for(NSString *field in fields)
+        for(id field1 in fields)
         {
-            if (!field)
+            BOOL isNULL = NO;
+            if([field1 isKindOfClass:[[NSNull null]class]])
+            {
+                isNULL = YES;
+            }
+
+            NSString *field = (NSString *)field1;
+            if (!field1)
             {
                 @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with nil fields, cannot create query" userInfo:nil];
             }
+            
             if ([field length] == 0)
             {
                 @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with empty fields, cannot create query" userInfo:nil];
@@ -454,24 +462,52 @@ static NSMutableDictionary *cachedQueries = NULL;
             {
                 if(first)
                 {
-                    [sql appendFormat:@"(\"%@\"",field];
+                    if(isNULL)
+                    {
+                        [sql appendFormat:@"(NULL"];
+                    }
+                    else
+                    {
+                        [sql appendFormat:@"(\"%@\"",field];
+                    }
                     first = NO;
                 }
                 else
                 {
-                    [sql appendFormat:@",\"%@\"",field];
+                    if(isNULL)
+                    {
+                        [sql appendFormat:@",NULL"];
+                    }
+                    else
+                    {
+                        [sql appendFormat:@",\"%@\"",field];
+                    }
                 }
             }
             else
             {
                 if(first)
                 {
-                    [sql appendFormat:@"(`%@`",field];
+                    if(isNULL)
+                    {
+                        [sql appendFormat:@"(NULL"];
+                    }
+                    else
+                    {
+                        [sql appendFormat:@"(`%@`",field];
+                    }
                     first = NO;
                 }
                 else
                 {
-                    [sql appendFormat:@",`%@`",field];
+                    if(isNULL)
+                    {
+                        [sql appendFormat:@",NULL"];
+                    }
+                    else
+                    {
+                        [sql appendFormat:@",`%@`",field];
+                    }
                 }
             }
         }
@@ -528,7 +564,6 @@ static NSMutableDictionary *cachedQueries = NULL;
         return sql;
     }
 }
-
 
 - (NSString *)updateByKeyLikeForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params  primaryKeyValue:(id)primaryKeyValue
 {
