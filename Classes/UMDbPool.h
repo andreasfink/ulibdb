@@ -29,11 +29,6 @@ typedef enum idle_status_T
 {
     NSString        *version;
     NSString        *poolName;
-//    UMLock          *poolLock;
-//    NSMutableArray  *sessionsAvailable;
-//    NSMutableArray  *sessionsInUse;
-//    NSMutableArray  *sessionsDisconnected;
-    
     UMQueue         *sessionsAvailable;
     UMQueue         *sessionsDisconnected;
     UMQueue         *sessionsInUse;

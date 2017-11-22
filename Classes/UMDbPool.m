@@ -105,7 +105,6 @@ void umdbpool_null_session_returned(void)
         sessionsAvailable       = [[UMQueue alloc]init];
         sessionsInUse           = [[UMQueue alloc]init];
         sessionsDisconnected    = [[UMQueue alloc]init];
-//        poolLock = UMLOCK_CREATE_NONREENTRANT();
         waitTimeout1            = 2;
         idleTaskStatus          = idleStatus_stopped;
         
