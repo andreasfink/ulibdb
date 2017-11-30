@@ -432,7 +432,8 @@
             
             if(!allowFail)
             {
-                NSString *reason = [NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)];
+                NSString *sql_error = @(mysql_error(connection));
+                NSString *reason = [NSString stringWithFormat:@"query failed, sql = %s, error=%@",[sql UTF8String],sql_error];
                 @throw [NSException exceptionWithName:@"NSObjectInaccessibleException" reason:reason userInfo:nil];
             }
             else
