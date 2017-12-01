@@ -249,12 +249,24 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)selectForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)selectForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
 {
-    return [self selectForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition];
+    return [self selectForType:dbDriverType
+                       session:(UMDbSession *)session
+                    parameters:params
+               primaryKeyValue:primaryKeyValue
+                whereCondition:whereCondition];
 }
 
-- (NSString *)selectForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue whereCondition:(UMDbQueryCondition *)whereCondition1;
+
+- (NSString *)selectForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
+             whereCondition:(UMDbQueryCondition *)whereCondition1
 {
     @autoreleasepool
     {
@@ -318,7 +330,10 @@ static NSMutableDictionary *cachedQueries = NULL;
         }
         if(whereCondition1)
         {
-            NSString *where = [whereCondition1 sqlForQuery:self parameters:params dbType:dbDriverType primaryKeyValue:primaryKeyValue];
+            NSString *where = [whereCondition1 sqlForQuery:self
+                                                parameters:params
+                                                    dbType:dbDriverType
+                                           primaryKeyValue:primaryKeyValue];
             [sql appendFormat:@" WHERE %@",where];
         }
         if(grouping)
@@ -362,12 +377,23 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)deleteForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)deleteForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
 {
-    return [self deleteForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition];
+    return [self deleteForType:dbDriverType
+                       session:session
+                    parameters:(NSArray *)params
+               primaryKeyValue:(id)primaryKeyValue
+                whereCondition:NULL];
 }
 
-- (NSString *)deleteForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue whereCondition:(UMDbQueryCondition *)whereCondition1
+- (NSString *)deleteForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
+             whereCondition:(UMDbQueryCondition *)whereCondition1
 {
     @autoreleasepool
     {
@@ -395,7 +421,21 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)insertForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params  primaryKeyValue:(id)primaryKeyValue
+
+- (NSString *)insertForType:(UMDbDriverType)dbDriverType
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
+{
+    return [ self insertForType:dbDriverType
+                        session:NULL
+                     parameters:params
+                primaryKeyValue:primaryKeyValue];
+}
+
+- (NSString *)insertForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -538,7 +578,7 @@ static NSMutableDictionary *cachedQueries = NULL;
                 else if([param isKindOfClass: [NSString class]])
                 {
                     NSString *s = [NSString stringWithString:param];
-                    NSString *escaped = [s sqlEscaped];
+                    NSString *escaped = [session sqlEscapeString:s];
                     [sql appendFormat:@"'%@'",escaped];
                 }
                 else if([param isKindOfClass: [NSNumber class]])
@@ -552,7 +592,8 @@ static NSMutableDictionary *cachedQueries = NULL;
                 }
                 else if([param isKindOfClass: [NSArray class]])
                 {
-                    [sql appendFormat:@"'%@'",[[param componentsJoinedByString:@" "]sqlEscaped]];
+                    NSString *p = [param componentsJoinedByString:@" "];
+                    [sql appendFormat:@"'%@'",[session sqlEscapeString:p]];
                 }
                 else
                 {
@@ -565,7 +606,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)updateByKeyLikeForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params  primaryKeyValue:(id)primaryKeyValue
+- (NSString *)updateByKeyLikeForType:(UMDbDriverType)dbDriverType
+                             session:(UMDbSession *)session
+                          parameters:(NSArray *)params
+                     primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -579,7 +623,11 @@ static NSMutableDictionary *cachedQueries = NULL;
                                                         [UMDbQueryPlaceholder placeholderPrimaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_LIKE
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
-                return [self updateForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition1];
+                return [self updateForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue
+                            whereCondition:whereCondition1];
             }
                 break;
             case UMDBDRIVER_REDIS:
@@ -594,7 +642,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)updateByKeyForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)updateByKeyForType:(UMDbDriverType)dbDriverType
+                         session:(UMDbSession *)session
+                      parameters:(NSArray *)params
+                 primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -610,7 +661,11 @@ static NSMutableDictionary *cachedQueries = NULL;
                                                  right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
                 
                 //return [self updateForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
-                return [self updateForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition1];
+                return [self updateForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue
+                            whereCondition:whereCondition1];
             }
                 break;
             case UMDBDRIVER_REDIS:
@@ -626,7 +681,10 @@ static NSMutableDictionary *cachedQueries = NULL;
 }
 
 
-- (NSString *)selectByKeyForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)selectByKeyForType:(UMDbDriverType)dbDriverType
+                         session:(UMDbSession *)session
+                      parameters:(NSArray *)params
+                 primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -639,7 +697,11 @@ static NSMutableDictionary *cachedQueries = NULL;
                 UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_EQUAL
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
-                return [self selectForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition1];
+                return [self selectForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue
+                            whereCondition:whereCondition1];
             }
                 break;
             case UMDBDRIVER_REDIS:
@@ -655,7 +717,10 @@ static NSMutableDictionary *cachedQueries = NULL;
 }
 
 
-- (NSString *)selectByKeyFromListForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)selectByKeyFromListForType:(UMDbDriverType)dbDriverType
+                                 session:(UMDbSession *)session
+                              parameters:(NSArray *)params
+                         primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -668,7 +733,11 @@ static NSMutableDictionary *cachedQueries = NULL;
                 UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_EQUAL
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
-                return [self selectForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition1];
+                return [self selectForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue
+                            whereCondition:whereCondition1];
             }
                 break;
                 break;
@@ -685,7 +754,10 @@ static NSMutableDictionary *cachedQueries = NULL;
 }
 
 
-- (NSString *)selectByKeyLikeForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)selectByKeyLikeForType:(UMDbDriverType)dbDriverType
+                             session:(UMDbSession *)session
+                          parameters:(NSArray *)params
+                     primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -698,7 +770,11 @@ static NSMutableDictionary *cachedQueries = NULL;
                 UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_LIKE
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
-                return [self selectForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition1];
+                return [self selectForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue
+                            whereCondition:whereCondition1];
             }
                 break;
                 break;
@@ -716,7 +792,10 @@ static NSMutableDictionary *cachedQueries = NULL;
 
 
 
-- (NSString *)insertByKeyForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)insertByKeyForType:(UMDbDriverType)dbDriverType
+                         session:(UMDbSession *)session
+                      parameters:(NSArray *)params
+                 primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -725,7 +804,10 @@ static NSMutableDictionary *cachedQueries = NULL;
             case UMDBDRIVER_MYSQL:
             case UMDBDRIVER_PGSQL:
             case UMDBDRIVER_SQLITE:
-                return [self insertForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                return [self insertForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBDRIVER_REDIS:
                 @throw([NSException exceptionWithName:@"do we use this branch ever?"
@@ -747,7 +829,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)insertByKeyToListForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)insertByKeyToListForType:(UMDbDriverType)dbDriverType
+                               session:(UMDbSession *)session
+                            parameters:(NSArray *)params
+                       primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -756,7 +841,10 @@ static NSMutableDictionary *cachedQueries = NULL;
             case UMDBDRIVER_MYSQL:
             case UMDBDRIVER_PGSQL:
             case UMDBDRIVER_SQLITE:
-                return [self insertForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                return [self insertForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBDRIVER_REDIS:
                 @throw([NSException exceptionWithName:@"do we need this branch ever?"
@@ -766,10 +854,14 @@ static NSMutableDictionary *cachedQueries = NULL;
                                                         @"func": @(__func__),
                                                         @"err": @(-1)
                                                         }]);
-                return [UMDbRedisSession insertByKeyForQuery:self params:params primaryKeyValue:primaryKeyValue];
+                return [UMDbRedisSession insertByKeyForQuery:self
+                                                      params:params
+                                             primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBDRIVER_FILE:
-                return [UMDbFileSession insertByKeyForQuery:self params:params primaryKeyValue:primaryKeyValue];
+                return [UMDbFileSession insertByKeyForQuery:self
+                                                     params:params
+                                            primaryKeyValue:primaryKeyValue];
                 break;
             default:
                 return NULL;
@@ -777,7 +869,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)deleteByKeyForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)deleteByKeyForType:(UMDbDriverType)dbDriverType
+                         session:(UMDbSession *)session
+                      parameters:(NSArray *)params
+                 primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -790,7 +885,11 @@ static NSMutableDictionary *cachedQueries = NULL;
                 UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_EQUAL
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
-                return [self deleteForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition1];
+                return [self deleteForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue
+                            whereCondition:whereCondition1];
             }
                 break;
             case UMDBDRIVER_REDIS:
@@ -807,6 +906,7 @@ static NSMutableDictionary *cachedQueries = NULL;
 
 
 - (NSString *)deleteByKeyAndValueForType:(UMDbDriverType)dbDriverType
+                                 session:(UMDbSession *)session
                               parameters:(NSArray *)params
                          primaryKeyValue:(id)primaryKeyValue
 {
@@ -829,7 +929,11 @@ static NSMutableDictionary *cachedQueries = NULL;
                                                                                         right:condition2];
                 
                 
-                return [self deleteForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition1];
+                return [self deleteForType:dbDriverType
+                                   session:session
+                                parameters:params
+                           primaryKeyValue:primaryKeyValue
+                            whereCondition:whereCondition1];
             }
                 break;
             case UMDBDRIVER_REDIS:
@@ -845,12 +949,23 @@ static NSMutableDictionary *cachedQueries = NULL;
 }
 
 
-- (NSString *)updateForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)updateForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
 {
-    return [self updateForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue whereCondition:whereCondition];
+    return [self updateForType:dbDriverType
+                       session:session
+                    parameters:params
+               primaryKeyValue:primaryKeyValue
+                whereCondition:whereCondition];
 }
 
-- (NSString *)updateForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue whereCondition:(UMDbQueryCondition *)whereCondition1
+- (NSString *)updateForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
+             whereCondition:(UMDbQueryCondition *)whereCondition1
 {
     @autoreleasepool
     {
@@ -945,7 +1060,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             else if([param isKindOfClass: [NSString class]])
             {
                 NSString *s = (NSString *)param;
-                [sql appendFormat:@"'%@'",[s sqlEscaped]];
+                [sql appendFormat:@"'%@'",[session sqlEscapeString:s]];
             }
             else if([param isKindOfClass: [NSNumber class]])
             {
@@ -953,14 +1068,15 @@ static NSMutableDictionary *cachedQueries = NULL;
             }
             else if([param isKindOfClass: [NSArray class]])
             {
-                [sql appendFormat:@"'%@'",[[param componentsJoinedByString:@" "]sqlEscaped]];
+                NSString *p = [param componentsJoinedByString:@" "];
+                [sql appendFormat:@"'%@'",[session sqlEscapeString:p]];
             }
             else if([param isKindOfClass: [NSDate class]])
             {
                 NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
                 [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                 NSString *s = [dateFormatter stringFromDate:param];
-                [sql appendFormat:@"'%@'",[s sqlEscaped]];
+                [sql appendFormat:@"'%@'",[session sqlEscapeString:s]];
             }
         }
         
@@ -979,6 +1095,7 @@ static NSMutableDictionary *cachedQueries = NULL;
 }
 
 - (NSString *)increaseByKeyForType:(UMDbDriverType)dbDriverType
+                           session:(UMDbSession *)session
                         parameters:(NSArray *)params
                    primaryKeyValue:(id)primaryKeyValue
 {
@@ -1059,7 +1176,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)increaseForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)increaseForType:(UMDbDriverType)dbDriverType
+                      session:(UMDbSession *)session
+                   parameters:(NSArray *)params
+              primaryKeyValue:(id)primaryKeyValue
 {
     @autoreleasepool
     {
@@ -1137,12 +1257,20 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-- (NSString *)showForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:primaryKeyValue
+- (NSString *)showForType:(UMDbDriverType)dbDriverType
+                  session:(UMDbSession *)session
+               parameters:(NSArray *)params
+          primaryKeyValue:primaryKeyValue
 {
     return @"";
 }
 
-- (NSString *)sqlForType:(UMDbQueryType)dbQueryType forDriver:(UMDbDriverType)dbDriverType parameters:(NSArray *)params  primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *)sqlForType:(UMDbQueryType)dbQueryType
+               forDriver:(UMDbDriverType)dbDriverType
+                 session:(UMDbSession *)session
+              parameters:(NSArray *)params
+         primaryKeyValue:(id)primaryKeyValue;
 {
     @autoreleasepool
     {
@@ -1150,48 +1278,90 @@ static NSMutableDictionary *cachedQueries = NULL;
         switch (dbQueryType)
         {
             case UMDBQUERYTYPE_SELECT:
-                sql = [self selectForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self selectForType:dbDriverType
+                                  session:session
+                               parameters:params
+                          primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_SELECT_BY_KEY:
-                sql = [self selectByKeyForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self selectByKeyForType:dbDriverType
+                                       session:session
+                                    parameters:params
+                               primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_SELECT_BY_KEY_LIKE:
             case UMDBQUERYTYPE_SELECT_LIST_BY_KEY_LIKE:
-                sql = [self selectByKeyLikeForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self selectByKeyLikeForType:dbDriverType
+                                           session:session
+                                        parameters:params
+                                   primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_SELECT_BY_KEY_FROM_LIST:
-                sql = [self selectByKeyFromListForType:dbDriverType parameters:params  primaryKeyValue:primaryKeyValue];
+                sql = [self selectByKeyFromListForType:dbDriverType
+                                               session:session
+                                            parameters:params
+                                       primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_DELETE:
-                sql = [self deleteForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self deleteForType:dbDriverType
+                                  session:session
+                               parameters:params
+                          primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_DELETE_BY_KEY:
-                sql = [self deleteByKeyForType:dbDriverType parameters:params  primaryKeyValue:primaryKeyValue];
+                sql = [self deleteByKeyForType:dbDriverType
+                                       session:session
+                                    parameters:params
+                               primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_DELETE_IN_LIST_BY_KEY_AND_VALUE:
-                sql = [self deleteByKeyAndValueForType:dbDriverType parameters:params  primaryKeyValue:primaryKeyValue];
+                sql = [self deleteByKeyAndValueForType:dbDriverType
+                                               session:session
+                                            parameters:params
+                                       primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_INSERT:
-                sql = [self insertForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self insertForType:dbDriverType
+                                  session:session
+                               parameters:params
+                          primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_INSERT_BY_KEY:
-                sql = [self insertByKeyForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self insertByKeyForType:dbDriverType
+                                       session:session
+                                    parameters:params
+                               primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_INSERT_BY_KEY_TO_LIST:
-                sql = [self insertByKeyToListForType:dbDriverType parameters:params  primaryKeyValue:primaryKeyValue];
+                sql = [self insertByKeyToListForType:dbDriverType
+                                             session:session
+                                          parameters:params
+                                     primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_UPDATE:
-                sql = [self updateForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self updateForType:dbDriverType
+                                  session:session
+                               parameters:params
+                          primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_UPDATE_BY_KEY:
-                sql = [self updateByKeyForType:dbDriverType parameters:params  primaryKeyValue:primaryKeyValue];
+                sql = [self updateByKeyForType:dbDriverType
+                                       session:session
+                                    parameters:params
+                               primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_INCREASE:
             case UMDBQUERYTYPE_INCREASE_BY_KEY:
-                sql = [self increaseForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self increaseForType:dbDriverType
+                                    session:session
+                                 parameters:params
+                            primaryKeyValue:primaryKeyValue];
                 break;
             case UMDBQUERYTYPE_SHOW:
-                sql = [self showForType:dbDriverType parameters:params primaryKeyValue:primaryKeyValue];
+                sql = [self showForType:dbDriverType
+                                session:session
+                             parameters:params
+                        primaryKeyValue:primaryKeyValue];
                 break;
             default:
                 break;
@@ -1393,7 +1563,11 @@ static NSMutableDictionary *cachedQueries = NULL;
 }
 
 
-- (NSString *)redisForType:(UMDbQueryType)dbQueryType forDriver:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue
+- (NSString *)redisForType:(UMDbQueryType)dbQueryType
+                 forDriver:(UMDbDriverType)dbDriverType
+                   session:(UMDbSession *)session
+                parameters:(NSArray *)params
+           primaryKeyValue:(id)primaryKeyValue
 {
     NSString *redis = [self keyForParameters:params];
     return redis;
@@ -1575,27 +1749,59 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-+ (NSArray *)createSql:(NSString *)tn withDbType:(UMDbDriverType)dbType fieldsDefinition:(dbFieldDef *)fieldDef
++ (NSArray *)createSql:(NSString *)tn
+            withDbType:(UMDbDriverType)dbType
+               session:(UMDbSession *)session
+      fieldsDefinition:(dbFieldDef *)fieldDef
 {
-    return [UMDbQuery createSql:tn withDbType:dbType fieldsDefinition:fieldDef forArchive:NO];
+    return [UMDbQuery createSql:tn
+                     withDbType:dbType
+                        session:session
+               fieldsDefinition:fieldDef
+                     forArchive:NO];
 }
 
-+ (NSArray *)createSql:(NSString *) tn withDbType:(UMDbDriverType)dbType tableDefinition:(UMDbTableDefinition *)tableDef;
++ (NSArray *)createSql:(NSString *) tn
+            withDbType:(UMDbDriverType)dbType
+               session:(UMDbSession *)session
+       tableDefinition:(UMDbTableDefinition *)tableDef
 {
-    return [UMDbQuery createSql:tn withDbType:dbType tableDefinition:tableDef forArchive:NO];
+    return [UMDbQuery createSql:tn
+                     withDbType:dbType
+                        session:session
+                tableDefinition:tableDef
+                     forArchive:NO];
 }
 
-+ (NSArray *)createArchiveSql:(NSString *)tn withDbType:(UMDbDriverType)dbType fieldsDefinition:(dbFieldDef *)fieldDef;
++ (NSArray *)createArchiveSql:(NSString *)tn
+                   withDbType:(UMDbDriverType)dbType
+                      session:(UMDbSession *)session
+             fieldsDefinition:(dbFieldDef *)fieldDef
 {
-    return [UMDbQuery createSql:tn withDbType:dbType fieldsDefinition:fieldDef forArchive:YES];
+    return [UMDbQuery createSql:tn
+                     withDbType:dbType
+                        session:session
+               fieldsDefinition:fieldDef
+                     forArchive:YES];
 }
 
-+ (NSArray *)createArchiveSql:(NSString *)tn withDbType:(UMDbDriverType)dbType tableDefinition:(UMDbTableDefinition *)tableDef;
++ (NSArray *)createArchiveSql:(NSString *)tn
+                   withDbType:(UMDbDriverType)dbType
+                      session:(UMDbSession *)session
+              tableDefinition:(UMDbTableDefinition *)tableDef
 {
-    return [UMDbQuery createSql:tn withDbType:dbType tableDefinition:tableDef forArchive:YES];
+    return [UMDbQuery createSql:tn
+                     withDbType:dbType
+                        session:session
+                tableDefinition:tableDef
+                     forArchive:YES];
 }
 
-+ (NSArray *)createSql:(NSString *)tn withDbType:(UMDbDriverType)dbType fieldsDefinition:(dbFieldDef *)fieldDef forArchive:(BOOL)arch
++ (NSArray *)createSql:(NSString *)tn
+            withDbType:(UMDbDriverType)dbType
+               session:(UMDbSession *)session
+      fieldsDefinition:(dbFieldDef *)fieldDef
+            forArchive:(BOOL)arch
 {
     @autoreleasepool
     {
@@ -1764,7 +1970,11 @@ static NSMutableDictionary *cachedQueries = NULL;
     }
 }
 
-+ (NSArray *)createSql:(NSString *) tn withDbType:(UMDbDriverType)dbType tableDefinition:(UMDbTableDefinition *)tableDef forArchive:(BOOL)arch
++ (NSArray *)createSql:(NSString *) tn
+            withDbType:(UMDbDriverType)dbType
+               session:(UMDbSession *)session
+       tableDefinition:(UMDbTableDefinition *)tableDef
+            forArchive:(BOOL)arch
 {
     @autoreleasepool
     {

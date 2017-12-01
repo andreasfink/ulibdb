@@ -210,12 +210,14 @@
 }
 
 - (void)autoCreate:(dbFieldDef *)fieldDef
+           session:(UMDbSession *)session
 {
     if(autoCreate==YES)
     {
         UMAssert((self.pool != NULL),@"Pool %@ not found",poolName);
         NSArray *sqlCommands = [UMDbQuery createSql:tableName
                                   withDbType:[pool dbDriverType]
+                                     session:session
                             fieldsDefinition:fieldDef];
         
         UMDbSession *session = [pool grabSession:FLF];

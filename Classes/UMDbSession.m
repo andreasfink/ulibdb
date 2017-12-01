@@ -137,7 +137,11 @@
     [_sessionLock lock];
     @try
     {
-        NSString *sql = [query sqlForType:[query type] forDriver:[pool dbDriverType] parameters:array primaryKeyValue:primaryKeyValue];
+        NSString *sql = [query sqlForType:query.type
+                                forDriver:pool.dbDriverType
+                                  session:self
+                               parameters:array
+                          primaryKeyValue:primaryKeyValue];
         [pool increaseCountersForType:[query type] table:[query table]];
         long long start = [UMUtil milisecondClock];
         if(sql == NULL)
@@ -205,11 +209,19 @@
         NSString *sql = NULL;
         if (!query)
         {
-            sql = [query sqlForType:UMDBQUERYTYPE_UNKNOWN forDriver:UMDBDRIVER_NULL parameters:params primaryKeyValue:primaryKeyValue];
+            sql = [query sqlForType:UMDBQUERYTYPE_UNKNOWN
+                          forDriver:UMDBDRIVER_NULL
+                            session:self
+                         parameters:params
+                    primaryKeyValue:primaryKeyValue];
         }
         else
         {
-            sql = [query sqlForType:[query type] forDriver:[pool dbDriverType] parameters:params primaryKeyValue:primaryKeyValue];
+            sql = [query sqlForType:query.type
+                          forDriver:pool.dbDriverType
+                            session:self
+                         parameters:params
+                    primaryKeyValue:primaryKeyValue];
         }
         [pool increaseCountersForType:[query type] table:[query table]];
         long long start = [UMUtil milisecondClock];
@@ -366,4 +378,10 @@
             self.usedLine,
             self.usedFunction];
 }
+
+- (NSString *)sqlEscapeString:(NSString *)in
+{
+    return [in sqlEscaped];
+}
+
 @end

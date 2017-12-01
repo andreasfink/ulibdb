@@ -10,6 +10,7 @@
 #import "UMDbQueryPlaceholder.h"
 #import "UMDbQuery.h"
 #import "UMDbDriverType.h"
+#import "UMDbSession.h"
 
 @implementation UMDbQueryPlaceholder
 
@@ -134,12 +135,23 @@
 }
 
 
-- (NSString *) sqlForQueryLeft:(UMDbQuery *)query parameters:(NSArray *)params dbType:(UMDbDriverType)dbType
+- (NSString *) sqlForQueryLeft:(UMDbQuery *)query
+                    parameters:(NSArray *)params
+                        dbType:(UMDbDriverType)dbType
+                       session:(UMDbSession *)session
 {
-    return [self sqlForQueryLeft:query parameters:params dbType:dbType primaryKeyValue:NULL];
+    return [self sqlForQueryLeft:query
+                      parameters:params
+                          dbType:dbType
+                         session:session
+                 primaryKeyValue:NULL];
 }
 
-- (NSString *) sqlForQueryLeft:(UMDbQuery *)query parameters:(NSArray *)params dbType:(UMDbDriverType)dbType primaryKeyValue:(id)primaryKeyValue
+- (NSString *) sqlForQueryLeft:(UMDbQuery *)query
+                    parameters:(NSArray *)params
+                        dbType:(UMDbDriverType)dbType
+                       session:(UMDbSession *)session
+               primaryKeyValue:(id)primaryKeyValue
 {
     switch(type)
     {
@@ -153,7 +165,7 @@
             id param = params[index];
             if([param isKindOfClass: [NSString class]])
             {
-                return [NSString stringWithFormat:@"'%@'",[param sqlEscaped]];
+                return [NSString stringWithFormat:@"'%@'",[session sqlEscapeString:param]];
             }
             else if([param isKindOfClass: [NSNumber class]])
             {
@@ -167,7 +179,7 @@
             
             if([primaryKeyValue isKindOfClass: [NSString class]])
             {
-                return [NSString stringWithFormat:@"'%@'",[primaryKeyValue sqlEscaped]];
+                return [NSString stringWithFormat:@"'%@'",[session sqlEscapeString:primaryKeyValue]];
             }
             else if([primaryKeyValue isKindOfClass: [NSNumber class]])
             {
@@ -224,14 +236,17 @@
         case UMDBPLACEHOLDER_TYPE_TEXT:
         default:
         {
-            return [NSString stringWithFormat:@"'%@'" ,[text sqlEscaped]];
+            return [NSString stringWithFormat:@"'%@'" ,[session sqlEscapeString:text]];
         }
     }
 }
 
 
-- (NSString *) sqlForQueryRight:(UMDbQuery *)query parameters:(NSArray *)params dbType:(UMDbDriverType)dbType primaryKeyValue:(id)primaryKeyValue;
-
+- (NSString *) sqlForQueryRight:(UMDbQuery *)query
+                     parameters:(NSArray *)params
+                         dbType:(UMDbDriverType)dbType
+                        session:(UMDbSession *)session
+                primaryKeyValue:(id)primaryKeyValue
 {
     switch(type)
     {
@@ -245,7 +260,7 @@
             id param = params[index];
             if([param isKindOfClass: [NSString class]])
             {
-                return [NSString stringWithFormat:@"'%@'",[param sqlEscaped]];
+                return [NSString stringWithFormat:@"'%@'",[session sqlEscapeString:param]];
             }
             else if([param isKindOfClass: [NSNumber class]])
             {
@@ -300,13 +315,13 @@
         }
         case UMDBPLACEHOLDER_TYPE_PRIMARY_KEY_VALUE:
         {
-            return [NSString stringWithFormat:@"'%@'" ,[primaryKeyValue sqlEscaped]];
+            return [NSString stringWithFormat:@"'%@'" ,[session sqlEscapeString:primaryKeyValue]];
         }
 
         case UMDBPLACEHOLDER_TYPE_TEXT:
         default:
         {
-            return [NSString stringWithFormat:@"'%@'" ,[text sqlEscaped]];
+            return [NSString stringWithFormat:@"'%@'" ,[session sqlEscapeString:text]];
         }
     }
 }

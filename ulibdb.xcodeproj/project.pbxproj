@@ -15,6 +15,8 @@
 		2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6793DCA1934B08F0090FC94 /* ulib.framework */; };
 		A6019BAE1AC15C2800854472 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = A6019BAD1AC15C2800854472 /* VERSION */; };
 		A610866216352F2100D0D9C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A610865E16352F2100D0D9C6 /* InfoPlist.strings */; };
+		A61880111FD1DDF800B31AF5 /* NSString+SQL.h in Headers */ = {isa = PBXBuildFile; fileRef = A618800F1FD1DDF800B31AF5 /* NSString+SQL.h */; };
+		A61880121FD1DDF800B31AF5 /* NSString+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = A61880101FD1DDF800B31AF5 /* NSString+SQL.m */; };
 		A61B97DC193472F7008AD2D4 /* ulibdb_defines.h in Headers */ = {isa = PBXBuildFile; fileRef = A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A65536C81AC4613F00FB1428 /* libmysqlclient.18.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A65536C71AC4613F00FB1428 /* libmysqlclient.18.dylib */; };
 		A65536CA1AC4615200FB1428 /* libpq.5.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A65536C91AC4615200FB1428 /* libpq.5.5.dylib */; };
@@ -66,6 +68,8 @@
 		2293864A18B3A298000D9DF2 /* UMDbFieldDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinitions.h; sourceTree = "<group>"; };
 		A6019BAD1AC15C2800854472 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		A610865F16352F2100D0D9C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A618800F1FD1DDF800B31AF5 /* NSString+SQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+SQL.h"; sourceTree = "<group>"; };
+		A61880101FD1DDF800B31AF5 /* NSString+SQL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+SQL.m"; sourceTree = "<group>"; };
 		A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_defines.h; sourceTree = "<group>"; };
 		A65536C71AC4613F00FB1428 /* libmysqlclient.18.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmysqlclient.18.dylib; path = ../../../../../usr/local/mysqlclient/lib/libmysqlclient.18.dylib; sourceTree = "<group>"; };
 		A65536C91AC4615200FB1428 /* libpq.5.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpq.5.5.dylib; path = ../../../../../usr/local/postgresclient/lib/libpq.5.5.dylib; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 			children = (
 				A6A143F0149B4EA400B007D0 /* ulibdb.h */,
 				A6DB3E71191E41220090FC94 /* ulibdb.m */,
+				A618800F1FD1DDF800B31AF5 /* NSString+SQL.h */,
+				A61880101FD1DDF800B31AF5 /* NSString+SQL.m */,
 				A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */,
 				A67353591DE3B3E100161EAD /* ulibdb_config.h */,
 				A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */,
@@ -263,6 +269,7 @@
 				A6D8AD44149AC77E0029E9CF /* UMDbSession.h in Headers */,
 				2293864B18B3A298000D9DF2 /* UMDbFieldDefinitions.h in Headers */,
 				2206CE2A18B21E350051C70D /* UMDbStorageType.h in Headers */,
+				A61880111FD1DDF800B31AF5 /* NSString+SQL.h in Headers */,
 				22356C0F18915F8900EF4074 /* UMDbRedisSession.h in Headers */,
 				A69686801921953400217100 /* UMDbFieldDefinition.h in Headers */,
 				A696867C1921951000217100 /* UMDbTableDefinition.h in Headers */,
@@ -378,6 +385,7 @@
 				A6D8AD30149AC77E0029E9CF /* UMDbQueryType.m in Sources */,
 				A6D8AD31149AC77E0029E9CF /* UMDbResult.m in Sources */,
 				A696867D1921951000217100 /* UMDbTableDefinition.m in Sources */,
+				A61880121FD1DDF800B31AF5 /* NSString+SQL.m in Sources */,
 				A6DB3E72191E41220090FC94 /* ulibdb.m in Sources */,
 				A6D8AD32149AC77E0029E9CF /* UMDbSession.m in Sources */,
 				22356C1018915F8900EF4074 /* UMDbRedisSession.m in Sources */,

@@ -12,6 +12,7 @@
 #import "UMDbPool.h"
 
 #define FLF  __FILE__ line:__LINE__ func:__func__
+@class UMDbSession;
 
 @interface UMDbTable : UMObject
 {
@@ -53,7 +54,10 @@
 - (void) addStatDelay:(double)delay query:(UMDbQueryType)type;
 
 - (UMDbTable *)initWithConfig:(NSDictionary *)config andPools:(UMSynchronizedDictionary *)pools;
-- (void)autoCreate:(dbFieldDef *)fieldDef;
+
+- (void)autoCreate:(dbFieldDef *)fieldDef
+           session:(UMDbSession *)session;
+
 - (UMDbPool *)pool;
 
 @property(readwrite,strong)    UMThroughputCounter   *tcAllQueries;

@@ -145,6 +145,8 @@
             
             mysql_options(connection, MYSQL_READ_DEFAULT_FILE,"/etc/my.cnf");
             mysql_options(connection, MYSQL_SET_CHARSET_NAME,"UTF8");
+            mysql_set_character_set(connection, "utf8");
+            
             my_bool b = 1;
             mysql_options(connection, MYSQL_OPT_RECONNECT,&b);
             //    mysql_options(connection, MYSQL_OPT_CONNECT_TIMEOUT,"1800"); /* 30 minutes */
@@ -156,8 +158,6 @@
             mysql_query(connection,"SET CHARACTER SET utf8");
             mysql_query(connection,"SET character_set_server = 'utf8'");
             mysql_query(connection,"SET character_set_connection = 'utf8'");
-
-           
         }
         @finally
         {
@@ -627,6 +627,18 @@
         }
         return fieldDefinitions;
     }
+}
+
+- (NSString *)sqlEscapeString:(NSString *)in
+{
+
+    NSData *d = [in dataUsingEncoding:NSUTF8StringEncoding];
+    const char *from = d.bytes;
+    char *to   = malloc(d.length*2+1);
+    mysql_real_escape_string(connection, to, from, d.length);
+    NSString *result = @(to);
+    free(to);
+    return result;
 }
 
 @end

@@ -104,4 +104,5 @@ typedef enum UMDbSessionStatus
 - (void)setUsedFrom:(const char *)file line:(long)line func:(const char *)func;
 
 - (NSString *)inUseDescription;
+- (NSString *)sqlEscapeString:(NSString *)in;
 @end

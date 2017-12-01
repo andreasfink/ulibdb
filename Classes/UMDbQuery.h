@@ -65,35 +65,111 @@
 - (void)addToCacheWithKey:(NSString *)key2;
 //- (void)setFieldsFromString:(NSString *)fields;
 
-- (NSString *)sqlForType:(UMDbQueryType)dbQueryType forDriver:(UMDbDriverType)dbDriverType parameters:(NSArray *)arr primaryKeyValue:(id)primaryKeyValue;
-- (NSString *)redisForType:(UMDbQueryType)dbQueryType forDriver:(UMDbDriverType)dbDriverType parameters:(NSArray *)arr primaryKeyValue:(id)primaryKeyValue;
-+ (NSArray *)createSql:(NSString *) tn withDbType:(UMDbDriverType)dbType fieldsDefinition:(dbFieldDef *)fieldDef;
-+ (NSArray *)createSql:(NSString *) tn withDbType:(UMDbDriverType)dbType tableDefinition:(UMDbTableDefinition *)tableDef;
+- (NSString *)sqlForType:(UMDbQueryType)dbQueryType
+               forDriver:(UMDbDriverType)dbDriverType
+                 session:(UMDbSession *)session
+              parameters:(NSArray *)arr
+         primaryKeyValue:(id)primaryKeyValue;
 
-+ (NSArray *)createArchiveSql:(NSString *) tn withDbType:(UMDbDriverType)dbType fieldsDefinition:(dbFieldDef *)fieldDef;
-+ (NSArray *)createArchiveSql:(NSString *) tn withDbType:(UMDbDriverType)dbType tableDefinition:(UMDbTableDefinition *)tableDef;
+- (NSString *)redisForType:(UMDbQueryType)dbQueryType
+                 forDriver:(UMDbDriverType)dbDriverType
+                   session:(UMDbSession *)session
+                parameters:(NSArray *)arr
+           primaryKeyValue:(id)primaryKeyValue;
 
-+ (NSArray *)createSql:(NSString *) tn withDbType:(UMDbDriverType)dbType fieldsDefinition:(dbFieldDef *)fieldDef forArchive:(BOOL)arch;
++ (NSArray *)createSql:(NSString *) tn
+            withDbType:(UMDbDriverType)dbType
+               session:(UMDbSession *)session
+      fieldsDefinition:(dbFieldDef *)fieldDef;
+
++ (NSArray *)createSql:(NSString *)tn
+            withDbType:(UMDbDriverType)dbType
+               session:(UMDbSession *)session
+       tableDefinition:(UMDbTableDefinition *)tableDef;
+
++ (NSArray *)createArchiveSql:(NSString *)tn
+                   withDbType:(UMDbDriverType)dbType
+                      session:(UMDbSession *)session
+             fieldsDefinition:(dbFieldDef *)fieldDef;
+
++ (NSArray *)createArchiveSql:(NSString *)tn
+                   withDbType:(UMDbDriverType)dbType
+                      session:(UMDbSession *)session
+              tableDefinition:(UMDbTableDefinition *)tableDef;
+
++ (NSArray *)createSql:(NSString *) tn
+            withDbType:(UMDbDriverType)dbType
+               session:(UMDbSession *)session
+      fieldsDefinition:(dbFieldDef *)fieldDef
+            forArchive:(BOOL)arch;
 //+ (NSString *)createSql:(NSString *) tn withDbType:(UMDbDriverType)dbType tableDefinition:(UMDbTableDefinition *)tableDef forArchive:(BOOL)arch;
 
 + (NSArray *)fieldNamesArrayFromFieldsDefinition:(dbFieldDef *)fieldDef;
 + (NSArray *)fieldNamesArrayFromTableDefinition:(UMDbTableDefinition *)tableDef;
 
-- (NSString *)selectForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
-- (NSString *)selectForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue whereCondition:(UMDbQueryCondition *)whereCondition1;
+- (NSString *)selectForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue;
 
-- (NSString *)selectByKeyForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
-- (NSString *)selectByKeyLikeForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
-- (NSString *)selectByKeyFromListForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
-- (NSString *)updateByKeyForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
-- (NSString *)updateForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue whereCondition:(UMDbQueryCondition *)whereCondition1;
-- (NSString *)updateByKeyLikeForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
-- (NSString *)insertByKeyForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
+- (NSString *)selectForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
+             whereCondition:(UMDbQueryCondition *)whereCondition1;
 
-- (NSString *)deleteForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
-- (NSString *)deleteForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue whereCondition:(UMDbQueryCondition *)whereCondition1;
+- (NSString *)selectByKeyForType:(UMDbDriverType)dbDriverType
+                         session:(UMDbSession *)session
+                      parameters:(NSArray *)params
+                 primaryKeyValue:(id)primaryKeyValue;
 
-- (NSString *)deleteByKeyForType:(UMDbDriverType)dbDriverType parameters:(NSArray *)params primaryKeyValue:(id)primaryKeyValue;
+- (NSString *)selectByKeyLikeForType:(UMDbDriverType)dbDriverType
+                             session:(UMDbSession *)session
+                          parameters:(NSArray *)params
+                     primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *)selectByKeyFromListForType:(UMDbDriverType)dbDriverType
+                                 session:(UMDbSession *)session
+                              parameters:(NSArray *)params
+                         primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *)updateByKeyForType:(UMDbDriverType)dbDriverType
+                         session:(UMDbSession *)session
+                      parameters:(NSArray *)params
+                 primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *)updateForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
+             whereCondition:(UMDbQueryCondition *)whereCondition1;
+
+- (NSString *)updateByKeyLikeForType:(UMDbDriverType)dbDriverType
+                             session:(UMDbSession *)session
+                          parameters:(NSArray *)params
+                     primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *)insertByKeyForType:(UMDbDriverType)dbDriverType
+                         session:(UMDbSession *)session
+                      parameters:(NSArray *)params
+                 primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *)deleteForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *)deleteForType:(UMDbDriverType)dbDriverType
+                    session:(UMDbSession *)session
+                 parameters:(NSArray *)params
+            primaryKeyValue:(id)primaryKeyValue
+             whereCondition:(UMDbQueryCondition *)whereCondition1;
+
+- (NSString *)deleteByKeyForType:(UMDbDriverType)dbDriverType
+                         session:(UMDbSession *)session
+                      parameters:(NSArray *)params
+                 primaryKeyValue:(id)primaryKeyValue;
+
 - (NSString *)keyForParameters:(NSArray *)params; /*TODO primary key?!? */
 
 @end

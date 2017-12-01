@@ -112,7 +112,10 @@
     return s;
 }
 
-- (NSString *) sqlForQuery:(UMDbQuery *)query parameters:(NSArray *)params dbType:(UMDbDriverType)dbType primaryKeyValue:(id)primaryKeyValue
+- (NSString *) sqlForQuery:(UMDbQuery *)query
+                parameters:(NSArray *)params
+                    dbType:(UMDbDriverType)dbType
+           primaryKeyValue:(id)primaryKeyValue
 {
     NSMutableString *s = [[NSMutableString alloc]initWithString:@" "];
     if(leftSideOperator)
