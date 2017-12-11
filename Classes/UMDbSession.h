@@ -23,7 +23,7 @@ typedef enum UMDbSessionStatus
 
 @interface UMDbSession : UMObject
 {
-    UMDbPool __weak      *pool;
+    UMDbPool            *pool;
     NSMutableDictionary *storedQueries;
     time_t              grabTime;
     time_t              returnTime;
@@ -42,7 +42,7 @@ typedef enum UMDbSessionStatus
     UMMutex             *_sessionLock;
 }
 
-@property (readwrite,weak)      UMDbPool    *pool;
+@property (readwrite,strong)    UMDbPool    *pool;
 @property (readwrite,strong)    NSString    *usedFile;
 @property (readwrite,assign)    long        usedLine;
 @property (readwrite,strong)    NSString    *usedFunction;
