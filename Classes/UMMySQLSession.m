@@ -631,14 +631,19 @@
 
 - (NSString *)sqlEscapeString:(NSString *)in
 {
-
     NSData *d = [in dataUsingEncoding:NSUTF8StringEncoding];
     const char *from = d.bytes;
-    char *to   = malloc(d.length*2+1);
-    mysql_real_escape_string(connection, to, from, d.length);
-    NSString *result = @(to);
-    free(to);
-    return result;
+    size_t len = d.length * 2 + 16;
+    char *to   = malloc(len);
+    if(to)
+    {
+        memset(to,0x00,len);
+        mysql_real_escape_string(connection, to, from, d.length);
+        NSString *result = @(to);
+        free(to);
+        return result;
+    }
+    return NULL;
 }
 
 @end
