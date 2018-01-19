@@ -255,7 +255,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             primaryKeyValue:(id)primaryKeyValue
 {
     return [self selectForType:dbDriverType
-                       session:(UMDbSession *)session
+                       session:session
                     parameters:params
                primaryKeyValue:primaryKeyValue
                 whereCondition:whereCondition];
@@ -288,30 +288,46 @@ static NSMutableDictionary *cachedQueries = NULL;
                 else
                 {
                     if(dbDriverType==UMDBDRIVER_MYSQL)
+                    {
                         [sql appendFormat:@"`%@`",field];
+                    }
                     else if(dbDriverType==UMDBDRIVER_PGSQL)
+                    {
                         [sql appendFormat:@"\"%@\"",field];
+                    }
                     else
+                    {
                         [sql appendFormat:@"%@",field];
+                    }
                 }
                 first = NO;
             }
             else
             {
                 if(dbDriverType==UMDBDRIVER_MYSQL)
+                {
                     [sql appendFormat:@",`%@`",field];
+                }
                 else if(dbDriverType==UMDBDRIVER_PGSQL)
+                {
                     [sql appendFormat:@",\"%@\"",field];
+                }
                 else
+                {
                     [sql appendFormat:@", %@",field];
+                }
             }
         }
         if (!fields)
         {
             if (dbDriverType==UMDBDRIVER_MYSQL)
+            {
                 @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Fields are nil,cannot create MySQL query" userInfo:nil];
+            }
             else
+            {
                 [sql appendString:@"NULL"];
+            }
         }
         if (!table || (table && ![table tableName])) 
         {
@@ -324,15 +340,20 @@ static NSMutableDictionary *cachedQueries = NULL;
         else
         {
             if(dbDriverType==UMDBDRIVER_PGSQL)
+            {
                 [sql appendFormat:@" FROM %@",[table tableName]];
+            }
             else
+            {
                 [sql appendFormat:@" FROM %@",[table tableName]];
+            }
         }
         if(whereCondition1)
         {
             NSString *where = [whereCondition1 sqlForQuery:self
                                                 parameters:params
                                                     dbType:dbDriverType
+                                                   session:session
                                            primaryKeyValue:primaryKeyValue];
             [sql appendFormat:@" WHERE %@",where];
         }
@@ -578,7 +599,15 @@ static NSMutableDictionary *cachedQueries = NULL;
                 else if([param isKindOfClass: [NSString class]])
                 {
                     NSString *s = [NSString stringWithString:param];
-                    NSString *escaped = [session sqlEscapeString:s];
+                    NSString *escaped;
+                    if(session)
+                    {
+                        escaped = [session sqlEscapeString:s];
+                    }
+                    else
+                    {
+                        [s sqlEscaped];
+                    }
                     [sql appendFormat:@"'%@'",escaped];
                 }
                 else if([param isKindOfClass: [NSNumber class]])
@@ -593,7 +622,18 @@ static NSMutableDictionary *cachedQueries = NULL;
                 else if([param isKindOfClass: [NSArray class]])
                 {
                     NSString *p = [param componentsJoinedByString:@" "];
-                    [sql appendFormat:@"'%@'",[session sqlEscapeString:p]];
+
+                    NSString *escaped;
+                    if(session)
+                    {
+                        escaped = [session sqlEscapeString:p];
+                    }
+                    else
+                    {
+                        escaped = [p sqlEscaped];
+                    }
+                    [sql appendFormat:@"'%@'",escaped];
+
                 }
                 else
                 {
@@ -1060,7 +1100,18 @@ static NSMutableDictionary *cachedQueries = NULL;
             else if([param isKindOfClass: [NSString class]])
             {
                 NSString *s = (NSString *)param;
-                [sql appendFormat:@"'%@'",[session sqlEscapeString:s]];
+
+                NSString *escaped;
+                if(session)
+                {
+                    escaped = [session sqlEscapeString:s];
+                }
+                else
+                {
+                    escaped = [s sqlEscaped];
+                }
+                [sql appendFormat:@"'%@'",escaped];
+
             }
             else if([param isKindOfClass: [NSNumber class]])
             {
@@ -1069,14 +1120,34 @@ static NSMutableDictionary *cachedQueries = NULL;
             else if([param isKindOfClass: [NSArray class]])
             {
                 NSString *p = [param componentsJoinedByString:@" "];
-                [sql appendFormat:@"'%@'",[session sqlEscapeString:p]];
+
+                NSString *escaped;
+                if(session)
+                {
+                    escaped = [session sqlEscapeString:p];
+                }
+                else
+                {
+                    escaped = [p sqlEscaped];
+                }
+                [sql appendFormat:@"'%@'",escaped];
             }
             else if([param isKindOfClass: [NSDate class]])
             {
                 NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
                 [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                 NSString *s = [dateFormatter stringFromDate:param];
-                [sql appendFormat:@"'%@'",[session sqlEscapeString:s]];
+
+                NSString *escaped;
+                if(session)
+                {
+                    escaped = [session sqlEscapeString:s];
+                }
+                else
+                {
+                    escaped = [s sqlEscaped];
+                }
+                [sql appendFormat:@"'%@'",escaped];
             }
         }
         

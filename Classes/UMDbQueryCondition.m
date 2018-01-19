@@ -42,7 +42,9 @@
     return self;
 }
 
-+ (UMDbQueryCondition *) queryConditionLeft:(id)left op:(UMDbQueryConditionOperator)op right:(id)right
++ (UMDbQueryCondition *) queryConditionLeft:(id)left
+                                         op:(UMDbQueryConditionOperator)op
+                                      right:(id)right
 {
     return [[UMDbQueryCondition alloc] initWithLeft:left op:op right:right];
 }
@@ -210,7 +212,10 @@
         }
         else if([rightSideOperator isKindOfClass:[UMDbQueryPlaceholder class]])
         {
-            NSMutableString *sql = [[rightSideOperator sqlForQueryRight:query parameters:params dbType:dbType primaryKeyValue:primaryKeyValue] mutableCopy];
+            NSMutableString *sql = [[rightSideOperator sqlForQueryRight:query       parameters:params
+                                                                 dbType:dbType
+                                                                session:session
+                                                        primaryKeyValue:primaryKeyValue] mutableCopy];
             if ([sql compare:@""] == NSOrderedSame) 
             {
                 [s appendString:@"NULL"];
@@ -245,7 +250,9 @@
                                         range:wholeString];
             }
             else
+            {
                 [s appendString:rightSideOperator];
+            }
         }
     }
     else

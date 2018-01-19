@@ -165,7 +165,17 @@
             id param = params[index];
             if([param isKindOfClass: [NSString class]])
             {
-                return [NSString stringWithFormat:@"'%@'",[session sqlEscapeString:param]];
+
+                NSString *escaped;
+                if(session)
+                {
+                    escaped = [session sqlEscapeString:param];
+                }
+                else
+                {
+                    escaped = [param sqlEscaped];
+                }
+                return [NSString stringWithFormat:@"'%@'",escaped];
             }
             else if([param isKindOfClass: [NSNumber class]])
             {
@@ -179,7 +189,17 @@
             
             if([primaryKeyValue isKindOfClass: [NSString class]])
             {
-                return [NSString stringWithFormat:@"'%@'",[session sqlEscapeString:primaryKeyValue]];
+
+                NSString *escaped;
+                if(session)
+                {
+                    escaped = [session sqlEscapeString:primaryKeyValue];
+                }
+                else
+                {
+                    escaped = [primaryKeyValue sqlEscaped];
+                }
+                return [NSString stringWithFormat:@"'%@'",escaped];
             }
             else if([primaryKeyValue isKindOfClass: [NSNumber class]])
             {
@@ -264,14 +284,27 @@
         case UMDBPLACEHOLDER_TYPE_PARAM:
         {
             if(params == NULL)
+            {
                 return @"missing-parameter";
+            }
             if(index >= [params count])
+            {
                 return @"not-enough-parameters-provided";
+            }
             
             id param = params[index];
             if([param isKindOfClass: [NSString class]])
             {
-                return [NSString stringWithFormat:@"'%@'",[session sqlEscapeString:param]];
+                NSString *escaped;
+                if(session)
+                {
+                    escaped = [session sqlEscapeString:param];
+                }
+                else
+                {
+                    escaped = [param sqlEscaped];
+                }
+                return [NSString stringWithFormat:@"'%@'",escaped];
             }
             else if([param isKindOfClass: [NSNumber class]])
             {
@@ -326,13 +359,33 @@
         }
         case UMDBPLACEHOLDER_TYPE_PRIMARY_KEY_VALUE:
         {
-            return [NSString stringWithFormat:@"'%@'" ,[session sqlEscapeString:primaryKeyValue]];
+            NSString *escaped;
+            if(session)
+            {
+                escaped = [session sqlEscapeString:primaryKeyValue];
+            }
+            else
+            {
+                escaped = [primaryKeyValue sqlEscaped];
+            }
+
+            return [NSString stringWithFormat:@"'%@'" ,escaped];
         }
 
         case UMDBPLACEHOLDER_TYPE_TEXT:
         default:
         {
-            return [NSString stringWithFormat:@"'%@'" ,[session sqlEscapeString:text]];
+
+            NSString *escaped;
+            if(session)
+            {
+                escaped = [session sqlEscapeString:text];
+            }
+            else
+            {
+                escaped = [text sqlEscaped];
+            }
+            return [NSString stringWithFormat:@"'%@'" ,text];
         }
     }
 }

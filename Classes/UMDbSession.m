@@ -187,7 +187,9 @@
     return [self cachedQueryWithMultipleRowsResult:query parameters:NULL];   
 }
 
-- (UMDbResult *)cachedQueryWithMultipleRowsResult:(UMDbQuery *)query parameters:(NSArray *)params allowFail:(BOOL)failPermission
+- (UMDbResult *)cachedQueryWithMultipleRowsResult:(UMDbQuery *)query
+                                       parameters:(NSArray *)params
+                                        allowFail:(BOOL)failPermission
 {
     return [self cachedQueryWithMultipleRowsResult:query parameters:params allowFail:failPermission primaryKeyValue:NULL];
 }
@@ -229,7 +231,10 @@
         {
             return [[UMDbResult alloc]init];
         }
-        result = [self queryWithMultipleRowsResult:sql allowFail:failPermission file:query.cfile line:query.cline];
+        result = [self queryWithMultipleRowsResult:sql
+                                         allowFail:failPermission
+                                              file:query.cfile
+                                              line:query.cline];
         
         long long stop = [UMUtil milisecondClock];
         
@@ -243,9 +248,12 @@
     return result;
 
 }
-- (UMDbResult *)cachedQueryWithMultipleRowsResult:(UMDbQuery *)query parameters:(NSArray *)params
+- (UMDbResult *)cachedQueryWithMultipleRowsResult:(UMDbQuery *)query
+                                       parameters:(NSArray *)params
 {
-    return [self cachedQueryWithMultipleRowsResult:query parameters:params allowFail:NO];
+    return [self cachedQueryWithMultipleRowsResult:query
+                                        parameters:params
+                                         allowFail:NO];
 }
 
 
