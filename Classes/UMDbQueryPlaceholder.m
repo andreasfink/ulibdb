@@ -241,6 +241,17 @@
     }
 }
 
+- (NSString *) sqlForQueryRight:(UMDbQuery *)query
+                    parameters:(NSArray *)params
+                        dbType:(UMDbDriverType)dbType
+               primaryKeyValue:(id)primaryKeyValue
+{
+    return [self sqlForQueryRight:query
+                      parameters:params
+                          dbType:dbType
+                         session:NULL
+                 primaryKeyValue:primaryKeyValue];
+}
 
 - (NSString *) sqlForQueryRight:(UMDbQuery *)query
                      parameters:(NSArray *)params
