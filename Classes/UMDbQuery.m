@@ -407,7 +407,7 @@ static NSMutableDictionary *cachedQueries = NULL;
                        session:session
                     parameters:(NSArray *)params
                primaryKeyValue:(id)primaryKeyValue
-                whereCondition:NULL];
+                whereCondition:whereCondition];
 }
 
 - (NSString *)deleteForType:(UMDbDriverType)dbDriverType
