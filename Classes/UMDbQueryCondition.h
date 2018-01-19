@@ -8,6 +8,7 @@
 #import "ulib/ulib.h"
 #import "UMDbDriverType.h"
 @class UMDbQuery;
+@class UMDbSession;
 
 typedef enum UMDbQueryConditionOperator
 {
@@ -34,7 +35,17 @@ typedef enum UMDbQueryConditionOperator
 @property(readwrite,strong) id leftSideOperator;
 @property(readwrite,strong) id rightSideOperator;
 
-- (NSString *) sqlForQuery:(UMDbQuery *)query parameters:(NSArray *)params dbType:(UMDbDriverType)dbType primaryKeyValue:(id)primaryKeyValue;
+- (NSString *) sqlForQuery:(UMDbQuery *)query
+                parameters:(NSArray *)params
+                    dbType:(UMDbDriverType)dbType
+                   session:(UMDbSession *)session
+           primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *) sqlForQuery:(UMDbQuery *)query
+                parameters:(NSArray *)params
+                    dbType:(UMDbDriverType)dbType
+           primaryKeyValue:(id)primaryKeyValue;
+
 - (UMDbQueryCondition *) initWithLeft:(id)left op:(UMDbQueryConditionOperator)op right:(id)right;
 + (UMDbQueryCondition *) queryConditionLeft:(id)left op:(UMDbQueryConditionOperator)op right:(id)right;
 

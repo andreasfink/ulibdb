@@ -47,11 +47,22 @@ typedef enum UMDbPlaceholderType
 + (UMDbQueryPlaceholder *)placeholderPrimaryKeyName;
 + (UMDbQueryPlaceholder *)placeholderPrimaryKeyValue;
 
+
+- (NSString *) sqlForQueryLeft:(UMDbQuery *)query
+                    parameters:(NSArray *)params
+                        dbType:(UMDbDriverType)dbType
+               primaryKeyValue:(id)primaryKeyValue;
+
 - (NSString *) sqlForQueryLeft:(UMDbQuery *)query
                     parameters:(NSArray *)params
                         dbType:(UMDbDriverType)dbType
                        session:(UMDbSession *)session
                primaryKeyValue:(id)primaryKeyValue;
+
+- (NSString *) sqlForQueryRight:(UMDbQuery *)query
+                     parameters:(NSArray *)params
+                         dbType:(UMDbDriverType)dbType
+                primaryKeyValue:(id)primaryKeyValue;
 
 - (NSString *) sqlForQueryRight:(UMDbQuery *)query
                      parameters:(NSArray *)params

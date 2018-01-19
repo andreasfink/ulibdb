@@ -138,13 +138,13 @@
 - (NSString *) sqlForQueryLeft:(UMDbQuery *)query
                     parameters:(NSArray *)params
                         dbType:(UMDbDriverType)dbType
-                       session:(UMDbSession *)session
+               primaryKeyValue:(id)primaryKeyValue
 {
     return [self sqlForQueryLeft:query
                       parameters:params
                           dbType:dbType
-                         session:session
-                 primaryKeyValue:NULL];
+                         session:NULL
+                 primaryKeyValue:primaryKeyValue];
 }
 
 - (NSString *) sqlForQueryLeft:(UMDbQuery *)query
