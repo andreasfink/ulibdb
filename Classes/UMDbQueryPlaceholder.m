@@ -385,7 +385,7 @@
             {
                 escaped = [text sqlEscaped];
             }
-            return [NSString stringWithFormat:@"'%@'" ,text];
+            return [NSString stringWithFormat:@"'%@'" ,escaped];
         }
     }
 }
