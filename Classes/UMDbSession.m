@@ -149,6 +149,8 @@
             return YES; /* nothing to be done so we succeed */
         }
         result = [self queryWithNoResult:sql allowFail:failPermission affectedRows:count];
+
+
         long long stop = [UMUtil milisecondClock];
         double delay = ((double)(stop - start))/1000000.0;
         [pool addStatDelay:delay query:[query type] table:[query table]];

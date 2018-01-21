@@ -421,9 +421,13 @@ static NSMutableDictionary *cachedQueries = NULL;
         NSMutableString *sql;
         
         if (!table || (table && ![table tableName]))
+        {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Delete with table name nil, cannot create query" userInfo:nil];
+        }
         if ([[table tableName] length] == 0)
+        {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Delete with empty table name, cannot create query" userInfo:nil];
+        }
         sql=[[NSMutableString alloc]initWithFormat:@"DELETE FROM %@",[table tableName]];
         if(whereCondition1)
         {
@@ -1343,6 +1347,7 @@ static NSMutableDictionary *cachedQueries = NULL;
               parameters:(NSArray *)params
          primaryKeyValue:(id)primaryKeyValue;
 {
+    NSAssert(session,@"Session is NULL");
     @autoreleasepool
     {
         NSString *sql = @"";
