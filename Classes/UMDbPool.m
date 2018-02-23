@@ -253,6 +253,7 @@ void umdbpool_null_session_returned(void)
             {
                 self.waitTimeout2 = 30;
             }
+            [self startSessions];
             [self startIdler];
         }
     }
@@ -638,6 +639,8 @@ void umdbpool_null_session_returned(void)
         UMDbSession *session = [self newSession];
         [sessionsAvailable append:session];
     }
+
+
     [_poolLock unlock];
 }
 
