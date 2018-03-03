@@ -505,7 +505,7 @@ void umdbpool_null_session_returned(void)
 - (UMDbSession *)grabSession:(const char *)file line:(int)line func:(const char *)func
 {
 #ifdef POOL_DEBUG
-    NSLog(@"UMDbPool grabSession called from %s:%d %s()",file,line,func);
+    NSLog(@"UMDbPool grabSession called from %s:%ld %s()",file,line,func);
 #endif
     UMDbSession *result = NULL;
     time_t   start;
@@ -537,6 +537,7 @@ void umdbpool_null_session_returned(void)
                 result = [self newSession];
                 if(result)
                 {
+                    NSAssert(result.pool==self,@"Ouch session without proper assigned pool");
                     [sessionsInUse append:result];
                     endNow = YES;
                 }
@@ -612,7 +613,7 @@ void umdbpool_null_session_returned(void)
 - (void)returnSession:(UMDbSession *)session file:(const char *)file line:(long)line func:(const char *)func
 {
 #ifdef POOL_DEBUG
-    NSLog(@"UMDbPool returnSession called from %s:%d %s()",file,line,func);
+    NSLog(@"UMDbPool returnSession called from %s:%ld %s()",file,line,func);
 #endif
 
     if(session)
