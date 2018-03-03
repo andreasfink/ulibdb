@@ -5,6 +5,7 @@
 ## Build generated
 build/
 DerivedData/
+Classes/ulibdb_config.h
 
 config.status
 ## Various settings
