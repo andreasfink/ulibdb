@@ -19,7 +19,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-#define	POOL_DEBUG 1
+//#define	POOL_DEBUG 1
 
 void umdbpool_out_of_sessions(void)
 {
