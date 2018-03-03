@@ -107,7 +107,8 @@ void umdbpool_null_session_returned(void)
         sessionsDisconnected    = [[UMQueue alloc]init];
         waitTimeout1            = 2;
         idleTaskStatus          = idleStatus_stopped;
-        
+        _poolLock = [[UMMutex alloc]init];
+
         self.tcAllQueries = [[UMThroughputCounter alloc]init];
         self.tcSelects = [[UMThroughputCounter alloc]init];
         self.tcInserts = [[UMThroughputCounter alloc]init];
