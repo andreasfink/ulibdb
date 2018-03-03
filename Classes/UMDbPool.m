@@ -504,6 +504,9 @@ void umdbpool_null_session_returned(void)
 
 - (UMDbSession *)grabSession:(const char *)file line:(int)line func:(const char *)func
 {
+#ifdef POOL_DEBUG
+    NSLog(@"UMDbPool grabSession called from %s:%d %s()",file,line,func);
+#endif
     UMDbSession *result = NULL;
     time_t   start;
     time_t   now;
@@ -608,6 +611,9 @@ void umdbpool_null_session_returned(void)
 
 - (void)returnSession:(UMDbSession *)session file:(const char *)file line:(long)line func:(const char *)func
 {
+#ifdef POOL_DEBUG
+    NSLog(@"UMDbPool returnSession called from %s:%d %s()",file,line,func);
+#endif
 
     if(session)
     {
