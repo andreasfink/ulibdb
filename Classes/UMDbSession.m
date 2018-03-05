@@ -37,7 +37,7 @@
     if(self)
     {
         pool = dbpool;
-        _sessionLock = [[UMMutex alloc]init];
+        _sessionLock = [[UMMutex alloc]initWithName:@"db-session-lock"];
     }
     return self;
 }
