@@ -65,7 +65,7 @@
         if(config!=NULL)
         {
             NSString *enableString = config[@"enable"];
-            if(enableString!= NULL)
+            if(enableString.length > 0)
             {
                 if([enableString boolValue]==NO)
                 {
