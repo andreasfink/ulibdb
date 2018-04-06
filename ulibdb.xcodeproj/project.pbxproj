@@ -13,8 +13,6 @@
 		22356C1018915F8900EF4074 /* UMDbRedisSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 22356C0E18915F8900EF4074 /* UMDbRedisSession.m */; };
 		2293864B18B3A298000D9DF2 /* UMDbFieldDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2293864A18B3A298000D9DF2 /* UMDbFieldDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6793DCA1934B08F0090FC94 /* ulib.framework */; };
-		A6019BAE1AC15C2800854472 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = A6019BAD1AC15C2800854472 /* VERSION */; };
-		A610866216352F2100D0D9C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A610865E16352F2100D0D9C6 /* InfoPlist.strings */; };
 		A61880111FD1DDF800B31AF5 /* NSString+SQL.h in Headers */ = {isa = PBXBuildFile; fileRef = A618800F1FD1DDF800B31AF5 /* NSString+SQL.h */; };
 		A61880121FD1DDF800B31AF5 /* NSString+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = A61880101FD1DDF800B31AF5 /* NSString+SQL.m */; };
 		A61B97DC193472F7008AD2D4 /* ulibdb_defines.h in Headers */ = {isa = PBXBuildFile; fileRef = A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,7 +21,6 @@
 		A66538EE1950FE6700C10E07 /* UMDbFileSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A66538EC1950FE6700C10E07 /* UMDbFileSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A66538EF1950FE6700C10E07 /* UMDbFileSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A66538ED1950FE6700C10E07 /* UMDbFileSession.m */; };
 		A673535B1DE3B3E100161EAD /* ulibdb_config.h in Headers */ = {isa = PBXBuildFile; fileRef = A67353591DE3B3E100161EAD /* ulibdb_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A673535C1DE3B3E100161EAD /* ulibdb_config.h.in in Resources */ = {isa = PBXBuildFile; fileRef = A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */; };
 		A6793E131934BD440090FC94 /* UMMySQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E141934BD660090FC94 /* UMPgSQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A696867C1921951000217100 /* UMDbTableDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867A1921951000217100 /* UMDbTableDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,7 +54,6 @@
 		A6DB3E72191E41220090FC94 /* ulibdb.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DB3E71191E41220090FC94 /* ulibdb.m */; };
 		A6DFF69D1952B729008D0983 /* UMDbMySqlInProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DFF69E1952B729008D0983 /* UMDbMySqlInProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */; };
-		A6F693EC1B4E830C0090FC94 /* configure.in in Resources */ = {isa = PBXBuildFile; fileRef = A6F693EB1B4E830C0090FC94 /* configure.in */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -341,10 +337,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A673535C1DE3B3E100161EAD /* ulibdb_config.h.in in Resources */,
-				A610866216352F2100D0D9C6 /* InfoPlist.strings in Resources */,
-				A6019BAE1AC15C2800854472 /* VERSION in Resources */,
-				A6F693EC1B4E830C0090FC94 /* configure.in in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +533,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
-				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -555,7 +546,7 @@
 					/usr/local/mysqlclient/lib,
 					/usr/local/postgresclient/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Debug",
@@ -572,7 +563,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
-				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				DSTROOT = /;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -587,7 +577,7 @@
 					/usr/local/mysqlclient/lib,
 					/usr/local/postgresclient/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Release",
