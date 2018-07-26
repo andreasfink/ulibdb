@@ -227,15 +227,33 @@ void umdbpool_null_session_returned(void)
             {
                 self.port = (int)[portString integerValue];
             }
-            NSString *minString = config[@"min-sessions"];
-            if(minString !=NULL)
+            id min = config[@"min-sessions"];
+            if(min !=NULL)
             {
-                self.minSessions = (int)[minString integerValue];
+                if([min isKindOfClass:[NSString class]])
+                {
+                    NSString *s = (NSString *)min;
+                    self.minSessions = (int)[s intValue];
+                }
+                else if ([min isKindOfClass:[NSNumber class]])
+                {
+                    NSNumber *n = (NSNumber *)min;
+                    self.minSessions = (int)[n intValue];
+                }
             }
-            NSString *maxString = config[@"max-sessions"];
-            if([maxString length]>0)
+            id max = config[@"max-sessions"];
+            if(max !=NULL)
             {
-                self.maxSessions = (int)[maxString integerValue];
+                if([max isKindOfClass:[NSString class]])
+                {
+                    NSString *s = (NSString *)max;
+                    self.maxSessions = (int)[s intValue];
+                }
+                else if ([max isKindOfClass:[NSNumber class]])
+                {
+                    NSNumber *n = (NSNumber *)max;
+                    self.maxSessions = (int)[n intValue];
+                }
             }
             NSString *s = config[@"socket"];
             if(s!= NULL)
