@@ -165,7 +165,7 @@
             else 
             {
                 NSString *s =@(PQgetvalue(res, row_loop, field_loop));
-                s = [s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                s = [s stringByTrimmingCharactersInSet:[UMObject whitespaceAndNewlineCharacterSet]];
                 [row addObject:s];
             }
         }
@@ -185,7 +185,7 @@
 #ifdef PGSQL_DEBUG
     NSLog(@"SQL: %@",line);
 #endif
-    line = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    line = [line stringByTrimmingCharactersInSet:[UMObject whitespaceAndNewlineCharacterSet]];
     if([line length]==0)
     {
         return YES;

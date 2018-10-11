@@ -396,7 +396,7 @@
 #ifdef MYSQL_DEBUG
         NSLog(@"SQL: %@",sql);
 #endif
-        sql = [sql stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        sql = [sql stringByTrimmingCharactersInSet:[UMObject whitespaceAndNewlineCharacterSet]];
         if([sql length]==0)
         {
             return YES;
