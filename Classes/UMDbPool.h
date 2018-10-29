@@ -75,7 +75,6 @@ typedef enum idle_status_T
     UMMutex *_poolLock;
 }
 
-//@property(strong)               UMLock          *poolLock;
 @property(readwrite,strong)    UMThroughputCounter   *tcAllQueries;
 @property(readwrite,strong)    UMThroughputCounter  *tcSelects;
 @property(readwrite,strong)    UMThroughputCounter  *tcInserts;
