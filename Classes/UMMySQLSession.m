@@ -51,7 +51,7 @@
 
 - (void)dealloc
 {
-    [logFeed info:0 withText:[NSString stringWithFormat:@"UMMySQLConnection '%@'is being deallocated\n",name]];
+    [self.logFeed info:0 withText:[NSString stringWithFormat:@"UMMySQLConnection '%@'is being deallocated\n",name]];
     name = nil;
 }
 
@@ -61,8 +61,8 @@
 	{
 		
 		logFeed = [[UMLogFeed alloc] initWithHandler:loghandler section:type subsection:@"log"];
-		[logFeed setCopyToConsole:1];
-		[logFeed setName:name];
+		[self.logFeed setCopyToConsole:1];
+		[self.logFeed setName:name];
 	}
 }
 
@@ -130,12 +130,12 @@
             mysqlServerVer =  mysql_get_server_version(connection);
             if(mysqlServerVer < 50619)
             {
-                [logFeed warning:0 withText:[NSString stringWithFormat:@"MySQL server version is  %ld which is < 5.6.15",mysqlServerVer]];
+                [self.logFeed warning:0 withText:[NSString stringWithFormat:@"MySQL server version is  %ld which is < 5.6.15",mysqlServerVer]];
             }
             mysqlClientVer = mysql_get_client_version();
             if(mysqlServerVer < 50619)
             {
-                [logFeed warning:0 withText:[NSString stringWithFormat:@"MySQL client version is  %ld which is < 5.0.15",mysqlServerVer]];
+                [self.logFeed warning:0 withText:[NSString stringWithFormat:@"MySQL client version is  %ld which is < 5.0.15",mysqlServerVer]];
             }
             
             query = "set autocommit=1";
@@ -381,7 +381,7 @@
     {
         s = [NSString stringWithFormat:@"MYSQL: State=%d",state];
     }
-    [logFeed debug:0 inSubsection:@"mysql" withText:s];
+    [self.logFeed debug:0 inSubsection:@"mysql" withText:s];
     NSLog(@"%@",s);
     return state;
 }
@@ -401,7 +401,7 @@
         {
             return YES;
         }
-        [logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"MYSQL_QUERY: *** %s***\n\n",[sql UTF8String]]];
+        [self.logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"MYSQL_QUERY: *** %s***\n\n",[sql UTF8String]]];
         
         self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithString:sql previousQuery:lastInProgress];
         
@@ -424,7 +424,7 @@
                 *count = (unsigned long long) mysql_affected_rows(connection);
             }
         }
-        [logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"STATE: %d\n\n",state]];
+        [self.logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"STATE: %d\n\n",state]];
         
         if(state != 0)
         {
@@ -439,7 +439,7 @@
             else
             {
 #if (ULIBDB_CONFIG==Debug)
-                [logFeed majorError:0 withText:[NSString stringWithFormat:@"query failed, sql = \"%@\", error=%s",sql,mysql_error(connection)]];
+                [self.logFeed majorError:0 withText:[NSString stringWithFormat:@"query failed, sql = \"%@\", error=%s",sql,mysql_error(connection)]];
 #endif
                 ;
             }
@@ -447,11 +447,11 @@
 #ifdef MYSQL_DEBUG
         if(success)
         {
-            [logFeed debug:0 inSubsection:@"mysql" withText:@"==SUCCESS=="];
+            [self.logFeed debug:0 inSubsection:@"mysql" withText:@"==SUCCESS=="];
         }
         else
         {
-            [logFeed debug:0 inSubsection:@"mysql" withText:@"==FAILURE=="];
+            [self.logFeed debug:0 inSubsection:@"mysql" withText:@"==FAILURE=="];
         }
 #endif
         return success;
@@ -493,7 +493,7 @@
             if(failPermission)
             {
 #if (ULIBDB_CONFIG==Debug)
-                [logFeed minorError:0 withText:[NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)]]
+                [self.logFeed minorError:0 withText:[NSString stringWithFormat:@"query failed, sql = %s, error=%s",[sql UTF8String],mysql_error(connection)]]
 #endif
                 ;
             }
@@ -579,7 +579,7 @@
             [lastInProgress completed];
             if (state)
             {
-                [logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"mysql_error [%s] while executing ping",mysql_error(connection)]];
+                [self.logFeed debug:0 inSubsection:@"mysql" withText:[NSString stringWithFormat:@"mysql_error [%s] while executing ping",mysql_error(connection)]];
                 return NO;
             }
         }

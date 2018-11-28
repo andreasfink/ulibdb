@@ -327,7 +327,7 @@ void umdbpool_null_session_returned(void)
     @autoreleasepool
     {
         NSString *msg = [NSString stringWithFormat:@"starting idle task for database pool %@", poolName];
-        [logFeed info:0 inSubsection:@"database" withText:msg];
+        [self.logFeed info:0 inSubsection:@"database" withText:msg];
         idleTaskStatus = idleStatus_running;
         
         while(idleTaskStatus==idleStatus_running)
@@ -339,7 +339,7 @@ void umdbpool_null_session_returned(void)
             }
         }
         msg = [NSString stringWithFormat:@"terminating idle task for database pool %@", poolName];
-        [logFeed info:0 inSubsection:@"database" withText:msg];
+        [self.logFeed info:0 inSubsection:@"database" withText:msg];
         idleTaskStatus = idleStatus_stopped;
     }
 }

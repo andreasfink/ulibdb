@@ -101,7 +101,7 @@
 
 - (void)dealloc
 {
-    [logFeed info:0 withText:[NSString stringWithFormat:@"UMDbFileSession '%@'is being deallocated\n",name]];
+    [self.logFeed info:0 withText:[NSString stringWithFormat:@"UMDbFileSession '%@'is being deallocated\n",name]];
     
     name = nil;
 }
@@ -111,8 +111,8 @@
 	if( loghandler != handler)
 	{
 		logFeed = [[UMLogFeed alloc] initWithHandler:loghandler section:@"file" subsection:@"log"];
-		[logFeed setCopyToConsole:1];
-		[logFeed setName:name];
+		[self.logFeed setCopyToConsole:1];
+		[self.logFeed setName:name];
 	}
 }
 

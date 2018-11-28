@@ -73,7 +73,7 @@
 
 - (void)dealloc
 {
-    [logFeed info:0 withText:[NSString stringWithFormat:@"UMMySQLConnection '%@'is being deallocated\n",name]];
+    [self.logFeed info:0 withText:[NSString stringWithFormat:@"UMMySQLConnection '%@'is being deallocated\n",name]];
     
     name = nil;
 }
@@ -85,7 +85,7 @@
     if(!connected)
     {
         NSMutableString *reason = [NSMutableString stringWithString:@"Cannot connect to redis server"];
-        [logFeed majorError:0 inSubsection:@"redis" withText:reason];
+        [self.logFeed majorError:0 inSubsection:@"redis" withText:reason];
         return NO;
     }
     
@@ -99,7 +99,7 @@
     if(!connected)
     {
         NSMutableString *reason = [NSMutableString stringWithString:@"Cannot reconnect to redis server"];
-        [logFeed majorError:0 inSubsection:@"redis" withText:reason];
+        [self.logFeed majorError:0 inSubsection:@"redis" withText:reason];
         return NO;
     }
     
@@ -591,7 +591,7 @@
             if (failPermission)
             {
                 success = NO;
-                [logFeed majorError:0 inSubsection:@"redis" withText:reply];
+                [self.logFeed majorError:0 inSubsection:@"redis" withText:reply];
             }
             else
             {
@@ -613,11 +613,11 @@
 #ifdef REDIS_DEBUG
     if(success)
     {
-        [logFeed debug:0 inSubsection:@"redis" withText:@"==SUCCESS=="];
+        [self.logFeed debug:0 inSubsection:@"redis" withText:@"==SUCCESS=="];
     }
     else
     {
-        [logFeed debug:0 inSubsection:@"redis" withText:@"==FAILURE=="];
+        [self.logFeed debug:0 inSubsection:@"redis" withText:@"==FAILURE=="];
     }
 #endif
     return success;
@@ -672,7 +672,7 @@
                 }
                 
                 NSString *msg = [reply statusString];
-                [logFeed majorError:0 inSubsection:@"redis" withText:msg];
+                [self.logFeed majorError:0 inSubsection:@"redis" withText:msg];
                 return nil;
             }
             else
@@ -794,7 +794,7 @@
             }
             
             NSString *msg = [reply statusString];
-            [logFeed majorError:0 inSubsection:@"redis" withText:msg];
+            [self.logFeed majorError:0 inSubsection:@"redis" withText:msg];
             return nil;
         }
     }
@@ -848,7 +848,7 @@
             }
             
             NSString *msg = [reply statusString];
-            [logFeed majorError:0 inSubsection:@"redis" withText:msg];
+            [self.logFeed majorError:0 inSubsection:@"redis" withText:msg];
             return success;
         }
     }
