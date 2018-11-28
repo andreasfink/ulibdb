@@ -60,7 +60,7 @@
 	if( loghandler != handler)
 	{
 		
-		logFeed = [[UMLogFeed alloc] initWithHandler:loghandler section:type subsection:@"log"];
+		self.logFeed = [[UMLogFeed alloc] initWithHandler:loghandler section:type subsection:@"log"];
 		[self.logFeed setCopyToConsole:1];
 		[self.logFeed setName:name];
 	}
