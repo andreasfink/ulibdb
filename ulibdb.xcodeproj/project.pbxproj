@@ -23,6 +23,7 @@
 		A673535B1DE3B3E100161EAD /* ulibdb_config.h in Headers */ = {isa = PBXBuildFile; fileRef = A67353591DE3B3E100161EAD /* ulibdb_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E131934BD440090FC94 /* UMMySQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E141934BD660090FC94 /* UMPgSQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A692C0D6220458AF00199D62 /* ulibdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A692C0D5220458AF00199D62 /* ulibdb.framework */; };
 		A696867C1921951000217100 /* UMDbTableDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867A1921951000217100 /* UMDbTableDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A696867D1921951000217100 /* UMDbTableDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = A696867B1921951000217100 /* UMDbTableDefinition.m */; };
 		A69686801921953400217100 /* UMDbFieldDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867E1921953400217100 /* UMDbFieldDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,6 +75,7 @@
 		A67353591DE3B3E100161EAD /* ulibdb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_config.h; sourceTree = "<group>"; };
 		A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulibdb_config.h.in; sourceTree = "<group>"; };
 		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = /Library/Frameworks/ulib.framework; sourceTree = "<absolute>"; };
+		A692C0D5220458AF00199D62 /* ulibdb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibdb.framework; path = ../../../../../Library/Frameworks/ulibdb.framework; sourceTree = "<group>"; };
 		A696867A1921951000217100 /* UMDbTableDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbTableDefinition.h; sourceTree = "<group>"; };
 		A696867B1921951000217100 /* UMDbTableDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbTableDefinition.m; sourceTree = "<group>"; };
 		A696867E1921953400217100 /* UMDbFieldDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinition.h; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			files = (
 				A65536C81AC4613F00FB1428 /* libmysqlclient.18.dylib in Frameworks */,
 				2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */,
+				A692C0D6220458AF00199D62 /* ulibdb.framework in Frameworks */,
 				A6D8AD64149AC8A20029E9CF /* Foundation.framework in Frameworks */,
 				A65536CA1AC4615200FB1428 /* libpq.5.5.dylib in Frameworks */,
 			);
@@ -168,6 +171,7 @@
 		A6D8AB06149A769B0029E9CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A692C0D5220458AF00199D62 /* ulibdb.framework */,
 				A6793DCA1934B08F0090FC94 /* ulib.framework */,
 				A6D8AB0C149A769B0029E9CF /* Foundation.framework */,
 				A6D8AB1D149A769B0029E9CF /* SenTestingKit.framework */,
