@@ -13,6 +13,8 @@
 #import "UMDbRedisSession.h"
 #import "UMDbFileSession.h"
 
+#include <strings.h>
+
 @implementation UMDbQuery
 
 static NSMutableDictionary *cachedQueries = NULL;

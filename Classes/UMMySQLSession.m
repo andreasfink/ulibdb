@@ -179,10 +179,12 @@
 
 - (int)errorCheck:(int) state forSql:(NSString *)sql;
 {
+#if defined(CR_ERROR_FIRST)
 	if(state < CR_ERROR_FIRST)
     {
         return state;
     }
+#endif
 
     NSString *s = NULL;
     switch(state)
@@ -250,45 +252,72 @@
         case CR_NET_PACKET_TOO_LARGE:
             s = @"CR_NET_PACKET_TOO_LARGE";
             break;
+
+#if defined(CR_EMBEDDED_CONNECTION)
         case CR_EMBEDDED_CONNECTION:
             s = @"CR_EMBEDDED_CONNECTION";
             break;
+#endif
+
+#if defined(CR_PROBE_SLAVE_STATUS)
         case CR_PROBE_SLAVE_STATUS:
             s = @"CR_PROBE_SLAVE_STATUS";
             break;
+#endif
+
+#if defined(CR_PROBE_SLAVE_HOSTS)
         case CR_PROBE_SLAVE_HOSTS:
             s = @"CR_PROBE_SLAVE_HOSTS";
             break;
+#endif
+
+#if defined(CR_PROBE_SLAVE_CONNECT)
         case CR_PROBE_SLAVE_CONNECT:
             s = @"CR_PROBE_SLAVE_CONNECT";
             break;
+#endif
+
+#if defined(CR_PROBE_MASTER_CONNECT)
         case CR_PROBE_MASTER_CONNECT:
             s = @"CR_PROBE_MASTER_CONNECT";
             break;
+#endif
+
         case CR_SSL_CONNECTION_ERROR:
             s = @"CR_SSL_CONNECTION_ERROR";
             break;
         case CR_MALFORMED_PACKET:
             s = @"CR_MALFORMED_PACKET";
             break;
+#if defined(CR_WRONG_LICENSE)
         case CR_WRONG_LICENSE:
             s = @"CR_WRONG_LICENSE";
             break;
+#endif
+#if defined(CR_NULL_POINTER)
         case CR_NULL_POINTER:
             s = @"CR_NULL_POINTER";
             break;
+#endif
+
         case CR_NO_PREPARE_STMT:
             s = @"CR_NO_PREPARE_STMT";
             break;
         case CR_PARAMS_NOT_BOUND:
             s = @"CR_PARAMS_NOT_BOUND";
             break;
+#if defined(CR_DATA_TRUNCATED)
         case CR_DATA_TRUNCATED:
             s = @"CR_DATA_TRUNCATED";
             break;
+#endif
+
+#if defined(CR_NO_PARAMETERS_EXISTS)
         case CR_NO_PARAMETERS_EXISTS:
             s = @"CR_NO_PARAMETERS_EXISTS";
             break;
+#endif
+
         case CR_INVALID_PARAMETER_NO:
             s = @"CR_INVALID_PARAMETER_NO";
             break;
@@ -301,33 +330,61 @@
         case CR_SHARED_MEMORY_CONNECTION:
             s = @"CR_SHARED_MEMORY_CONNECTION";
             break;
+
+#if defined(CR_SHARED_MEMORY_CONNECT_REQUEST_ERROR)
         case CR_SHARED_MEMORY_CONNECT_REQUEST_ERROR:
             s = @"CR_SHARED_MEMORY_CONNECT_REQUEST_ERROR";
             break;
+#endif
+
+#if defined(CR_SHARED_MEMORY_CONNECT_ANSWER_ERROR)
         case CR_SHARED_MEMORY_CONNECT_ANSWER_ERROR:
             s = @"CR_SHARED_MEMORY_CONNECT_ANSWER_ERROR";
             break;
+#endif
+
+#if defined(CR_SHARED_MEMORY_CONNECT_FILE_MAP_ERROR)
         case CR_SHARED_MEMORY_CONNECT_FILE_MAP_ERROR:
             s = @"CR_SHARED_MEMORY_CONNECT_FILE_MAP_ERROR";
             break;
+#endif
+
+#if defined(CR_SHARED_MEMORY_CONNECT_MAP_ERROR)
         case CR_SHARED_MEMORY_CONNECT_MAP_ERROR:
             s = @"CR_SHARED_MEMORY_CONNECT_MAP_ERROR";
             break;
+#endif
+
+#if defined(CR_SHARED_MEMORY_FILE_MAP_ERROR)
         case CR_SHARED_MEMORY_FILE_MAP_ERROR:
             s = @"CR_SHARED_MEMORY_FILE_MAP_ERROR";
             break;
+#endif
+
+#if defined(CR_SHARED_MEMORY_MAP_ERROR)
         case CR_SHARED_MEMORY_MAP_ERROR:
             s = @"CR_SHARED_MEMORY_MAP_ERROR";
             break;
+#endif
+
+#if defined(CR_SHARED_MEMORY_EVENT_ERROR)
         case CR_SHARED_MEMORY_EVENT_ERROR:
             s = @"CR_SHARED_MEMORY_EVENT_ERROR";
             break;
+#endif
+
+#if defined(CR_SHARED_MEMORY_CONNECT_ABANDONED_ERROR)
         case CR_SHARED_MEMORY_CONNECT_ABANDONED_ERROR:
             s = @"CR_SHARED_MEMORY_CONNECT_ABANDONED_ERROR";
             break;
+#endif
+
+#if defined(CR_SHARED_MEMORY_CONNECT_SET_ERROR)
         case CR_SHARED_MEMORY_CONNECT_SET_ERROR:
             s = @"CR_SHARED_MEMORY_CONNECT_SET_ERROR";
             break;
+#endif
+
         case CR_CONN_UNKNOW_PROTOCOL:
             s = @"CR_CONN_UNKNOW_PROTOCOL";
             break;
