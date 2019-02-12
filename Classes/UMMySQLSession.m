@@ -385,27 +385,37 @@
             break;
 #endif
 
+#if defined(CR_CONN_UNKNOW_PROTOCOL)
         case CR_CONN_UNKNOW_PROTOCOL:
             s = @"CR_CONN_UNKNOW_PROTOCOL";
             break;
+#endif
+#if defined(CR_INVALID_CONN_HANDLE)
         case CR_INVALID_CONN_HANDLE:
             s = @"CR_INVALID_CONN_HANDLE";
             break;
+#endif
+
         case CR_SECURE_AUTH:
             s = @"CR_SECURE_AUTH";
             break;
+#if defined(CR_FETCH_CANCELED)
         case CR_FETCH_CANCELED:
             s = @"CR_FETCH_CANCELED";
             break;
+#endif
+
         case CR_NO_DATA:
             s = @"CR_NO_DATA";
             break;
         case CR_NO_STMT_METADATA:
             s = @"CR_NO_STMT_METADATA";
             break;
+#if defined(CR_NO_RESULT_SET)
         case CR_NO_RESULT_SET:
             s = @"CR_NO_RESULT_SET";
             break;
+#endif
         case CR_NOT_IMPLEMENTED:
             s = @"CR_NOT_IMPLEMENTED";
             break;
