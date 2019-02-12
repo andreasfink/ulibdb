@@ -2031,7 +2031,7 @@ case "$host" in
     SHARED_FLAGS="-shared"
     ;;
   *-freebsd*)
-	CFLAGS="$CFLAGS -std=c99 -fPIC -DFREEBSD -D_XOPEN_SOURCE=700 -D_POSIX_SOURCE"
+	CFLAGS="$CFLAGS -std=c99 -fPIC -DFREEBSD"
 	FREEBSD_VERSION=`uname -r`
 	CFLAGS="$CFLAGS  -Wno-trigraphs  -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties"
 	CFLAGS="$CFLAGS -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label"
