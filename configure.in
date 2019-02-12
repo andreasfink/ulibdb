@@ -234,6 +234,7 @@ AC_SUBST(REVISION)
 AC_SUBST(SHARED_LIBRARY_EXTENSION)
 AC_CONFIG_FILES([Makefile.osx])
 AC_CONFIG_FILES([Makefile.linux])
+AC_CONFIG_FILES([Makefile.freebsd])
 AC_CONFIG_FILES([ulibdb.pc])
 AC_OUTPUT
 case "$host" in
