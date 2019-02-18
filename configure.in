@@ -90,17 +90,18 @@ case "$host" in
 	CFLAGS="${CFLAGS} -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector"
 	CFLAGS="${CFLAGS} -Wno-deprecated-implementations -Wprotocol -Wdeprecated-declarations -Wno-sign-conversion "
 	CFLAGS="${CFLAGS} -fobjc-arc"
+	CFLAGS="${CFLAGS} -fobjc-arc"
 	if [[ -x /usr/local/bin/gnustep-config ]] 
 	then
-		CFLAGS="$CFLAGS `/usr/local/bin/gnustep-config --objc-flags | sed 's/-fobjc-exceptions/ /g'`"
-	    LDFLAGS="$LDFLAGS `/usr/local/bin/gnustep-config --base-libs --objc-libs`"
-    else
-		CFLAGS="$CFLAGS `/usr/bin/gnustep-config --objc-flags | sed 's/-fobjc-exceptions/ /g'`"
-	    LDFLAGS="$LDFLAGS `/usr/bin/gnustep-config--base-libs --objc-libs`"
-    fi
-	CFLAGS="$CFLAGS `pkg-config  --cflags $DEPENDENT_PKGCONFIGS`"
-	LDFLAGS="$LDFLAGS `pkg-config --libs $DEPENDENT_PKGCONFIGS`"
-    SHARED_LIBRARY_EXTENSION=so
+		GNUSTEP_CONFIG=/usr/local/bin/gnustep-config
+	else
+		GNUSTEP_CONFIG=/usr/bin/gnustep-config
+	fi
+	CFLAGS="$CFLAGS `$GNUSTEP_CONFIG --objc-flags`"
+	LDFLAGS="$LDFLAGS `/usr/local/bin/gnustep-config --base-libs --objc-libs`"
+	CFLAGS="$CFLAGS `pkg-config  --cflags ${DEPENDENT_PKGCONFIGS}`"
+	LDFLAGS="$LDFLAGS `pkg-config --libs ${DEPENDENT_PKGCONFIGS}`"
+	SHARED_LIBRARY_EXTENSION=so
     SHARED_FLAGS="-shared"
     ;;
   *-freebsd*)
