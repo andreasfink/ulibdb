@@ -8,6 +8,10 @@
 #import "ulib/ulib.h"
 #import "ulibdb_defines.h"
 #import "UMDbSession.h"
+#import "UMDbPool.h"
+#import "UMDbResult.h"
+#import "UMDbQuery.h"
+#import "UMDbDriverType.h"
 
 
 @implementation UMDbSession

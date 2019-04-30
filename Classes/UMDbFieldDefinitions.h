@@ -8,7 +8,8 @@
 
 #import <ulib/ulib.h>
 
-
+#ifndef UMDbFieldDefinitions_H
+#define UMDbFieldDefinitions_H  1
 /* The use of dbFieldDef structure is DEPRECIATED. Use the new UMDbFieldDefinition / UMDbTableDefinition instead */
 
 typedef enum db_fieldIndex
@@ -47,3 +48,4 @@ typedef struct dbFieldDef
 } dbFieldDef;
 
 
+#endif

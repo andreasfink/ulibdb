@@ -11,6 +11,9 @@
 #import "UMDbStorageType.h"
 #import "UMDbFieldDefinitions.h"
 #import "UMDbFileSession.h"
+#import "UMDbQueryType.h"
+#import "UMDbPool.h"
+#import "UMDbQuery.h"
 
 @implementation UMDbRedisSession
 

@@ -5,11 +5,7 @@
 //  Created by Andreas Fink on 24.10.11.
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
-#import "ulib/ulib.h"
-#import "UMDbPool.h"
-#import "UMDbResult.h"
-#import "UMDbQuery.h"
-#import "UMDbDriverType.h"
+#import <ulib/ulib.h>
 
 
 #define DEFAULT_MIN_DBSESSIONS      1
@@ -20,6 +16,10 @@ typedef enum UMDbSessionStatus
     UMDBSESSION_STATUS_DISCONNECTED = 0,
     UMDBSESSION_STATUS_CONNECTED    = 2,
 } UMDbSessionStatus;
+
+@class UMDbPool;
+@class UMDbResult;
+@class UMDbQuery;
 
 @interface UMDbSession : UMObject
 {

@@ -17,6 +17,7 @@
 #include <mysql/mysqld_error.h>
 #import "UMDbResult.h"
 #import "UMDbMySqlInProgress.h"
+#import "UMDbQuery.h"
 
 //#define MYSQL_DEBUG 1
 @implementation UMMySQLSession
@@ -103,7 +104,7 @@
             sessionStatus = UMDBSESSION_STATUS_CONNECTED;
             
             const char *query = "show variables like 'version'";
-            self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:query previousQuery:lastInProgress];
+            self.lastInProgress = [[UMDbMySqlInProgress alloc] initWithCString:query previousQuery:lastInProgress];
             state = mysql_query(connection,query);
             [lastInProgress completed];
             
