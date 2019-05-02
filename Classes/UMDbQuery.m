@@ -1141,7 +1141,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             else if([param isKindOfClass: [NSDate class]])
             {
                 NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSSSSS"];
                 NSString *s = [dateFormatter stringFromDate:param];
 
                 NSString *escaped;
