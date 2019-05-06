@@ -14,6 +14,7 @@
 #import "UMDbQueryType.h"
 #import "UMDbPool.h"
 #import "UMDbQuery.h"
+#import "UMDbResult.h"
 
 @implementation UMDbRedisSession
 

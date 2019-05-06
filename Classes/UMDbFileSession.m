@@ -8,6 +8,7 @@
 
 #import "UMDbFileSession.h"
 #import "UMDbQuery.h"
+#import "UMDbResult.h"
 
 @implementation UMDbFileSession
 

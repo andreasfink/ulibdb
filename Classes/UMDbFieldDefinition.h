@@ -7,7 +7,7 @@
 //
 
 #import <ulib/ulib.h>
-#include <ulibdb/ulibdb.h>
+#import "UMDbFieldDefinitions.h"
 
 typedef enum UMDbFieldType
 {
