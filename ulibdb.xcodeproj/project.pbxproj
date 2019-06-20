@@ -23,7 +23,6 @@
 		A673535B1DE3B3E100161EAD /* ulibdb_config.h in Headers */ = {isa = PBXBuildFile; fileRef = A67353591DE3B3E100161EAD /* ulibdb_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E131934BD440090FC94 /* UMMySQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E141934BD660090FC94 /* UMPgSQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A692C0D6220458AF00199D62 /* ulibdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A692C0D5220458AF00199D62 /* ulibdb.framework */; };
 		A696867C1921951000217100 /* UMDbTableDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867A1921951000217100 /* UMDbTableDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A696867D1921951000217100 /* UMDbTableDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = A696867B1921951000217100 /* UMDbTableDefinition.m */; };
 		A69686801921953400217100 /* UMDbFieldDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867E1921953400217100 /* UMDbFieldDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,7 +50,6 @@
 		A6D8AD43149AC77E0029E9CF /* UMDbResult.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC29149A95670029E9CF /* UMDbResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6D8AD44149AC77E0029E9CF /* UMDbSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2B149A95670029E9CF /* UMDbSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6D8AD47149AC77E0029E9CF /* UMSqLiteSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC31149A95670029E9CF /* UMSqLiteSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6D8AD64149AC8A20029E9CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D8AB0C149A769B0029E9CF /* Foundation.framework */; };
 		A6DB3E72191E41220090FC94 /* ulibdb.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DB3E71191E41220090FC94 /* ulibdb.m */; };
 		A6DFF69D1952B729008D0983 /* UMDbMySqlInProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DFF69E1952B729008D0983 /* UMDbMySqlInProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */; };
@@ -74,15 +72,12 @@
 		A66538ED1950FE6700C10E07 /* UMDbFileSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFileSession.m; sourceTree = "<group>"; };
 		A67353591DE3B3E100161EAD /* ulibdb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_config.h; sourceTree = "<group>"; };
 		A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulibdb_config.h.in; sourceTree = "<group>"; };
-		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = /Library/Frameworks/ulib.framework; sourceTree = "<absolute>"; };
-		A692C0D5220458AF00199D62 /* ulibdb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibdb.framework; path = ../../../../../Library/Frameworks/ulibdb.framework; sourceTree = "<group>"; };
+		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
 		A696867A1921951000217100 /* UMDbTableDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbTableDefinition.h; sourceTree = "<group>"; };
 		A696867B1921951000217100 /* UMDbTableDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbTableDefinition.m; sourceTree = "<group>"; };
 		A696867E1921953400217100 /* UMDbFieldDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinition.h; sourceTree = "<group>"; };
 		A696867F1921953400217100 /* UMDbFieldDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFieldDefinition.m; sourceTree = "<group>"; };
 		A6A143F0149B4EA400B007D0 /* ulibdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb.h; sourceTree = "<group>"; };
-		A6D8AB0C149A769B0029E9CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A6D8AB1D149A769B0029E9CF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbDriverType.h; sourceTree = "<group>"; };
 		A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbDriverType.m; sourceTree = "<group>"; };
 		A6D8AC1F149A95670029E9CF /* UMDbPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbPool.h; sourceTree = "<group>"; };
@@ -126,8 +121,6 @@
 			files = (
 				A65536C81AC4613F00FB1428 /* libmysqlclient.18.dylib in Frameworks */,
 				2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */,
-				A692C0D6220458AF00199D62 /* ulibdb.framework in Frameworks */,
-				A6D8AD64149AC8A20029E9CF /* Foundation.framework in Frameworks */,
 				A65536CA1AC4615200FB1428 /* libpq.5.5.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,10 +164,7 @@
 		A6D8AB06149A769B0029E9CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A692C0D5220458AF00199D62 /* ulibdb.framework */,
 				A6793DCA1934B08F0090FC94 /* ulib.framework */,
-				A6D8AB0C149A769B0029E9CF /* Foundation.framework */,
-				A6D8AB1D149A769B0029E9CF /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -361,7 +351,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -f version.h ]\nthen\n  if [ VERSION -nt version.h ]\n  then\n      ./configure\n   fi\nelse\n   ./configure\nfi\n";
+			shellScript = "if [ -f version.h ]\nthen\n  if [ VERSION -nt version.h ]\n  then\n      ./configure\n   fi\nelse\n   ./configure\nfi\nmkdir -p \"/Library/Application Support/FinkTelecomServices\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -440,6 +430,7 @@
 				DYLIB_CURRENT_VERSION = 1.5.1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -463,7 +454,7 @@
 					/usr/local/postgresclient/include,
 					/usr/local/mysqlclient/include,
 				);
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mysqlclient/lib/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -506,6 +497,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1.5.1;
 				DYLIB_CURRENT_VERSION = 1.5.1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -526,7 +518,7 @@
 					/usr/local/postgresclient/include,
 					/usr/local/mysqlclient/include,
 				);
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mysqlclient/lib/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -543,10 +535,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Frameworks",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
@@ -573,10 +561,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Frameworks",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
