@@ -396,10 +396,12 @@
             s = @"CR_INVALID_CONN_HANDLE";
             break;
 #endif
-
+#if defined(CR_SECURE_AUTH)
         case CR_SECURE_AUTH:
             s = @"CR_SECURE_AUTH";
             break;
+#endif
+
 #if defined(CR_FETCH_CANCELED)
         case CR_FETCH_CANCELED:
             s = @"CR_FETCH_CANCELED";
