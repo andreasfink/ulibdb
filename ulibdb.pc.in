@@ -5,12 +5,12 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
-Cflags: -I${includedir} -I/usr/include/postgresql -I/usr/include/mysql
-Libs: -L${libdir} -l:libulibdb.so.@MAJORVER@.@MINORVER@ -lmysqlclient_r -l:libpq.so.5 -ldl -lstdc++
+Cflags: -I${includedir} @MYSQL_INCLUDE@ @POSTGRES_INCLUDE@
+Libs: -L${libdir} -l:libulibdb.so.@MAJORVER@.@MINORVER@ @UBUNTU_LIBS@
 
 Name: ulibdb
 Description: universal database library
 Version: @VERSION@
-Requires: ulib 
+Requires: ulib
 
 
