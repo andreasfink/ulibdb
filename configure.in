@@ -94,7 +94,13 @@ case "$host" in
 		UBUNTU_LIBS="-L/usr/lib/x86_64-linux-gnu/mit-krb5 -lgssapi_krb5"
 		CFLAGS="$CFLAGS -D_DEFAULT_SOURCE"
 	fi
-	
+
+	if [[ -f /usr/bin/pg_config ]]
+	then 
+			# libpq wants some kerberos stuff, even static version but pg_config puts out rubbish not even on system */	
+			USER_LIBS=`/usr/bin/pg_config --libs | sed 's/-lpam//g' | sed 's/-lselinux//g'`
+
+	fi
 	CFLAGS="${CFLAGS} -Wno-trigraphs  -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties"
 	CFLAGS="${CFLAGS} -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label"
 	CFLAGS="${CFLAGS} -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow"
@@ -258,7 +264,7 @@ AC_CONFIG_SECTION([Generating output files])
 dnl Final Output
 AC_SUBST(PROJECT_NAME)
 AC_SUBST(HAVE_MYSQL)
-AC_SUBST(HAVE_PGSQL)A
+AC_SUBST(HAVE_PGSQL)
 AC_SUBST(MYSQL_INCLUDE)
 AC_SUBST(MYSQL_LIBS)
 AC_SUBST(POSTGRES_INCLUDE)
@@ -270,6 +276,7 @@ AC_SUBST(REVISION)
 AC_SUBST(STATIC_LIBS)
 AC_SUBST(SHARED_LIBRARY_EXTENSION)
 AC_SUBST(UBUNTU_LIBS)
+AC_SUBST(USER_LIBS)
 AC_CONFIG_FILES([Makefile.osx])
 AC_CONFIG_FILES([Makefile.linux])
 AC_CONFIG_FILES([Makefile.freebsd])

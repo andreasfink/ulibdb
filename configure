@@ -586,6 +586,7 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+USER_LIBS
 UBUNTU_LIBS
 SHARED_LIBRARY_EXTENSION
 STATIC_LIBS
@@ -2040,6 +2041,12 @@ case "$host" in
 		CFLAGS="$CFLAGS -D_DEFAULT_SOURCE"
 	fi
 
+	if [ -f /usr/bin/pg_config ]
+	then
+			# libpq wants some kerberos stuff, even static version but pg_config puts out rubbish not even on system */
+			USER_LIBS=`/usr/bin/pg_config --libs | sed 's/-lpam//g' | sed 's/-lselinux//g'`
+
+	fi
 	CFLAGS="${CFLAGS} -Wno-trigraphs  -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties"
 	CFLAGS="${CFLAGS} -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label"
 	CFLAGS="${CFLAGS} -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow"
@@ -3283,7 +3290,8 @@ fi
 ./make_version
 
 
-A
+
+
 
 
 

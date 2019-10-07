@@ -6,7 +6,7 @@ libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
 Cflags: -I${includedir} @MYSQL_INCLUDE@ @POSTGRES_INCLUDE@
-Libs: -L${libdir} -l:libulibdb.so.@MAJORVER@.@MINORVER@ @UBUNTU_LIBS@
+Libs: -L${libdir} -l:libulibdb.so.@MAJORVER@.@MINORVER@ @UBUNTU_LIBS@  @USER_LIBS@
 
 Name: ulibdb
 Description: universal database library
