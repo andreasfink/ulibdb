@@ -42,7 +42,6 @@
     BOOL autoCreate;
     UMSynchronizedDictionary *pools;
     UMDbPool *pool;
-    
 }
 
 @property(readwrite,strong) NSString *tableName;
