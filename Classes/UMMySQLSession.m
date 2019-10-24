@@ -71,7 +71,6 @@
 {
     @autoreleasepool
     {
-        
         MYSQL_RES	*res;
         MYSQL_ROW	row;
         int     state;
@@ -100,7 +99,6 @@
                 @throw [NSException exceptionWithName:@"NSDestinationInvalidException" reason:reason userInfo:nil];
                 return NO;
             }
-            
             sessionStatus = UMDBSESSION_STATUS_CONNECTED;
             
             const char *query = "show variables like 'version'";
