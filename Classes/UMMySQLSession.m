@@ -444,13 +444,9 @@
     if(s)
     {
         s = [NSString stringWithFormat:@"MYSQL: %@\n",s];
+        [self.logFeed debug:0 inSubsection:@"mysql" withText:s];
+        NSLog(@"%@",s);
     }
-    else
-    {
-        s = [NSString stringWithFormat:@"MYSQL: State=%d",state];
-    }
-    [self.logFeed debug:0 inSubsection:@"mysql" withText:s];
-    NSLog(@"%@",s);
     return state;
 }
 
