@@ -1849,7 +1849,7 @@ MAJORVER=`echo $VERSION | cut -f1 -d.`
 MINORVER=`echo $VERSION | cut -f2 -d.`
 REVISION=`echo $VERSION | cut -f3 -d.`
 CONFIG_HEADER=Classes/ulibdb_config.h
-DEPENDENT_PKGCONFIGS="ulib"
+DEPENDENT_PKGCONFIGS="ulib libmariadb libpq"
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export PKG_CONFIG_PATH
 
@@ -2041,12 +2041,12 @@ case "$host" in
 		CFLAGS="$CFLAGS -D_DEFAULT_SOURCE"
 	fi
 
-	if [ -f /usr/bin/pg_config ]
-	then
-			# libpq wants some kerberos stuff, even static version but pg_config puts out rubbish not even on system */
-			USER_LIBS=`/usr/bin/pg_config --libs | sed 's/-lpam//g' | sed 's/-lselinux//g'`
-
-	fi
+	#if [[ -f /usr/bin/pg_config ]]
+	#then
+	#		# libpq wants some kerberos stuff, even static version but pg_config puts out rubbish not even on system */
+    #			USER_LIBS=`/usr/bin/pg_config --libs ·# | sed 's/-lpam//g' | sed 's/-lselinux//g'`
+	#
+	#fi
 	CFLAGS="${CFLAGS} -Wno-trigraphs  -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties"
 	CFLAGS="${CFLAGS} -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label"
 	CFLAGS="${CFLAGS} -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow"
