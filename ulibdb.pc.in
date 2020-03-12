@@ -11,6 +11,6 @@ Libs: -L${libdir} -l:libulibdb.so.@MAJORVER@.@MINORVER@ @UBUNTU_LIBS@  @USER_LIB
 Name: ulibdb
 Description: universal database library
 Version: @VERSION@
-Requires: ulib libmariadb libpq
+Requires: ulib mariadb libpq
 
 
