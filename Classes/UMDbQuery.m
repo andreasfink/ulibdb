@@ -1899,7 +1899,7 @@ static NSMutableDictionary *cachedQueries = NULL;
         {
             quoteChar='\"';
         }
-        [sqlStr appendFormat:@"CREATE TABLE %c%@%c IF NOT EXISTS (\n",quoteChar,tn,quoteChar];
+        [sqlStr appendFormat:@"CREATE TABLE IF NOT EXISTS %c%@%c (\n",quoteChar,tn,quoteChar];
         
         i=0;
         f = &fieldDef[i];

@@ -166,7 +166,6 @@
     return result;
 }
 
-
 - (BOOL)cachedQueryWithNoResult:(UMDbQuery *)query parameters:(NSArray *)array allowFail:(BOOL)failPermission primaryKeyValue:(id)primaryKeyValue
 {
     return [self cachedQueryWithNoResult:query parameters:array allowFail:failPermission primaryKeyValue:primaryKeyValue affectedRows:NULL];
