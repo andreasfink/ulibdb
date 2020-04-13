@@ -503,6 +503,10 @@ static NSMutableDictionary *cachedQueries = NULL;
         }
         if((params.count % fields.count) != 0)
         {
+            NSLog(@"Fields Ccount: %d",(int)fields.count);
+            NSLog(@"Params Count: %d",(int)params.count);
+            NSLog(@"Fields: %@",fields);
+            NSLog(@"Params: %@",params);
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting count of parameters is not a multiple of nubmer of fields" userInfo:nil];
         }
         NSUInteger record_count = params.count / fields.count ;
