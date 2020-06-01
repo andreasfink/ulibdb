@@ -115,7 +115,6 @@ typedef enum idle_status_T
 @property(readwrite,assign)     UMDbStorageType dbStorageType;
 @property(readwrite,strong)     UMSleeper       *poolSleeper;
 
-
 - (NSUInteger)sessionsAvailableCount;
 - (NSUInteger)sessionsInUseCount;
 - (NSUInteger)sessionsDisconnectedCount;
