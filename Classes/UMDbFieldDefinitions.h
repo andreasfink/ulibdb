@@ -30,6 +30,7 @@ typedef enum db_fieldType
     DB_FIELD_TYPE_TIMESTAMP_AS_STRING,
     DB_FIELD_TYPE_NUMERIC,
     DB_FIELD_TYPE_BLOB,
+    DB_FIELD_TYPE_VARCHAR,
     DB_FIELD_TYPE_END,
 } dbFieldType;
 

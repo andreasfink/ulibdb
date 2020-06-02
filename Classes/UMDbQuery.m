@@ -1919,6 +1919,9 @@ static NSMutableDictionary *cachedQueries = NULL;
                 case DB_FIELD_TYPE_STRING:
                     [sqlStr appendFormat:@" CHAR(%d)",f->fieldSize];
                     break;
+                case DB_FIELD_TYPE_VARCHAR:
+                    [sqlStr appendFormat:@" VARCHAR(%d)",f->fieldSize];
+                    break;
                 case DB_FIELD_TYPE_SMALL_INTEGER:
                     [sqlStr appendFormat:@" SMALLINT"];
                     break;

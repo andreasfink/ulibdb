@@ -64,31 +64,25 @@
         self.pools = newPools;
         if(config!=NULL)
         {
-            NSString *enableString = config[@"enable"];
-            if(enableString.length > 0)
+            if(config[@"enable"])
             {
-                if([enableString boolValue]==NO)
+                if([config[@"enable"] boolValue]==NO)
                 {
                     return NULL;
                 }
             }
-
-            NSString *tableNameString = config[@"table-name"];
-            if(tableNameString!= NULL)
+            if(config[@"table-name"])
             {
-                self.tableName = tableNameString;
+                self.tableName = [config[@"table-name"] stringValue];
+            }
+            if(config[@"autocreate"])
+            {
+                self.autoCreate = [config[@"autocreate"] boolValue];
             }
 
-            NSString *autoCreateString = config[@"autocreate"];
-            if(autoCreateString!= NULL)
+            if(config[@"pool-name"])
             {
-                self.autoCreate = [autoCreateString boolValue];
-            }
-
-            NSString *poolNameString = config[@"pool-name"];
-            if(poolNameString!= NULL)
-            {
-                self.poolName = poolNameString;
+                self.poolName = [config[@"pool-name"] stringValue];
             }
         }
         tcAllQueries = [[UMThroughputCounter alloc]init];
@@ -212,29 +206,27 @@
 - (void)autoCreate:(dbFieldDef *)fieldDef
            session:(UMDbSession *)session
 {
-    if(autoCreate==YES)
+    @autoreleasepool
     {
-        UMAssert((self.pool != NULL),@"Pool %@ not found",poolName);
-        NSArray *sqlCommands = [UMDbQuery createSql:tableName
-                                  withDbType:[pool dbDriverType]
-                                     session:session
-                            fieldsDefinition:fieldDef];
-        
-        UMDbSession *session = [pool grabSession:FLF];
-        [session queriesWithNoResult:sqlCommands allowFail:YES];
-
-        if(pool.dbDriverType==UMDBDRIVER_MYSQL)
+        if(autoCreate==YES)
         {
-            UMMySQLSession *mySession =(UMMySQLSession *)session;
-            NSDictionary *tableDef = [mySession explainTable:tableName];
-            if(tableDef == NULL)
+            NSArray *sqlCommands = [UMDbQuery createSql:tableName
+                                             withDbType:[session.pool dbDriverType]
+                                                session:session
+                                       fieldsDefinition:fieldDef];
+            [session queriesWithNoResult:sqlCommands allowFail:YES];
+            if(pool.dbDriverType==UMDBDRIVER_MYSQL)
             {
-                NSLog(@"SQL: %@",sqlCommands);
-                NSLog(@"TableDefinition: %@",tableDef);
-                UMAssert(tableDef != NULL,@"Autocreation failed!");
+                UMMySQLSession *mySession =(UMMySQLSession *)session;
+                NSDictionary *tableDef = [mySession explainTable:tableName];
+                if(tableDef == NULL)
+                {
+                    NSLog(@"SQL: %@",sqlCommands);
+                    NSLog(@"TableDefinition: %@",tableDef);
+                    UMAssert(tableDef != NULL,@"Autocreation failed!");
+                }
             }
         }
-        [session.pool returnSession:session file:FLF];
     }
 }
 

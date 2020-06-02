@@ -138,40 +138,34 @@ void umdbpool_null_session_returned(void)
 
         if(config!=NULL)
         {
-            NSString *enableString = config[@"enable"];
-            if(enableString!= NULL)
+            if(config[@"enable"]!= NULL)
             {
-                if([enableString boolValue]==NO)
+                if([config[@"enable"] boolValue]==NO)
                 {
                     return NULL;
                 }
             }
             
-            NSString *versionString = config[@"version"];
-            if(versionString!= NULL)
+            if(config[@"version"])
             {
-                self.version = versionString;
+                self.version = [config[@"version"] stringValue];
+            }
+            if(config[@"name"])
+            {
+                self.poolName = [config[@"name"] stringValue];
             }
             
-            NSString *poolNameString = config[@"pool-name"];
-            if(poolNameString!= NULL)
+            if(config[@"host"])
             {
-                self.poolName = poolNameString;
+                self.hostName = [config[@"host"] stringValue];
             }
             
-            NSString *hostNameNameString = config[@"host"];
-            if(hostNameNameString!= NULL)
+            if(config[@"database-name"])
             {
-                self.hostName = hostNameNameString;
+                self.dbName = [config[@"database-name"] stringValue];
             }
             
-            NSString *dbNameString = config[@"database-name"];
-            if(dbNameString!= NULL)
-            {
-                self.dbName = dbNameString;
-            }
-            
-            NSString *driverTypeString = config[@"driver"];
+            NSString *driverTypeString = [config[@"driver"] stringValue];
             if([driverTypeString caseInsensitiveCompare:@"mysql"]==NSOrderedSame)
             {
                 self.dbDriverType = UMDBDRIVER_MYSQL;
@@ -197,7 +191,7 @@ void umdbpool_null_session_returned(void)
                 UMAssert(0,@"Unknown driver type %@",driverTypeString);
             }
             
-            NSString *storageTypeString = config[@"storage-type"];
+            NSString *storageTypeString = [config[@"storage-type"] stringValue];
             if([storageTypeString isEqualToString:@"json"])
             {
                 self.dbStorageType = UMDBSTORAGE_JSON;
@@ -217,12 +211,12 @@ void umdbpool_null_session_returned(void)
                 self.user = u;
             }
             
-            NSString *p = config[@"pass"];
+            NSString *p = [config[@"pass"] stringValue];
             if(p!= NULL)
             {
                 self.pass = p;
             }
-            NSString *portString = config[@"port"];
+            NSString *portString = [config[@"port"] stringValue];
             if(portString !=NULL)
             {
                 self.port = (int)[portString integerValue];
@@ -255,12 +249,12 @@ void umdbpool_null_session_returned(void)
                     self.maxSessions = (int)[n intValue];
                 }
             }
-            NSString *s = config[@"socket"];
+            NSString *s = [config[@"socket"] stringValue];
             if(s!= NULL)
             {
                 self.socket = s;
             }
-            NSString *pingString = config[@"ping-interval"];
+            NSString *pingString = [config[@"ping-interval"] stringValue];
             if([pingString length]>0)
             {
                 self.waitTimeout2 = (int)[pingString integerValue];
