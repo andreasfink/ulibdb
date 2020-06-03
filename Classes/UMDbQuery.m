@@ -1331,8 +1331,7 @@ static NSMutableDictionary *cachedQueries = NULL;
         }
         else
         {
-            NSLog(@"PANIC: INCREASE without WHERE");
-            __builtin_trap();
+            [sql appendFormat:@" WHERE `%@`=`%@`",primaryKeyName, primaryKeyValue];
         }
         return sql;
     }
