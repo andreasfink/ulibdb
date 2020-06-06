@@ -56,7 +56,7 @@
 @property(readwrite,assign) UMDbStorageType storageType;
 @property(readwrite,assign) const char      *cfile;
 @property(readwrite,assign) long            cline;
-@property(readwrite,strong) NSString        *lastSql;
+@property(readwrite,strong,atomic) NSString *lastSql;
 
 + (void)initStatics;
 
