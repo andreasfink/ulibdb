@@ -1285,7 +1285,9 @@ static NSMutableDictionary *cachedQueries = NULL;
             double increase = [params[i++]doubleValue];
             char op;
             if((increase > -0.00000001) & (increase < 0.00000001))
+            {
                 continue;
+            }
             if(increase >= 0)
             {
                 op = '+';
@@ -1331,7 +1333,7 @@ static NSMutableDictionary *cachedQueries = NULL;
         }
         else
         {
-            [sql appendFormat:@" WHERE `%@`=`%@`",primaryKeyName, primaryKeyValue];
+            [sql appendFormat:@" WHERE `%@`='%@'",primaryKeyName, primaryKeyValue];
         }
         return sql;
     }
