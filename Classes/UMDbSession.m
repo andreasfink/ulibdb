@@ -146,6 +146,7 @@
                                   session:self
                                parameters:array
                           primaryKeyValue:primaryKeyValue];
+        query.lastSql = sql;
         [pool increaseCountersForType:[query type] table:[query table]];
         long long start = [UMUtil milisecondClock];
         if(sql == NULL)
@@ -230,6 +231,7 @@
                          parameters:params
                     primaryKeyValue:primaryKeyValue];
         }
+        query.lastSql = sql;
         [pool increaseCountersForType:[query type] table:[query table]];
         long long start = [UMUtil milisecondClock];
         if(sql == NULL)

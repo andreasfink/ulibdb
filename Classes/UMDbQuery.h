@@ -38,6 +38,7 @@
     const char      *cfile;
     long            cline;
     NSString        *cacheKey;
+    NSString        *_lastSql;
 }
 
 @property(readwrite,assign) BOOL isInCache;
@@ -55,7 +56,7 @@
 @property(readwrite,assign) UMDbStorageType storageType;
 @property(readwrite,assign) const char      *cfile;
 @property(readwrite,assign) long            cline;
-
+@property(readwrite,strong) NSString        *lastSql;
 
 + (void)initStatics;
 
