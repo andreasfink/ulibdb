@@ -378,10 +378,10 @@
   
     else if ([reply isKindOfClass:[NSDictionary class]])
     {
-        long count;
         id item = nil;
-        
-        if ((count = [reply count]) == 0)
+        long count = [reply count];
+
+        if (count == 0)
         {
             return nil;
         }
