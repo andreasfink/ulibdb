@@ -77,8 +77,8 @@
         }
         switch(fdef->fieldType)
         {
-            case DB_FIELD_TYPE_STRING:
-                fieldType = UMDB_FIELD_TYPE_STRING;
+            case DB_FIELD_TYPE_VARCHAR:
+                fieldType = UMDB_FIELD_TYPE_VARCHAR;
                 break;
             case DB_FIELD_TYPE_SMALL_INTEGER:
                 fieldType = UMDB_FIELD_TYPE_SMALL_INTEGER;
@@ -181,7 +181,7 @@
     
     switch(self.fieldType)
     {
-        case UMDB_FIELD_TYPE_STRING:
+        case UMDB_FIELD_TYPE_VARCHAR:
             dict[DICTKEY_FIELD_TYPE] = @"STRING";
             break;
         case UMDB_FIELD_TYPE_SMALL_INTEGER:
@@ -273,7 +273,7 @@
     {
         if([value isEqualToString:@"STRING"])
         {
-            self.fieldType = UMDB_FIELD_TYPE_STRING;
+            self.fieldType = UMDB_FIELD_TYPE_VARCHAR;
         }
         else if([value isEqualToString:@"SMALLINT"])
         {

@@ -1969,7 +1969,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             {
                 [sqlStr appendFormat:@" DEFAULT '%@'", [NSDate zeroDateString]];
             }
-            else if(f->fieldType == DB_FIELD_TYPE_STRING)
+            else if(f->fieldType == DB_FIELD_TYPE_VARCHAR)
             {
                 [sqlStr appendString:@" DEFAULT ''"];
             }
@@ -2088,7 +2088,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             [sqlStr appendFormat:@"\t%c%@%c",quoteChar,f.fieldName,quoteChar];
             switch(f.fieldType)
             {
-                case UMDB_FIELD_TYPE_STRING:
+                case UMDB_FIELD_TYPE_VARCHAR:
                     [sqlStr appendFormat:@" CHAR(%d)",(int)f.fieldSize];
                     break;
                 case UMDB_FIELD_TYPE_SMALL_INTEGER:
@@ -2130,7 +2130,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             {
                 [sqlStr appendFormat:@" DEFAULT '%@'",[NSDate zeroDateString]];
             }
-            else if(f.fieldType == UMDB_FIELD_TYPE_STRING)
+            else if(f.fieldType == UMDB_FIELD_TYPE_VARCHAR)
             {
                 [sqlStr appendString:@" DEFAULT ''"];
             }
