@@ -543,7 +543,7 @@
 					/usr/local/mysqlclient/lib,
 					/usr/local/postgresclient/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Debug",
@@ -569,7 +569,7 @@
 					/usr/local/mysqlclient/lib,
 					/usr/local/postgresclient/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Release",
