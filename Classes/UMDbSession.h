@@ -105,4 +105,9 @@ typedef enum UMDbSessionStatus
 
 - (NSString *)inUseDescription;
 - (NSString *)sqlEscapeString:(NSString *)in;
+
+- (BOOL)startTransaction; /* returns success */
+- (BOOL)commitTransaction; /* returns success */
+- (BOOL)rollbackTransaction; /* returns success */
+
 @end

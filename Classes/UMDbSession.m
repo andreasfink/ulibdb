@@ -125,6 +125,28 @@
     return sessionStatus == UMDBSESSION_STATUS_CONNECTED;
 }
 
+- (BOOL)startTransaction /* returns success */
+{
+    unsigned long long count = 0;
+    BOOL result = [self queryWithNoResult:@"START TRANSACTION" allowFail:NO affectedRows:&count];
+    return result;
+}
+
+- (BOOL)commitTransaction /* returns success */
+{
+    unsigned long long count = 0;
+    BOOL result = [self queryWithNoResult:@"COMMIT" allowFail:NO affectedRows:&count];
+    return result;
+
+}
+
+-(BOOL)rollbackTransaction /* returns success */
+{
+    unsigned long long count = 0;
+    BOOL result = [self queryWithNoResult:@"ROLLBACK" allowFail:NO affectedRows:&count];
+    return result;
+}
+
 - (BOOL)cachedQueryWithNoResult:(UMDbQuery *)query
                      parameters:(NSArray *)array
                       allowFail:(BOOL)failPermission
