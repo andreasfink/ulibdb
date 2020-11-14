@@ -534,6 +534,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
@@ -544,6 +545,7 @@
 					/usr/local/postgresclient/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.14.0;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Debug",
@@ -560,6 +562,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
@@ -570,6 +573,7 @@
 					/usr/local/postgresclient/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.14.0;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Release",
