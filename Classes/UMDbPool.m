@@ -103,9 +103,9 @@ void umdbpool_null_session_returned(void)
     self=[super init];
     if(self)
     {
-        sessionsAvailable       = [[UMQueue alloc]init];
-        sessionsInUse           = [[UMQueue alloc]init];
-        sessionsDisconnected    = [[UMQueue alloc]init];
+        sessionsAvailable       = [[UMQueueSingle alloc]init];
+        sessionsInUse           = [[UMQueueSingle alloc]init];
+        sessionsDisconnected    = [[UMQueueSingle alloc]init];
         waitTimeout1            = 2;
         idleTaskStatus          = idleStatus_stopped;
         _poolLock = [[UMMutex alloc]initWithName:@"db-pool-lock"];
@@ -684,8 +684,8 @@ void umdbpool_null_session_returned(void)
 
 - (void) removeSessions
 {
-    sessionsInUse = [[UMQueue alloc]init];
-    sessionsAvailable = [[UMQueue alloc]init];
+    sessionsInUse = [[UMQueueSingle alloc]init];
+    sessionsAvailable = [[UMQueueSingle alloc]init];
 }
 
 

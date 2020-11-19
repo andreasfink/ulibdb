@@ -29,9 +29,9 @@ typedef enum idle_status_T
 {
     NSString        *version;
     NSString        *poolName;
-    UMQueue         *sessionsAvailable;
-    UMQueue         *sessionsDisconnected;
-    UMQueue         *sessionsInUse;
+    UMQueueSingle         *sessionsAvailable;
+    UMQueueSingle         *sessionsDisconnected;
+    UMQueueSingle         *sessionsInUse;
 
     NSString        *hostName;
     NSString        *hostAddr;
