@@ -85,6 +85,7 @@
             break;
         case UMDBQUERY_OPERATOR_NOT_EQUAL:
             [s appendString:@"NOT_EQUAL"];
+            break;
         case UMDBQUERY_OPERATOR_LIKE:
             [s appendString:@"LIKE"];
             break;
@@ -186,6 +187,7 @@
             break;
         case UMDBQUERY_OPERATOR_NOT_EQUAL:
             [s appendString:@" <> "];
+            break;
         case UMDBQUERY_OPERATOR_LIKE:
             [s appendString:@" LIKE "];
             break;

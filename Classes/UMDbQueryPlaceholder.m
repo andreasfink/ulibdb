@@ -181,6 +181,7 @@
             {
                 return [param stringValue];
             }
+            break;
         }
         case UMDBPLACEHOLDER_TYPE_PRIMARY_KEY_VALUE:
         {
@@ -205,6 +206,7 @@
             {
                 return @"primary-key-value-is-not-a-string";
             }
+            break;
         }
         case UMDBPLACEHOLDER_TYPE_FIELD:
         {
@@ -224,6 +226,7 @@
             {
                 return [NSString stringWithFormat:@"%@",text];
             }
+            break;
         }
         case UMDBPLACEHOLDER_TYPE_PRIMARY_KEY_NAME:
         {
@@ -243,20 +246,24 @@
             {
                 return [NSString stringWithFormat:@"%@",query.primaryKeyName];
             }
+            break;
         }
 
         case UMDBPLACEHOLDER_TYPE_INTEGER:
         {
             return [NSString stringWithFormat:@"%d" ,index];
+            break;
         }
         case UMDBPLACEHOLDER_TYPE_NULL:
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Left condition is nil, cannot create query" userInfo:nil];
+            break;
         }
         case UMDBPLACEHOLDER_TYPE_TEXT:
         default:
         {
             return [NSString stringWithFormat:@"'%@'" ,[session sqlEscapeString:text]];
+            break;
         }
     }
 }
@@ -310,6 +317,7 @@
             {
                 return [param stringValue];
             }
+            break; 
         }
         case UMDBPLACEHOLDER_TYPE_FIELD:
         {

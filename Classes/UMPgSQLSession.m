@@ -214,6 +214,7 @@
             else
                 NSLog(@"PGSQL: %s", PQresultErrorMessage(res));
             success = NO;
+            break;
         case PGRES_COMMAND_OK:
             break;
         default: /* for compiler please */
