@@ -158,10 +158,13 @@
         case UMDBPLACEHOLDER_TYPE_PARAM:
         {
             if(params == NULL)
+            {
                 return @"missing-parameter";
+            }
             if(index >= [params count])
+            {
                 return @"not-enough-parameters-provided";
-
+            }
             id param = params[index];
             if([param isKindOfClass: [NSString class]])
             {
@@ -181,13 +184,18 @@
             {
                 return [param stringValue];
             }
+            else
+            {
+                return @"param-is-of-unknown-type";
+            }
             break;
         }
         case UMDBPLACEHOLDER_TYPE_PRIMARY_KEY_VALUE:
         {
             if(primaryKeyValue == NULL)
+            {
                 return @"missing-primary-key-value";
-            
+            }
             if([primaryKeyValue isKindOfClass: [NSString class]])
             {
 
@@ -206,6 +214,7 @@
             {
                 return @"primary-key-value-is-not-a-string";
             }
+            return @"primary-key-value-is-not-of-string-type";
             break;
         }
         case UMDBPLACEHOLDER_TYPE_FIELD:
@@ -266,6 +275,7 @@
             break;
         }
     }
+    return NULL;
 }
 
 - (NSString *) sqlForQueryRight:(UMDbQuery *)query
@@ -317,7 +327,7 @@
             {
                 return [param stringValue];
             }
-            break; 
+            break;
         }
         case UMDBPLACEHOLDER_TYPE_FIELD:
         {
@@ -349,8 +359,11 @@
         {
             {
                 if ([text length] == 0)
+                {
                     return @"";
+                }
                 else
+                {
                     if(dbType==UMDBDRIVER_MYSQL)
                     {
                         return [NSString stringWithFormat:@"\"%@\"",text];
@@ -363,7 +376,9 @@
                     {
                         return [NSString stringWithFormat:@"%@",text];
                     }
+                }
             }
+            break;
         }
         case UMDBPLACEHOLDER_TYPE_PRIMARY_KEY_VALUE:
         {
@@ -396,6 +411,7 @@
             return [NSString stringWithFormat:@"'%@'" ,escaped];
         }
     }
+    return NULL;
 }
 
 - (NSString *) description
