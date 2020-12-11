@@ -481,12 +481,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = (
-					/usr/local/pgsql/include,
+					/usr/local/include,
 					/usr/local/include/mariadb,
+					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib/mariadb/ /usr/local/pgsql/lib/";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib/mariadb,
+					/usr/local/pgsql/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Debug";
@@ -546,12 +551,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = (
-					/usr/local/pgsql/include,
+					/usr/local/include,
 					/usr/local/include/mariadb,
+					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib/mariadb/ /usr/local/pgsql/lib/";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib/mariadb,
+					/usr/local/pgsql/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Release";
@@ -571,15 +581,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					/usr/local/mariadb/include,
+					/usr/local/include/,
+					/usr/local/include/mariadb/,
 					/usr/local/postgresclient/include,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mariadb/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/mariadb,
-					/usr/local/postgresclient/lib,
 					/usr/local/lib/mariadb,
 					/usr/local/pgsql/lib,
 				);
@@ -606,15 +615,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					/usr/local/mariadb/include,
+					/usr/local/include/,
+					/usr/local/include/mariadb/,
 					/usr/local/postgresclient/include,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mariadb/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/mariadb,
-					/usr/local/postgresclient/lib,
 					/usr/local/lib/mariadb,
 					/usr/local/pgsql/lib,
 				);

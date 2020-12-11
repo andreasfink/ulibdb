@@ -12,9 +12,9 @@
 #ifdef HAVE_MYSQL
 
 #import "UMMySQLSession.h"
-#include <mysql/mysql.h>
-#include <mysql/errmsg.h>
-#include <mysql/mysqld_error.h>
+#include <mariadb/mysql.h>
+#include <mariadb/errmsg.h>
+#include <mariadb/mysqld_error.h>
 #import "UMDbResult.h"
 #import "UMDbMySqlInProgress.h"
 #import "UMDbQuery.h"
