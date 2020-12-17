@@ -1941,8 +1941,8 @@ static NSMutableDictionary *cachedQueries = NULL;
                 case DB_FIELD_TYPE_NUMERIC:
                     if((f->fieldSize==0) && (f->fieldDecimals==0))
                     {
-                        f->fieldSize = 16;
-                        f->fieldDecimals =8;
+                        f->fieldSize     = 24;
+                        f->fieldDecimals =  6;
                     }
                     [sqlStr appendFormat:@" NUMERIC(%d,%d)",f->fieldSize,f->fieldDecimals];
                     break;
@@ -1995,7 +1995,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             }
             else if(f->fieldType == DB_FIELD_TYPE_NUMERIC)
             {
-                [sqlStr appendString:@" DEFAULT '0.00000000'"];
+                [sqlStr appendString:@" DEFAULT '0.000000'"];
             }
             i++;
             f = &fieldDef[i];
@@ -2109,7 +2109,7 @@ static NSMutableDictionary *cachedQueries = NULL;
                 case UMDB_FIELD_TYPE_NUMERIC:
                     if((f.fieldSize==0) && (f.fieldDecimals==0))
                     {
-                        f.fieldSize = 12;
+                        f.fieldSize     = 24;
                         f.fieldDecimals = 6;
                     }
                     [sqlStr appendFormat:@" NUMERIC(%d,%d)",(int)f.fieldSize,(int)f.fieldDecimals];
@@ -2156,7 +2156,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             }
             else if(f.fieldType == UMDB_FIELD_TYPE_NUMERIC)
             {
-                [sqlStr appendString:@" DEFAULT '0.00000000'"];
+                [sqlStr appendString:@" DEFAULT '0.000000'"];
             }
             i++;
             f = [tableDef getFieldDef:i];
