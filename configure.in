@@ -7,7 +7,7 @@ dnl  */
 dnl initialization
 
 dnl initialization
-AC_PREREQ([2.71])
+AC_PREREQ([2.69])
 AC_INIT([ulibdb],[1.5.2],[andreas@fink.org])
 
 dnl generic parameters
