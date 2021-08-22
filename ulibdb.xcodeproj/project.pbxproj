@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -64,6 +64,8 @@
 		22356C0E18915F8900EF4074 /* UMDbRedisSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbRedisSession.m; sourceTree = "<group>"; };
 		2293864A18B3A298000D9DF2 /* UMDbFieldDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinitions.h; sourceTree = "<group>"; };
 		A6019BAD1AC15C2800854472 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		A608E34D26CD4A1800F07A4F /* make_buildnr.sh.in */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = make_buildnr.sh.in; sourceTree = "<group>"; };
+		A608E34E26CD4A2200F07A4F /* make_buildnr.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = make_buildnr.sh; sourceTree = "<group>"; };
 		A610865F16352F2100D0D9C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A618800F1FD1DDF800B31AF5 /* NSString+SQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+SQL.h"; sourceTree = "<group>"; };
 		A61880101FD1DDF800B31AF5 /* NSString+SQL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+SQL.m"; sourceTree = "<group>"; };
@@ -150,6 +152,8 @@
 				A6F694161B4E85180090FC94 /* Makefile.osx.in */,
 				A6F694171B4E85180090FC94 /* ulibdb.pc.in */,
 				A6F693EB1B4E830C0090FC94 /* configure.in */,
+				A608E34E26CD4A2200F07A4F /* make_buildnr.sh */,
+				A608E34D26CD4A1800F07A4F /* make_buildnr.sh.in */,
 				A6D8AB34149A76BB0029E9CF /* Classes */,
 				A6D8AD60149AC8590029E9CF /* Libraries */,
 				A6D8AB06149A769B0029E9CF /* Frameworks */,
@@ -349,10 +353,12 @@
 		A675980A1B1C62690090FC94 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
+			dependencyFile = "$(DERIVED_FILES_DIR)/$(INPUT_FILE_PATH).d";
 			files = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/VERSION",
+				"$(SRCROOT)/make_buildnr.sh.in",
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/version.h",
@@ -469,7 +475,10 @@
 					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib/mariadb/ /usr/local/pgsql/lib/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/lib/mariadb/,
+					/usr/local/pgsql/lib/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -545,7 +554,10 @@
 					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib/mariadb/ /usr/local/pgsql/lib/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/lib/mariadb/,
+					/usr/local/pgsql/lib/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -576,7 +588,10 @@
 					/usr/local/postgresclient/include,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mariadb/ /usr/local/postgresclient/lib/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/mariadb/,
+					/usr/local/postgresclient/lib/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -610,7 +625,10 @@
 					/usr/local/postgresclient/include,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mariadb/ /usr/local/postgresclient/lib/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/mariadb/,
+					/usr/local/postgresclient/lib/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
