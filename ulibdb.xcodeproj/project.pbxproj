@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -353,8 +353,9 @@
 		A675980A1B1C62690090FC94 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
-			dependencyFile = "$(DERIVED_FILES_DIR)/$(INPUT_FILE_PATH).d";
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/VERSION",
@@ -362,10 +363,11 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/version.h",
+				"$(DERIVED_FILE_DIR)/make_buildnr.sh",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f version.h ]\nthen\n  if [ VERSION -nt version.h ]\n  then\n      ./configure\n   fi\nelse\n   ./configure\nfi\nmkdir -p \"/Library/Application Support/FinkTelecomServices\"\n";
+			shellPath = /bin/bash;
+			shellScript = "if  [ ! -f version.h ]\nthen\n    mkdir -p \"/Library/Application Support/FinkTelecomServices\"\n    ./configure\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -475,10 +477,7 @@
 					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/local/lib/mariadb/,
-					/usr/local/pgsql/lib/,
-				);
+				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib/mariadb/ /usr/local/pgsql/lib/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -554,10 +553,7 @@
 					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/local/lib/mariadb/,
-					/usr/local/pgsql/lib/,
-				);
+				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib/mariadb/ /usr/local/pgsql/lib/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -588,10 +584,7 @@
 					/usr/local/postgresclient/include,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/local/mariadb/,
-					/usr/local/postgresclient/lib/,
-				);
+				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mariadb/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -625,10 +618,7 @@
 					/usr/local/postgresclient/include,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					/usr/local/mariadb/,
-					/usr/local/postgresclient/lib/,
-				);
+				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mariadb/ /usr/local/postgresclient/lib/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
