@@ -202,7 +202,6 @@ static NSMutableDictionary *cachedQueries = NULL;
     @autoreleasepool
     {
         NSString *key2 = [NSString stringWithFormat:@"%s:%ld",file,line];
-        
         UMDbQuery *query = NULL;
         @synchronized(cachedQueries)
         {

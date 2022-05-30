@@ -147,6 +147,46 @@
     return result;
 }
 
+
+- (BOOL)queryWithNoResult:(UMDbQuery *)query
+               parameters:(NSArray *)array
+                allowFail:(BOOL)failPermission
+          primaryKeyValue:(id)primaryKeyValue
+             affectedRows:(unsigned long long *)count
+{
+    BOOL result =NO;
+    
+    if(query.returnsResult)
+    {
+        UMAssert(0,@"Query returns result but we are not expecting any");
+    }
+    [_sessionLock lock];
+    @try
+    {
+        NSString *sql = [query sqlForType:query.type
+                                forDriver:pool.dbDriverType
+                                  session:self
+                               parameters:array
+                          primaryKeyValue:primaryKeyValue];
+        query.lastSql = sql;
+        [pool increaseCountersForType:[query type] table:[query table]];
+        long long start = [UMUtil milisecondClock];
+        if(sql == NULL)
+        {
+            return YES; /* nothing to be done so we succeed */
+        }
+        result = [self queryWithNoResult:sql allowFail:failPermission affectedRows:count];
+
+        long long stop = [UMUtil milisecondClock];
+        double delay = ((double)(stop - start))/1000000.0;
+        [pool addStatDelay:delay query:[query type] table:[query table]];
+    }
+    @finally
+    {
+        [_sessionLock unlock];
+    }
+    return result;
+}
 - (BOOL)cachedQueryWithNoResult:(UMDbQuery *)query
                      parameters:(NSArray *)array
                       allowFail:(BOOL)failPermission

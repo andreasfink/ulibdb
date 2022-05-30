@@ -81,6 +81,13 @@ typedef enum UMDbSessionStatus
 - (UMDbResult *)cachedQueryWithMultipleRowsResult:(UMDbQuery *)query parameters:(NSArray *)arr;
 - (UMDbResult *)cachedQueryWithMultipleRowsResult:(UMDbQuery *)query;
 
+
+- (BOOL)queryWithNoResult:(UMDbQuery *)query
+               parameters:(NSArray *)array
+                allowFail:(BOOL)failPermission
+          primaryKeyValue:(id)primaryKeyValue
+             affectedRows:(unsigned long long *)count;
+
 - (BOOL)cachedQueryWithNoResult:(UMDbQuery *)query parameters:(NSArray *)params allowFail:(BOOL)failPermission primaryKeyValue:(id)primaryKeyValue affectedRows:(unsigned long long *)count;
 - (BOOL)cachedQueryWithNoResult:(UMDbQuery *)query parameters:(NSArray *)params allowFail:(BOOL)failPermission primaryKeyValue:(id)primaryKeyValue;
 - (BOOL)cachedQueryWithNoResult:(UMDbQuery *)query parameters:(NSArray *)array allowFail:(BOOL)failPermission;
