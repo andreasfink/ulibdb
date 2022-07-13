@@ -166,7 +166,7 @@ static NSMutableDictionary *cachedQueries = NULL;
 
 - (void)setFields:(NSArray *)xfields
 {
-    UMAssert(!isInCache, @"attempting to modify sortByFields of cached query");
+    UMAssert(!isInCache, @"attempting to modify setFields of cached query");
     fields = xfields;
 }
 
