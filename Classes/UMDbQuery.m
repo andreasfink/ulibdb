@@ -19,11 +19,6 @@
 
 static NSMutableDictionary *cachedQueries = NULL;
 
-@synthesize isInCache;
-@synthesize storageType;
-@synthesize cfile;
-@synthesize cline;
-
 - (UMDbQuery *)init
 {
     return [self initWithCacheKey:NULL];
@@ -35,163 +30,163 @@ static NSMutableDictionary *cachedQueries = NULL;
     self=[super init];
     if(self)
     {
-        type = UMDBQUERYTYPE_UNKNOWN;
-        cacheKey = nil;
-        table = nil;
-        whereCondition = nil;
-        grouping = nil;
-        sortByFields = nil;
-        fields = nil;
-        limit = 0; /* means no limit*/
-        isInCache = NO;
-        cacheKey = ck;
-        storageType = UMDBSTORAGE_JSON;
+        _type = UMDBQUERYTYPE_UNKNOWN;
+        _cacheKey = nil;
+        _table = nil;
+        _whereCondition = nil;
+        _grouping = nil;
+        _sortByFields = nil;
+        _fields = nil;
+        _limit = 0; /* means no limit*/
+        _isInCache = NO;
+        _cacheKey = ck;
+        _storageType = UMDBSTORAGE_JSON;
     }
     return self;
 }
 
 
-- (UMDbStorageType)storageType
+- (UMDbStorageType)_storageType
 {
-    return storageType;
+    return _storageType;
 }
 
-- (void)setStorageType:(UMDbStorageType)xstorageType
+- (void)set_storageType:(UMDbStorageType)xstorageType
 {
-    UMAssert(!isInCache, @"attempting to modify storageType of cached query");
-    storageType= xstorageType;
+    UMAssert(!_isInCache, @"attempting to modify storageType of cached query");
+    _storageType= xstorageType;
 }
 
 
 - (NSString *) instance
 {
-    return instance;
+    return _instance;
 }
 
 - (void)setInstance:(NSString *)xinstance
 {
-    UMAssert(!isInCache, @"attempting to modify instance of cached query");
-    instance= xinstance;
+    UMAssert(!_isInCache, @"attempting to modify instance of cached query");
+    _instance= xinstance;
 }
 
 - (UMDbQueryType) type
 {
-    return type;
+    return _type;
 }
 
 - (void)setType:(UMDbQueryType)xtype
 {
-    UMAssert(!isInCache, @"attempting to modify type of cached query");
-    type= xtype;
+    UMAssert(!_isInCache, @"attempting to modify type of cached query");
+    _type= xtype;
 }
 
 
 - (UMDbQueryCondition *)whereCondition
 {
-    return whereCondition;
+    return _whereCondition;
 }
 
 - (void)setWhereCondition:(UMDbQueryCondition *)xwhereCondition
 {
-    UMAssert(!isInCache, @"attempting to modify whereCondition of cached query");
-    whereCondition = xwhereCondition;
+    UMAssert(!_isInCache, @"attempting to modify whereCondition of cached query");
+    _whereCondition = xwhereCondition;
 }
 
 - (NSString *)primaryKeyName
 {
-    return primaryKeyName;
+    return _primaryKeyName;
 }
 
 - (void)setPrimaryKeyName:(NSString *)xprimaryKeyName
 {
-    UMAssert(!isInCache, @"attempting to modify primaryKeyName of cached query");
-    primaryKeyName = xprimaryKeyName;
+    UMAssert(!_isInCache, @"attempting to modify primaryKeyName of cached query");
+    _primaryKeyName = xprimaryKeyName;
 }
 
 
 - (UMDbTable *)table
 {
-    return table;
+    return _table;
 }
 
 - (void)setTable:(UMDbTable *)xtable
 {
-    UMAssert(!isInCache, @"attempting to modify table of cached query");
-    table = xtable;
+    UMAssert(!_isInCache, @"attempting to modify table of cached query");
+    _table = xtable;
 }
 
 - (NSString *)databaseName
 {
-    return databaseName;
+    return _databaseName;
 }
 
 
 - (void)setDatabaseName:(NSString *)xdatabaseName
 {
-    UMAssert(!isInCache, @"attempting to modify databaseName of cached query");
-    databaseName = xdatabaseName;
+    UMAssert(!_isInCache, @"attempting to modify databaseName of cached query");
+    _databaseName = xdatabaseName;
 }
 
 
 
 - (NSString *)grouping
 {
-    return grouping;
+    return _grouping;
 }
 
 
 - (void)setGrouping:(NSString *)xgrouping
 {
-    UMAssert(!isInCache, @"attempting to modify grouping of cached query");
-    grouping = xgrouping;
+    UMAssert(!_isInCache, @"attempting to modify grouping of cached query");
+    _grouping = xgrouping;
 }
 
 - (NSArray *)sortByFields
 {
-    return sortByFields;
+    return _sortByFields;
 }
 
 
 - (void)setSortByFields:(NSArray *)xsortByFields
 {
-    UMAssert(!isInCache, @"attempting to modify sortByFields of cached query");
-    sortByFields = xsortByFields;
+    UMAssert(!_isInCache, @"attempting to modify sortByFields of cached query");
+    _sortByFields = xsortByFields;
 }
 
 - (NSArray *)fields
 {
-    return fields;
+    return _fields;
 }
 
 
 - (void)setFields:(NSArray *)xfields
 {
-    UMAssert(!isInCache, @"attempting to modify setFields of cached query");
-    fields = xfields;
+    UMAssert(!_isInCache, @"attempting to modify setFields of cached query");
+    _fields = xfields;
 }
 
 - (NSArray *)keys
 {
-    return keys;
+    return _keys;
 }
 
 
 - (void)setKeys:(NSArray *)xkeys
 {
-    UMAssert(!isInCache, @"attempting to modify keys of cached query");
-    keys = xkeys;
+    UMAssert(!_isInCache, @"attempting to modify keys of cached query");
+    _keys = xkeys;
 }
 
 - (int) limit
 {
-    return limit;
+    return _limit;
 }
 
 
 - (void)setLimit:(int)xlimit
 {
-    UMAssert(!isInCache, @"attempting to modify limit of cached query");
-    limit = xlimit;
+    UMAssert(!_isInCache, @"attempting to modify limit of cached query");
+    _limit = xlimit;
 }
 
 
@@ -231,8 +226,8 @@ static NSMutableDictionary *cachedQueries = NULL;
         {
             cachedQueries = [[NSMutableDictionary alloc]init];
         }
-        cachedQueries[cacheKey] = self;
-        isInCache = YES;
+        cachedQueries[_cacheKey] = self;
+        _isInCache = YES;
     }
 }
 
@@ -240,13 +235,13 @@ static NSMutableDictionary *cachedQueries = NULL;
 {
     @synchronized(cachedQueries)
     {
-        cacheKey = key2;
+        _cacheKey = key2;
         if(cachedQueries==NULL)
         {
             cachedQueries = [[NSMutableDictionary alloc]init];
         }
-        isInCache = YES;
-        cachedQueries[cacheKey] = self;
+        _isInCache = YES;
+        cachedQueries[_cacheKey] = self;
     }
 }
 
@@ -259,7 +254,7 @@ static NSMutableDictionary *cachedQueries = NULL;
                        session:session
                     parameters:params
                primaryKeyValue:primaryKeyValue
-                whereCondition:whereCondition];
+                whereCondition:_whereCondition];
 }
 
 
@@ -274,7 +269,7 @@ static NSMutableDictionary *cachedQueries = NULL;
         NSMutableString *sql =[[NSMutableString alloc]initWithString:@"SELECT "];
         BOOL first = YES;
         
-        for(NSString *field in fields)
+        for(NSString *field in _fields)
         {
             if(first)
             {
@@ -319,7 +314,7 @@ static NSMutableDictionary *cachedQueries = NULL;
                 }
             }
         }
-        if (!fields)
+        if (!_fields)
         {
             if (dbDriverType==UMDBDRIVER_MYSQL)
             {
@@ -330,11 +325,11 @@ static NSMutableDictionary *cachedQueries = NULL;
                 [sql appendString:@"NULL"];
             }
         }
-        if (!table || (table && ![table tableName])) 
+        if (!_table || (_table && ![_table tableName])) 
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Table name is nil, cannot create query" userInfo:nil];
         }
-        else if ([[table tableName] length] == 0)
+        else if ([[_table tableName] length] == 0)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"table name empty, cannot create query" userInfo:nil];
         }
@@ -342,11 +337,11 @@ static NSMutableDictionary *cachedQueries = NULL;
         {
             if(dbDriverType==UMDBDRIVER_PGSQL)
             {
-                [sql appendFormat:@" FROM %@",[table tableName]];
+                [sql appendFormat:@" FROM %@",[_table tableName]];
             }
             else
             {
-                [sql appendFormat:@" FROM %@",[table tableName]];
+                [sql appendFormat:@" FROM %@",[_table tableName]];
             }
         }
         if(whereCondition1)
@@ -358,15 +353,15 @@ static NSMutableDictionary *cachedQueries = NULL;
                                            primaryKeyValue:primaryKeyValue];
             [sql appendFormat:@" WHERE %@",where];
         }
-        if(grouping)
+        if(_grouping)
         {
-            [sql appendFormat:@" GROUP BY %@",grouping];
+            [sql appendFormat:@" GROUP BY %@",_grouping];
         }
-        if(sortByFields)
+        if(_sortByFields)
         {
 
             BOOL first = YES;
-            for (NSString *field in sortByFields)
+            for (NSString *field in _sortByFields)
             {
                 if(!first)
                 {
@@ -391,9 +386,9 @@ static NSMutableDictionary *cachedQueries = NULL;
                 }
             }
         }
-        if(limit)
+        if(_limit)
         {
-            [sql appendFormat:@" LIMIT %d",limit];
+            [sql appendFormat:@" LIMIT %d",_limit];
         }
         return sql;
     }
@@ -408,7 +403,7 @@ static NSMutableDictionary *cachedQueries = NULL;
                        session:session
                     parameters:(NSArray *)params
                primaryKeyValue:(id)primaryKeyValue
-                whereCondition:whereCondition];
+                whereCondition:_whereCondition];
 }
 
 - (NSString *)deleteForType:(UMDbDriverType)dbDriverType
@@ -421,25 +416,25 @@ static NSMutableDictionary *cachedQueries = NULL;
     {
         NSMutableString *sql;
         
-        if (!table || (table && ![table tableName]))
+        if (!_table || (_table && ![_table tableName]))
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Delete with table name nil, cannot create query" userInfo:nil];
         }
-        if ([[table tableName] length] == 0)
+        if ([[_table tableName] length] == 0)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Delete with empty table name, cannot create query" userInfo:nil];
         }
-        sql=[[NSMutableString alloc]initWithFormat:@"DELETE FROM %@",[table tableName]];
+        sql=[[NSMutableString alloc]initWithFormat:@"DELETE FROM %@",[_table tableName]];
         if(whereCondition1)
         {
             NSString *where = [whereCondition1 sqlForQuery:self parameters:params dbType:dbDriverType primaryKeyValue:primaryKeyValue];
             [sql appendFormat:@" WHERE %@",where];
         }
-        if(limit)
+        if(_limit)
         {
             if(dbDriverType==UMDBDRIVER_MYSQL)
             {
-                [sql appendFormat:@" LIMIT %d",limit];
+                [sql appendFormat:@" LIMIT %d",_limit];
             }
             /*PGSQL does not support LIMIT on delete */
         }
@@ -467,32 +462,32 @@ static NSMutableDictionary *cachedQueries = NULL;
     {
         NSMutableString *sql = NULL;
         
-        if (!table)
+        if (!_table)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with nil table, cannot create query" userInfo:nil];
         }
-        if (![table tableName])
+        if (![_table tableName])
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with nil table name, cannot create query" userInfo:nil];
         }
-        if ([[table tableName] length] == 0)
+        if ([[_table tableName] length] == 0)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with empty table name, cannot create query" userInfo:nil];
         }
         if(dbDriverType == UMDBDRIVER_PGSQL)
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"INSERT INTO public.%@",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"INSERT INTO public.%@",[_table tableName]];
         }
         else
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"INSERT INTO %@",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"INSERT INTO %@",[_table tableName]];
         }
         BOOL first = YES;
-        if (!fields)
+        if (!_fields)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with nil fields table, cannot create query" userInfo:nil];
         }
-        if ([fields count] == 0)
+        if ([_fields count] == 0)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with an empty fields table, cannot create query" userInfo:nil];
         }
@@ -500,17 +495,17 @@ static NSMutableDictionary *cachedQueries = NULL;
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting with nil params table, cannot create query" userInfo:nil];
         }
-        if((params.count % fields.count) != 0)
+        if((params.count % _fields.count) != 0)
         {
-            NSLog(@"Fields Ccount: %d",(int)fields.count);
+            NSLog(@"Fields Ccount: %d",(int)_fields.count);
             NSLog(@"Params Count: %d",(int)params.count);
-            NSLog(@"Fields: %@",fields);
+            NSLog(@"Fields: %@",_fields);
             NSLog(@"Params: %@",params);
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Inserting count of parameters is not a multiple of nubmer of fields" userInfo:nil];
         }
-        NSUInteger record_count = params.count / fields.count ;
+        NSUInteger record_count = params.count / _fields.count ;
 
-        for(id field1 in fields)
+        for(id field1 in _fields)
         {
             BOOL isNULL = NO;
             if([field1 isKindOfClass:[[NSNull null]class]])
@@ -583,7 +578,7 @@ static NSMutableDictionary *cachedQueries = NULL;
         }
         [sql appendFormat:@") VALUES ("];
         
-        NSUInteger n = fields.count;
+        NSUInteger n = _fields.count;
         for(NSUInteger record_index=0;record_index<record_count;record_index++)
         {
             if(record_index>0)
@@ -705,7 +700,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             case UMDBDRIVER_SQLITE:
             {
                 UMDbQueryCondition *whereCondition1 =
-                [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
+                [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:_primaryKeyName]
                                                     op:UMDBQUERY_OPERATOR_EQUAL
                                                  right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
                 
@@ -743,7 +738,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             case UMDBDRIVER_PGSQL:
             case UMDBDRIVER_SQLITE:
             {
-                UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
+                UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:_primaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_EQUAL
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
                 return [self selectForType:dbDriverType
@@ -779,7 +774,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             case UMDBDRIVER_PGSQL:
             case UMDBDRIVER_SQLITE:
             {
-                UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
+                UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:_primaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_EQUAL
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
                 return [self selectForType:dbDriverType
@@ -816,7 +811,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             case UMDBDRIVER_PGSQL:
             case UMDBDRIVER_SQLITE:
             {
-                UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
+                UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:_primaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_LIKE
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
                 return [self selectForType:dbDriverType
@@ -931,7 +926,7 @@ static NSMutableDictionary *cachedQueries = NULL;
             case UMDBDRIVER_PGSQL:
             case UMDBDRIVER_SQLITE:
             {
-                UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
+                UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:_primaryKeyName]
                                                                                            op:UMDBQUERY_OPERATOR_EQUAL
                                                                                         right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
                 return [self deleteForType:dbDriverType
@@ -967,10 +962,10 @@ static NSMutableDictionary *cachedQueries = NULL;
             case UMDBDRIVER_PGSQL:
             case UMDBDRIVER_SQLITE:
             {
-                UMDbQueryCondition *condition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:primaryKeyName]
+                UMDbQueryCondition *condition1 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:_primaryKeyName]
                                                                                       op:UMDBQUERY_OPERATOR_EQUAL
                                                                                    right:[UMDbQueryPlaceholder placeholderPrimaryKeyValue]];
-                UMDbQueryCondition *condition2 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:fields[0]]
+                UMDbQueryCondition *condition2 =  [UMDbQueryCondition queryConditionLeft:[UMDbQueryPlaceholder placeholderField:_fields[0]]
                                                                                       op:UMDBQUERY_OPERATOR_EQUAL
                                                                                    right:[UMDbQueryPlaceholder placeholderParameterIndex:0]];
                 UMDbQueryCondition *whereCondition1 =  [UMDbQueryCondition queryConditionLeft:condition1
@@ -1007,7 +1002,7 @@ static NSMutableDictionary *cachedQueries = NULL;
                        session:session
                     parameters:params
                primaryKeyValue:primaryKeyValue
-                whereCondition:whereCondition];
+                whereCondition:_whereCondition];
 }
 
 - (NSString *)updateForType:(UMDbDriverType)dbDriverType
@@ -1020,38 +1015,38 @@ static NSMutableDictionary *cachedQueries = NULL;
     {
         NSMutableString *sql;
         
-        if (!table)
+        if (!_table)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Updating with nil table, cannot create query" userInfo:nil];
         }
-        if (![table tableName])
+        if (![_table tableName])
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Updating with nil table name, cannot create query" userInfo:nil];
         }
-        if ([[table tableName] length] == 0)
+        if ([[_table tableName] length] == 0)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Updating with empty table name, cannot create query" userInfo:nil];
         }
         
         if(dbDriverType == UMDBDRIVER_PGSQL)
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE %@",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE %@",[_table tableName]];
         }
         else if(dbDriverType == UMDBDRIVER_MYSQL)
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE `%@`",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE `%@`",[_table tableName]];
         }
         else
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE %@",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE %@",[_table tableName]];
         }
         BOOL first = YES;
         int i = 0;
-        if (!fields)
+        if (!_fields)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Updating with nil fields table, cannot create query" userInfo:nil];
         }
-        if ([fields count] == 0)
+        if ([_fields count] == 0)
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Updating with an empty fields table, cannot create query" userInfo:nil];
         }
@@ -1063,7 +1058,7 @@ static NSMutableDictionary *cachedQueries = NULL;
         {
             @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Updating with an empty params table, cannot create query" userInfo:nil];
         }
-        for(NSString *field in fields)
+        for(NSString *field in _fields)
         {
             if (!field)
             {
@@ -1186,19 +1181,19 @@ static NSMutableDictionary *cachedQueries = NULL;
         
         if(dbDriverType == UMDBDRIVER_PGSQL)
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE public.%@",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE public.%@",[_table tableName]];
         }
         else if(dbDriverType == UMDBDRIVER_MYSQL)
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE `%@`",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE `%@`",[_table tableName]];
         }
         else
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE %@",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE %@",[_table tableName]];
         }
         BOOL first = YES;
         int i = 0;
-        for(NSString *field in fields)
+        for(NSString *field in _fields)
         {
             double increase = [params[i++]doubleValue];
             char op;
@@ -1242,9 +1237,9 @@ static NSMutableDictionary *cachedQueries = NULL;
         {
             return NULL; /* nothing to update */
         }
-        if(primaryKeyName)
+        if(_primaryKeyName)
         {
-            NSString *where = [whereCondition sqlForQuery:self parameters:params dbType:dbDriverType primaryKeyValue:primaryKeyValue];
+            NSString *where = [_whereCondition sqlForQuery:self parameters:params dbType:dbDriverType primaryKeyValue:primaryKeyValue];
             [sql appendFormat:@" WHERE %@",where];
         }
         else
@@ -1267,19 +1262,19 @@ static NSMutableDictionary *cachedQueries = NULL;
         
         if(dbDriverType == UMDBDRIVER_PGSQL)
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE public.%@",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE public.%@",[_table tableName]];
         }
         else if(dbDriverType == UMDBDRIVER_MYSQL)
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE `%@`",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE `%@`",[_table tableName]];
         }
         else
         {
-            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE %@",[table tableName]];
+            sql  =[[NSMutableString alloc]initWithFormat:@"UPDATE %@",[_table tableName]];
         }
         BOOL first = YES;
         int i = 0;
-        for(NSString *field in fields)
+        for(NSString *field in _fields)
         {
             double increase = [params[i++]doubleValue];
             char op;
@@ -1325,14 +1320,14 @@ static NSMutableDictionary *cachedQueries = NULL;
         {
             return NULL; /* nothing to update */
         }
-        if(whereCondition)
+        if(_whereCondition)
         {
-            NSString *where = [whereCondition sqlForQuery:self parameters:params dbType:dbDriverType primaryKeyValue:primaryKeyValue];
+            NSString *where = [_whereCondition sqlForQuery:self parameters:params dbType:dbDriverType primaryKeyValue:primaryKeyValue];
             [sql appendFormat:@" WHERE %@",where];
         }
         else
         {
-            [sql appendFormat:@" WHERE `%@`='%@'",primaryKeyName, primaryKeyValue];
+            [sql appendFormat:@" WHERE `%@`='%@'",_primaryKeyName, primaryKeyValue];
         }
         return sql;
     }
@@ -1458,8 +1453,8 @@ static NSMutableDictionary *cachedQueries = NULL;
     @autoreleasepool
     {
         NSMutableString *redisKey =[[NSMutableString alloc]initWithString:@""];
-        [redisKey appendFormat:@"%@", table.pool.dbName];
-        [redisKey appendFormat:@":%@", table.tableName];
+        [redisKey appendFormat:@"%@", _table.pool.dbName];
+        [redisKey appendFormat:@":%@", _table.tableName];
         return redisKey;
     }
 }
@@ -1469,10 +1464,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     @autoreleasepool
     {
         NSMutableString *redisKey =[[NSMutableString alloc]initWithString:@""];
-        [redisKey appendFormat:@"%@", instance];
-        [redisKey appendFormat:@".%@", table.pool.dbName];
-        [redisKey appendFormat:@".%@", table.tableName];
-        [redisKey appendFormat:@".%@", primaryKeyName];
+        [redisKey appendFormat:@"%@", _instance];
+        [redisKey appendFormat:@".%@", _table.pool.dbName];
+        [redisKey appendFormat:@".%@", _table.tableName];
+        [redisKey appendFormat:@".%@", _primaryKeyName];
         return redisKey;
     }
 }
@@ -1483,10 +1478,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     @autoreleasepool
     {
         NSMutableString *redisKey =[[NSMutableString alloc]initWithString:@""];
-        [redisKey appendFormat:@"%@.", instance];
-        [redisKey appendFormat:@"%@.", databaseName];
-        [redisKey appendFormat:@"%@", table.tableName];
-        for(NSString *field in keys)
+        [redisKey appendFormat:@"%@.", _instance];
+        [redisKey appendFormat:@"%@.", _databaseName];
+        [redisKey appendFormat:@"%@", _table.tableName];
+        for(NSString *field in _keys)
         {
             if ([field length] == 0)
             {
@@ -1506,10 +1501,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     @autoreleasepool
     {
         NSMutableString *redisKey =[[NSMutableString alloc]initWithString:@""];
-        [redisKey appendFormat:@"%@.", instance];
-        [redisKey appendFormat:@"%@.", databaseName];
-        [redisKey appendFormat:@"%@", table.tableName];
-        for(NSString *field in keys)
+        [redisKey appendFormat:@"%@.", _instance];
+        [redisKey appendFormat:@"%@.", _databaseName];
+        [redisKey appendFormat:@"%@", _table.tableName];
+        for(NSString *field in _keys)
         {
             if ([field length] == 0)
             {
@@ -1524,10 +1519,10 @@ static NSMutableDictionary *cachedQueries = NULL;
 
         NSMutableString *redisValue =[[NSMutableString alloc]initWithString:@""];
         long i = 0;
-        long count = [fields count];
-        for(; i < [fields count]; ++i)
+        long count = [_fields count];
+        for(; i < [_fields count]; ++i)
         {
-            NSString *field = fields[i];
+            NSString *field = _fields[i];
             if ([field length] == 0)
             {
                 @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Fields are empty, cannot create query" userInfo:nil];
@@ -1560,17 +1555,17 @@ static NSMutableDictionary *cachedQueries = NULL;
     @autoreleasepool
     {
         NSMutableString *redisKey =[[NSMutableString alloc]initWithString:@""];
-        [redisKey appendFormat:@"%@", instance];
-        [redisKey appendFormat:@".%@.", databaseName];
-        [redisKey appendFormat:@".%@", table.tableName];
-        [redisKey appendFormat:@".%@", primaryKeyName];
+        [redisKey appendFormat:@"%@", _instance];
+        [redisKey appendFormat:@".%@.", _databaseName];
+        [redisKey appendFormat:@".%@", _table.tableName];
+        [redisKey appendFormat:@".%@", _primaryKeyName];
         
         NSMutableString *redisValue =[[NSMutableString alloc]initWithString:@""];
         long i = 0;
-        long count = [fields count];
-        for(; i < [fields count]; ++i)
+        long count = [_fields count];
+        for(; i < [_fields count]; ++i)
         {
-            NSString *field = fields[i];
+            NSString *field = _fields[i];
             if ([field length] == 0)
             {
                 @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Fields are empty, cannot create query" userInfo:nil];
@@ -1604,10 +1599,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     @autoreleasepool
     {
         NSMutableString *redisKey =[[NSMutableString alloc]initWithString:@""];
-        [redisKey appendFormat:@"%@.", instance];
-        [redisKey appendFormat:@"%@.", databaseName];
-        [redisKey appendFormat:@"%@", table];
-        for(NSString *field in keys)
+        [redisKey appendFormat:@"%@.", _instance];
+        [redisKey appendFormat:@"%@.", _databaseName];
+        [redisKey appendFormat:@"%@", _table];
+        for(NSString *field in _keys)
         {
             if ([field length] == 0)
             {
@@ -1627,10 +1622,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     @autoreleasepool
     {
         NSMutableString *redisKey =[[NSMutableString alloc]initWithString:@""];
-        [redisKey appendFormat:@"%@.", instance];
-        [redisKey appendFormat:@"%@.", databaseName];
-        [redisKey appendFormat:@"%@", table];
-        for(NSString *field in keys)
+        [redisKey appendFormat:@"%@.", _instance];
+        [redisKey appendFormat:@"%@.", _databaseName];
+        [redisKey appendFormat:@"%@", _table];
+        for(NSString *field in _keys)
         {
             if ([field length] == 0)
             {
@@ -1701,11 +1696,11 @@ static NSMutableDictionary *cachedQueries = NULL;
         NSMutableString *txt = [[NSMutableString alloc]init];
         [txt appendFormat:@"%@\n",[super description]];
         
-        if (instance)
+        if (_instance)
         {
-            [txt appendFormat:@"instance name %@\n", instance];
+            [txt appendFormat:@"instance name %@\n", _instance];
         }
-        switch(type)
+        switch(_type)
         {
             case UMDBQUERYTYPE_SELECT:
                 [txt appendString:@"Type: SELECT\n"];
@@ -1773,41 +1768,41 @@ static NSMutableDictionary *cachedQueries = NULL;
             default:
                 break;
         }
-        if(cacheKey)
+        if(_cacheKey)
         {
-            [txt appendFormat:@"Key: %@\n",cacheKey];
+            [txt appendFormat:@"Key: %@\n",_cacheKey];
         }
-        if(table)
+        if(_table)
         {
-            [txt appendFormat:@"TableName: %@\n",[table tableName]];
+            [txt appendFormat:@"TableName: %@\n",[_table tableName]];
         }
-        if(fields)
+        if(_fields)
         {
             [txt appendString:@"Fields:"];
-            for (NSString *field in fields)
+            for (NSString *field in _fields)
                 [txt appendFormat:@" %@",field];
             [txt appendString:@"\n"];
         }
-        if(keys)
+        if(_keys)
         {
             [txt appendString:@"Keys:"];
-            for (NSString *field in keys)
+            for (NSString *field in _keys)
             {
                 [txt appendFormat:@" %@",field];
             }
             [txt appendString:@"\n"];
         }
-        if(whereCondition)
+        if(_whereCondition)
         {
-            [txt appendFormat:@"WhereCondition: %@\n",[whereCondition description]];
+            [txt appendFormat:@"WhereCondition: %@\n",[_whereCondition description]];
         }
-        if(grouping)
+        if(_grouping)
         {
-            [txt appendFormat:@"Grouping: %@\n",grouping];
+            [txt appendFormat:@"Grouping: %@\n",_grouping];
         }
-        if(sortByFields)
+        if(_sortByFields)
         {
-            [txt appendFormat:@"SortByFields: %@\n",[sortByFields componentsJoinedByString:@","]];
+            [txt appendFormat:@"SortByFields: %@\n",[_sortByFields componentsJoinedByString:@","]];
         }
         /*
          if(cachedSql[UMDBDRIVER_MYSQL])
@@ -2240,7 +2235,7 @@ static NSMutableDictionary *cachedQueries = NULL;
 
 - (BOOL) returnsResult
 {
-    switch(type)
+    switch(_type)
     {
         case UMDBQUERYTYPE_INSERT:
         case UMDBQUERYTYPE_UPDATE:
@@ -2268,7 +2263,7 @@ static NSMutableDictionary *cachedQueries = NULL;
         case UMREDISTYPE_HGET:
             return YES;
         default:
-            UMAssert(0,@"Unknown query type %d",type);
+            UMAssert(0,@"Unknown query type %d",_type);
             break;
     }
     return NO;

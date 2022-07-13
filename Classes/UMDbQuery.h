@@ -22,40 +22,42 @@
 
 @interface UMDbQuery : UMObject
 {
-    UMDbQueryType   type;
-    NSString        *instance;
-    NSString        *databaseName;
-    UMDbTable       *table;
-    UMDbQueryCondition *whereCondition;
-    NSString        *grouping;
-    NSArray         *sortByFields;
-    NSArray         *fields;
-    NSArray         *keys;
-    int             limit;
-    BOOL            isInCache;
-    UMDbStorageType storageType;
-    NSString        *primaryKeyName;
-    const char      *cfile;
-    long            cline;
-    NSString        *cacheKey;
+    UMDbQueryType   _type;
+    NSString        *_instance;
+    NSString        *_databaseName;
+    UMDbTable       *_table;
+    UMDbQueryCondition *_whereCondition;
+    NSString        *_grouping;
+    NSArray         *_sortByFields;
+    NSArray         *_fields;
+    NSArray         *_keys;
+    int             _limit;
+    BOOL            _isInCache;
+    UMDbStorageType _storageType;
+    NSString        *_primaryKeyName;
+    const char      *_cfile;
+    long            _cline;
+    NSString        *_cacheKey;
     NSString        *_lastSql;
 }
 
-@property(readwrite,assign) BOOL isInCache;
-@property(readwrite,strong) NSString *instance;
-@property(readwrite,strong) NSString *databaseName;
+
+@property(readwrite,assign) UMDbQueryType   type;
+@property(readwrite,strong) NSString        *instance;
+@property(readwrite,strong) NSString        *databaseName;
+@property(readwrite,strong) UMDbTable       *table;
 @property(readwrite,strong) UMDbQueryCondition *whereCondition;
-@property(readwrite,strong) NSString *grouping;
-@property(readwrite,strong) NSArray *fields;
-@property(readwrite,strong) NSArray *keys;
-@property(readwrite,strong) NSArray *sortByFields;
-@property(readwrite,assign) UMDbQueryType type;
-@property(readwrite,assign) int limit;
-@property(readwrite,strong) UMDbTable   *table;
-@property(readwrite,strong) NSString *primaryKeyName;
+@property(readwrite,strong) NSString        *grouping;
+@property(readwrite,strong) NSArray         *sortByFields;
+@property(readwrite,strong) NSArray         *fields;
+@property(readwrite,strong) NSArray         *keys;
+@property(readwrite,assign) int             limit;
+@property(readwrite,assign) BOOL            isInCache;
 @property(readwrite,assign) UMDbStorageType storageType;
+@property(readwrite,strong) NSString        *primaryKeyName;
 @property(readwrite,assign) const char      *cfile;
 @property(readwrite,assign) long            cline;
+@property(readwrite,strong) NSString        *cacheKey;
 @property(readwrite,strong,atomic) NSString *lastSql;
 
 + (void)initStatics;
