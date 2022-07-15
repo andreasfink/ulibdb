@@ -1664,7 +1664,7 @@ static NSMutableDictionary *cachedQueries = NULL;
         case UMDBQUERYTYPE_SELECT_BY_KEY_LIKE:
             redis = [self keyForParameters:params];
             break;
-            
+
         case UMDBQUERYTYPE_DELETE_BY_KEY_AND_VALUE:
             redis = [self keyForParameters:params];
             break;
