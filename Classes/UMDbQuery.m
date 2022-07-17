@@ -2269,8 +2269,4 @@ static NSMutableDictionary *cachedQueries = NULL;
     return NO;
 }
 
-- (NSString *)description
-{
-    
-}
 @end
