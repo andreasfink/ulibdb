@@ -484,7 +484,7 @@
 					/usr/local/pgsql/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Debug";
 				SDKROOT = macosx;
@@ -560,7 +560,7 @@
 					/usr/local/pgsql/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Release";
 				SDKROOT = macosx;
