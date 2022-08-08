@@ -127,13 +127,10 @@ static NSMutableDictionary *cachedQueries = NULL;
     _databaseName = xdatabaseName;
 }
 
-
-
 - (NSString *)grouping
 {
     return _grouping;
 }
-
 
 - (void)setGrouping:(NSString *)xgrouping
 {
