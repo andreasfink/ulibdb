@@ -326,10 +326,14 @@ void umdbpool_null_session_returned(void)
         
         while(idleTaskStatus==idleStatus_running)
         {
-            int ret = [poolSleeper sleep:(1000000 * self.waitTimeout2)];
+            UMSleeper_Signal ret = [poolSleeper sleep:(1000000 * self.waitTimeout2)];
             if(ret == 0)
             {
                 [self idleTask];
+            }
+            if(ret == UMSleeper_Error)
+            {
+                break;
             }
         }
         msg = [NSString stringWithFormat:@"terminating idle task for database pool %@", poolName];
@@ -579,12 +583,20 @@ void umdbpool_null_session_returned(void)
                 if((now - start) <= waitTimeout1)
                 {
                     long long msdelay = random() % 50000 + 100000;/* sleep something like 100ms */
-                    [sleeper sleep:msdelay];
+                    UMSleeper_Signal ret = [sleeper sleep:msdelay];
+                    if(ret == UMSleeper_Error)
+                    {
+                        /**/;
+                    }
                 }
                 else
                 {
                     long long msdelay = random() % 100000 + 500000; /* sleep something like 0.5s */
-                    [sleeper sleep:msdelay];
+                    UMSleeper_Signal ret = [sleeper sleep:msdelay];
+                    if(ret == UMSleeper_Error)
+                    {
+                        /**/;
+                    }
                     wait1hit=YES;
                 }
                 sleeper = NULL;
