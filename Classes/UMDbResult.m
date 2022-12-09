@@ -137,6 +137,27 @@
     return [self getRow:indexPointer++];
 }
 
+- (NSDictionary *)fetchRowAsDictionary
+{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    NSArray *row = [self fetchRow];
+    for(NSInteger i=0;i<row.count;i++)
+    {
+        id value = row[i];
+        id name = columNames[i];
+        if(value == NULL)
+        {
+            value = [NSNull null];
+        }
+        if(name==NULL)
+        {
+            name = @(i);
+        }
+        dict[name] = value;
+    }
+    return dict;
+}
+
 - (void)reset
 {
     indexPointer = 0;

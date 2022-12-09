@@ -25,6 +25,7 @@
 - (void)setColumName:(NSString *)name forIndex:(long)idx;
 - (id)getRow:(long)idx;
 - (id)fetchRow;
+- (NSDictionary *)fetchRowAsDictionary;
 - (void) reset;
 - (NSUInteger)rowsCount;
 - (NSUInteger)columsCount;
