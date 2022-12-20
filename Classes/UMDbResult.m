@@ -123,16 +123,16 @@
     return [columNames count];
 }
 
-- (id)getRow:(long)idx
+- (NSArray *)getRow:(long)idx
 {
     if(idx >= [resultArray count])
     {
         return NULL;
     }
-    return (id)resultArray[idx];
+    return (NSArray *)resultArray[idx];
 }
 
-- (id)fetchRow
+- (NSArray *)fetchRow
 {
     return [self getRow:indexPointer++];
 }
