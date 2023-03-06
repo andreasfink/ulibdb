@@ -221,8 +221,10 @@ AC_ARG_ENABLE(debug,
 AC_CONFIG_SECTION([Checking for PostgreSQL support])
 
 
-AC_CHECK_FILE("/usr/local/postgresclient/include/libpq-fe.h",[PVARIANT=1],
- [AC_CHECK_FILE("/usr/include/postgresql/libpq-fe.h",[PVARIANT=2])])
+AC_CHECK_FILE("/usr/local/postgresclient/include/libpq-fe.h",[PVARIANT=1])
+AC_CHECK_FILE("/usr/include/postgresql/libpq-fe.h",[PVARIANT=2])
+AC_CHECK_FILE("/usr/local/pgsql/include/libpq-fe.h",[PVARIANT=3])
+
 
 if [[ "$PVARIANT" = "1" ]]
 then
@@ -235,6 +237,13 @@ then
 	AC_DEFINE(HAVE_PGSQL)
 	POSTGRES_INCLUDE="-I/usr/include/postgresql"
 	POSTGRES_LIBS="-lpq"
+fi
+
+if [[ "$PVARIANT" = "3" ]]
+then
+	AC_DEFINE(HAVE_PGSQL)
+	POSTGRES_INCLUDE="-I/usr/local/pgsql/include"
+	POSTGRES_LIBS="-L /usr/local/pgsql/lib/  -lpq"
 fi
 
 #if we have a static library, we include it

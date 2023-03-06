@@ -121,7 +121,9 @@
     NSLog(@"SQL: %@",sql);
 #endif
     if([sql length]==0)
+    {
         return NULL;
+    }
     PGresult *res = PQexec(pgconn, [sql UTF8String]);
     switch (PQresultStatus(res))
     {
