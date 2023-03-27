@@ -312,7 +312,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = "Andreas Fink (andreas@fink.org)";
 				TargetAttributes = {
 					A6D8AD28149AC77E0029E9CF = {
@@ -484,7 +484,7 @@
 					/usr/local/pgsql/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Debug";
 				SDKROOT = macosx;
@@ -560,7 +560,7 @@
 					/usr/local/pgsql/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Release";
 				SDKROOT = macosx;
@@ -592,7 +592,7 @@
 					/usr/local/lib/mariadb,
 					/usr/local/pgsql/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.16.3;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
@@ -628,7 +628,7 @@
 					/usr/local/lib/mariadb,
 					/usr/local/pgsql/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.16.3;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
