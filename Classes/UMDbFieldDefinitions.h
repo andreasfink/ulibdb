@@ -17,7 +17,8 @@ typedef enum db_fieldIndex
     DB_NOT_INDEXED = 0,
     DB_INDEXED = 1,
     DB_PRIMARY_INDEX = 2,
-    DB_INDEXED_BUT_NOT_FOR_ARCHIVE = 3
+    DB_INDEXED_BUT_NOT_FOR_ARCHIVE = 3,
+
 } dbFieldIndex;
 
 typedef enum db_fieldType
