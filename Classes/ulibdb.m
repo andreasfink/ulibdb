@@ -34,7 +34,7 @@
 
 @end
 
-void ulibdb_startup()
+void ulibdb_startup(void)
 {
     if (mysql_library_init(0, NULL, NULL))
     {
@@ -47,7 +47,7 @@ void ulibdb_startup()
     }
 }
 
-void ulibdb_shutdown()
+void ulibdb_shutdown(void)
 {
     mysql_library_end();
 }
