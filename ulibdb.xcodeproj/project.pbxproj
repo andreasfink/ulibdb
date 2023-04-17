@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -311,8 +311,9 @@
 		A6D8AAFA149A769A0029E9CF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "Andreas Fink (andreas@fink.org)";
 				TargetAttributes = {
 					A6D8AD28149AC77E0029E9CF = {
@@ -477,7 +478,10 @@
 					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib/mariadb/ /usr/local/pgsql/lib/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/lib/mariadb/,
+					/usr/local/pgsql/lib/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -553,7 +557,10 @@
 					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib/mariadb/ /usr/local/pgsql/lib/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/lib/mariadb/,
+					/usr/local/pgsql/lib/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -586,7 +593,10 @@
 					/usr/local/postgresclient/include,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mariadb/ /usr/local/postgresclient/lib/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/mariadb/,
+					/usr/local/postgresclient/lib/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
@@ -622,7 +632,10 @@
 					/usr/local/postgresclient/include,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/mariadb/ /usr/local/postgresclient/lib/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/local/mariadb/,
+					/usr/local/postgresclient/lib/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/mariadb,
