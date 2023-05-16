@@ -9,6 +9,11 @@ make_buildnr.sh
 build/
 DerivedData/
 Classes/ulibdb_config.h
+BUILDNR
+make_buildnr.sh
+buildnumber.c
+buildnumber.h
+
 
 config.status
 ## Various settings
