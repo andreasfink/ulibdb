@@ -44,6 +44,34 @@
     return self;
 }
 
+- (UMDbFieldDefinition *)initWithVarchar:(NSString *)name size:(int)size canBeNull:(BOOL)nullAllowed indexed:(BOOL)indexed primary:(BOOL)primary tag:(int)tag;
+{
+    self=[super init];
+    if(self)
+    {
+        fieldName = name;
+        canBeNull = YES;
+        isIndexed = indexed;
+        isPrimaryIndex = primary;
+        canBeNull = nullAllowed;
+        fieldSize = size;
+        tagId = tag;
+    }
+    return self;
+}
+- (UMDbFieldDefinition *)initWithInteger:(NSString *)name indexed:(BOOL)indexed canBeNull:(BOOL)nullAllowed  primary:(BOOL)primary tag:(int)tag
+{
+    self=[super init];
+    if(self)
+    {
+        fieldName = name;
+        isIndexed = indexed;
+        isPrimaryIndex = primary;
+        canBeNull = nullAllowed;
+        tagId = tag;
+    }
+    return self;
+}
 
 - (UMDbFieldDefinition *)initWithOldFieldDef:(dbFieldDef *)fdef
 {
