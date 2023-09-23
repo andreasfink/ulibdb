@@ -16,6 +16,8 @@
 		A61880111FD1DDF800B31AF5 /* NSString+SQL.h in Headers */ = {isa = PBXBuildFile; fileRef = A618800F1FD1DDF800B31AF5 /* NSString+SQL.h */; };
 		A61880121FD1DDF800B31AF5 /* NSString+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = A61880101FD1DDF800B31AF5 /* NSString+SQL.m */; };
 		A61B97DC193472F7008AD2D4 /* ulibdb_defines.h in Headers */ = {isa = PBXBuildFile; fileRef = A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A628EE302AA5B50000C34D40 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A7A772258BA9D0009E033F /* libssl.a */; };
+		A628EE312AA5B50400C34D40 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A7A770258BA9C7009E033F /* libcrypto.a */; };
 		A65536CA1AC4615200FB1428 /* libpq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A65536C91AC4615200FB1428 /* libpq.a */; };
 		A66538EE1950FE6700C10E07 /* UMDbFileSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A66538EC1950FE6700C10E07 /* UMDbFileSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A66538EF1950FE6700C10E07 /* UMDbFileSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A66538ED1950FE6700C10E07 /* UMDbFileSession.m */; };
@@ -27,8 +29,6 @@
 		A69686801921953400217100 /* UMDbFieldDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867E1921953400217100 /* UMDbFieldDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A69686811921953400217100 /* UMDbFieldDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = A696867F1921953400217100 /* UMDbFieldDefinition.m */; };
 		A6A143F2149B4EA400B007D0 /* ulibdb.h in Headers */ = {isa = PBXBuildFile; fileRef = A6A143F0149B4EA400B007D0 /* ulibdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6A7A771258BA9C7009E033F /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A7A770258BA9C7009E033F /* libcrypto.a */; };
-		A6A7A773258BA9D0009E033F /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A7A772258BA9D0009E033F /* libssl.a */; };
 		A6CD1F4225836AEE0087AF90 /* libmariadbclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CD1F4125836AEE0087AF90 /* libmariadbclient.a */; };
 		A6D8AD2A149AC77E0029E9CF /* UMDbTable.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC52149A9FBE0029E9CF /* UMDbTable.m */; };
 		A6D8AD2B149AC77E0029E9CF /* UMDbDriverType.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */; };
@@ -83,7 +83,7 @@
 		A6A143F0149B4EA400B007D0 /* ulibdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb.h; sourceTree = "<group>"; };
 		A6A7A770258BA9C7009E033F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = /usr/local/lib/libcrypto.a; sourceTree = "<absolute>"; };
 		A6A7A772258BA9D0009E033F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = /usr/local/lib/libssl.a; sourceTree = "<absolute>"; };
-		A6CD1F4125836AEE0087AF90 /* libmariadbclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmariadbclient.a; path = ../../../../../usr/local/lib/mariadb/libmariadbclient.a; sourceTree = "<group>"; };
+		A6CD1F4125836AEE0087AF90 /* libmariadbclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmariadbclient.a; path = /usr/local/lib/mariadb/libmariadbclient.a; sourceTree = "<absolute>"; };
 		A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbDriverType.h; sourceTree = "<group>"; };
 		A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbDriverType.m; sourceTree = "<group>"; };
 		A6D8AC1F149A95670029E9CF /* UMDbPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbPool.h; sourceTree = "<group>"; };
@@ -125,10 +125,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6A7A773258BA9D0009E033F /* libssl.a in Frameworks */,
+				A628EE302AA5B50000C34D40 /* libssl.a in Frameworks */,
+				A628EE312AA5B50400C34D40 /* libcrypto.a in Frameworks */,
 				A6CD1F4225836AEE0087AF90 /* libmariadbclient.a in Frameworks */,
 				2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */,
-				A6A7A771258BA9C7009E033F /* libcrypto.a in Frameworks */,
 				A65536CA1AC4615200FB1428 /* libpq.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +317,6 @@
 				ORGANIZATIONNAME = "Andreas Fink (andreas@fink.org)";
 				TargetAttributes = {
 					A6D8AD28149AC77E0029E9CF = {
-						DevelopmentTeam = 38L827M334;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -577,7 +576,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
