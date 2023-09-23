@@ -6,7 +6,7 @@
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
 //#include "../gw-config.h"
-#import "ulib/ulib.h"
+#import <ulib/ulib.h>
 #import "ulibdb_defines.h"
 
 #ifdef HAVE_MYSQL
@@ -43,7 +43,11 @@
         self=[super initWithPool:p];
         if(self)
         {
-            mysql_init(&mysql);
+            mysql = calloc(1,sizeof(MYSQL));
+            if(mysql)
+            {
+                mysql_init(mysql);
+            }
             connection = NULL;
         }
         return self;
@@ -53,6 +57,14 @@
 - (void)dealloc
 {
     [self.logFeed info:0 withText:[NSString stringWithFormat:@"UMMySQLConnection '%@'is being deallocated\n",name]];
+    if(mysql)
+    {
+        free(mysql);
+    }
+    if(connection)
+    {
+        free(connection);
+    }
     name = nil;
 }
 
@@ -80,11 +92,11 @@
         {
             
             my_bool  my_true = 1;
-            if (mysql_options(&mysql, MYSQL_OPT_RECONNECT, &my_true))
+            if (mysql_options(mysql, MYSQL_OPT_RECONNECT, &my_true))
             {
                 NSLog(@"mysql_options (MYSQL_OPT_RECONNECT) failed");
             }
-            connection = mysql_real_connect(&mysql,
+            connection = mysql_real_connect(mysql,
                                             (const char *)[[pool hostName]UTF8String],
                                             (const char *)[[pool user]UTF8String],
                                             (const char *)[[pool pass]UTF8String],
@@ -95,7 +107,7 @@
             if(connection == NULL)
             {
                 NSMutableString *reason = [NSMutableString stringWithString:@"Cannot connect to mysql database (mysql_error ["];
-                [reason appendFormat:@"%s]) while executing connect", mysql_error(&mysql)];
+                [reason appendFormat:@"%s]) while executing connect", mysql_error(mysql)];
                 @throw [NSException exceptionWithName:@"NSDestinationInvalidException" reason:reason userInfo:nil];
                 return NO;
             }

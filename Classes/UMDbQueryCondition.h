@@ -5,8 +5,8 @@
 //  Created by Andreas Fink on 27.10.11.
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
-#import "ulib/ulib.h"
-#import "UMDbDriverType.h"
+#import <ulib/ulib.h>
+#import <ulibdb/UMDbDriverType.h>
 @class UMDbQuery;
 @class UMDbSession;
 

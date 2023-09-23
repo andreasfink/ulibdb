@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 21.10.11.
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
-#import "UMDbSession.h"
+#import <ulibdb/UMDbSession.h>
 
 #ifdef HAVE_PGSQL
 
@@ -21,7 +21,11 @@
 @interface UMPgSQLSession : UMDbSession
 {
     NSString        *pgtty;
+#ifdef HAVE_PGSQL
     PGconn          *pgconn;
+#else
+    void            *pgconn;
+#endif
 }
 
 

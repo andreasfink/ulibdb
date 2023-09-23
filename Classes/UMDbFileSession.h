@@ -7,7 +7,7 @@
 //
 
 #import <ulib/ulib.h>
-#import "UMDbSession.h"
+#import <ulibdb/UMDbSession.h>
 
 @interface UMDbFileSession : UMDbSession
 {

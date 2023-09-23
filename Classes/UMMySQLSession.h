@@ -6,8 +6,8 @@
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
 #import <ulib/ulib.h>
-#import "UMDbSession.h"
-#import "ulibdb_defines.h"
+#import <ulibdb/UMDbSession.h>
+#import <ulibdb/ulibdb_defines.h>
 
 #ifdef HAVE_MYSQL
 #include "mariadb/mysql.h"
@@ -15,8 +15,13 @@
 
 @interface UMMySQLSession : UMDbSession
 {
-    MYSQL             mysql;
+#ifdef HAVE_MYSQL
+    MYSQL             *mysql;
     MYSQL             *connection;
+#else
+    void              *mysql;
+    void              *connection;
+#endif
     unsigned long     mysqlServerVer;
     unsigned long     mysqlClientVer;
 	NSString		  *type;

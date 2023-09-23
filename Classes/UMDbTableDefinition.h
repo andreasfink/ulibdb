@@ -7,7 +7,7 @@
 //
 
 #import <ulib/ulib.h>
-#import "UMDbFieldDefinitions.h"
+#import <ulibdb/UMDbFieldDefinitions.h>
 
 @class UMDbFieldDefinition;
 

@@ -7,9 +7,9 @@
 //
 
 #import <ulib/ulib.h>
-#import "UMDbQueryType.h"
-#import "UMDbFieldDefinitions.h"
-#import "UMDbPool.h"
+#import <ulibdb/UMDbQueryType.h>
+#import <ulibdb/UMDbFieldDefinitions.h>
+#import <ulibdb/UMDbPool.h>
 
 #define FLF  __FILE__ line:__LINE__ func:__func__
 @class UMDbSession;

@@ -6,9 +6,9 @@
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
 #import <ulib/ulib.h>
-#import "UMDbDriverType.h"
-#import "UMDbStorageType.h"
-#import "UMDbQueryType.h"
+#import <ulibdb/UMDbDriverType.h>
+#import <ulibdb/UMDbStorageType.h>
+#import <ulibdb/UMDbQueryType.h>
 
 void umdbpool_out_of_sessions(void);
 void umdbpool_null_session_returned(void);

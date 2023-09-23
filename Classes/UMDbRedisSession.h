@@ -6,7 +6,7 @@
 //
 //
 
-#import "UMDbSession.h"
+#import <ulibdb/UMDbSession.h>
 
 #define REDIS_RETURN_EXISTS @":1"
 #define REDIS_RETURN_FAILURE @":0"

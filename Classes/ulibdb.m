@@ -6,7 +6,7 @@
 //
 //
 
-#import "ulibdb.h"
+#import <ulibdb/ulibdb.h>
 #import "../version.h"
 
 @implementation ulibdb

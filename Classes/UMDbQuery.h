@@ -5,17 +5,17 @@
 //  Created by Andreas Fink on 26.10.11.
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
-#import "ulib/ulib.h"
-#import "ulibdb_config.h"
+#import <ulib/ulib.h>
+#import <ulibdb/ulibdb_config.h>
 
-#import "UMDbQueryType.h"
-#import "UMDbDriverType.h"
-#import "UMDbQueryCondition.h"
-#import "UMDbQueryPlaceholder.h"
-#import "UMDbTable.h"
-#import "UMDbFieldDefinitions.h"
-#import "UMDbFieldDefinition.h"
-#import "UMDbTableDefinition.h"
+#import <ulibdb/UMDbQueryType.h>
+#import <ulibdb/UMDbDriverType.h>
+#import <ulibdb/UMDbQueryCondition.h>
+#import <ulibdb/UMDbQueryPlaceholder.h>
+#import <ulibdb/UMDbTable.h>
+#import <ulibdb/UMDbFieldDefinitions.h>
+#import <ulibdb/UMDbFieldDefinition.h>
+#import <ulibdb/UMDbTableDefinition.h>
 
 #define NEW_OR_CACHED_UMDB_QUERY()  [UMDbQuery queryForFile:__FILE__ line: __LINE__]
 

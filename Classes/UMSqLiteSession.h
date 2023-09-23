@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 25.10.11.
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
-#import "UMDbSession.h"
+#import <ulibdb/UMDbSession.h>
 
 #ifdef HAVE_SQLITE
 
