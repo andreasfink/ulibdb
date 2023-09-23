@@ -10,15 +10,15 @@
 
 #import "ulibdb_defines.h"
 
-#import "UMDbDriverType.h"
-#import "UMDbQueryType.h"
-#import "UMDbTable.h"
-#import "UMDbPool.h"
-#import "UMDbQuery.h"
-#import "UMDbQueryCondition.h"
-#import "UMDbQueryPlaceholder.h"
-#import "UMDbResult.h"
-#import "UMDbSession.h"
+#import <ulibdb/UMDbDriverType.h>
+#import <ulibdb/UMDbQueryType.h>
+#import <ulibdb/UMDbTable.h>
+#import <ulibdb/UMDbPool.h>
+#import <ulibdb/UMDbQuery.h>
+#import <ulibdb/UMDbQueryCondition.h>
+#import <ulibdb/UMDbQueryPlaceholder.h>
+#import <ulibdb/UMDbResult.h>
+#import <ulibdb/UMDbSession.h>
 
 /*
  we dont want to include the requirement of having to find the mysql.h
@@ -28,14 +28,14 @@
 */
 
 #if defined(ULIBDB_FRAMEWORK_COMPILATION)
-#import "UMMySQLSession.h"
-#import "UMPgSQLSession.h"
+#import <ulibdb/UMMySQLSession.h>
+#import <ulibdb/UMPgSQLSession.h>
 #endif
 
 
-#import "UMSqLiteSession.h"
-#import "UMDbRedisSession.h"
-#import "UMDbMySqlInProgress.h"
+#import <ulibdb/UMSqLiteSession.h>
+#import <ulibdb/UMDbRedisSession.h>
+#import <ulibdb/UMDbMySqlInProgress.h>
 
 @interface ulibdb : UMObject
 {
