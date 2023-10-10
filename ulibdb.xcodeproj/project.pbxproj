@@ -12,7 +12,7 @@
 		22356C0F18915F8900EF4074 /* UMDbRedisSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 22356C0D18915F8900EF4074 /* UMDbRedisSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		22356C1018915F8900EF4074 /* UMDbRedisSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 22356C0E18915F8900EF4074 /* UMDbRedisSession.m */; };
 		2293864B18B3A298000D9DF2 /* UMDbFieldDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2293864A18B3A298000D9DF2 /* UMDbFieldDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6793DCA1934B08F0090FC94 /* ulib.framework */; };
+		2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6793DCA1934B08F0090FC94 /* ulib.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		A61880111FD1DDF800B31AF5 /* NSString+SQL.h in Headers */ = {isa = PBXBuildFile; fileRef = A618800F1FD1DDF800B31AF5 /* NSString+SQL.h */; };
 		A61880121FD1DDF800B31AF5 /* NSString+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = A61880101FD1DDF800B31AF5 /* NSString+SQL.m */; };
 		A61B97DC193472F7008AD2D4 /* ulibdb_defines.h in Headers */ = {isa = PBXBuildFile; fileRef = A61B97DB193472F7008AD2D4 /* ulibdb_defines.h */; settings = {ATTRIBUTES = (Public, ); }; };
