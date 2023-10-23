@@ -58,8 +58,20 @@ typedef enum UMDbFieldType
 
 - (UMDbFieldDefinition *)init;
 - (UMDbFieldDefinition *)initWithOldFieldDef:(dbFieldDef *)fdef;
-- (UMDbFieldDefinition *)initWithVarchar:(NSString *)name size:(int)size canBeNull:(BOOL)nullAllowed indexed:(BOOL)indexed primary:(BOOL)primary tag:(int)tag;
-- (UMDbFieldDefinition *)initWithInteger:(NSString *)name indexed:(BOOL)indexed canBeNull:(BOOL)nullAllowed  primary:(BOOL)primary tag:(int)tag;
+
+- (UMDbFieldDefinition *)initWithVarchar:(NSString *)name
+                                    size:(int)size
+                               canBeNull:(BOOL)nullAllowed
+                                 indexed:(BOOL)indexed
+                                 primary:(BOOL)primary
+                                     tag:(int)tag;
+
+- (UMDbFieldDefinition *)initWithInteger:(NSString *)name
+                               canBeNull:(BOOL)nullAllowed
+                                 indexed:(BOOL)indexed
+                                 primary:(BOOL)primary
+                                     tag:(int)tag;
+
 
 - (NSString *)asJson;
 - (NSDictionary *)asDictionary;
