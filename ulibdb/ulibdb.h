@@ -7,8 +7,7 @@
 //
 
 #import <ulib/ulib.h>
-
-#import "ulibdb_defines.h"
+#import <ulibdb/ulibdb_config.h>
 
 #import <ulibdb/UMDbDriverType.h>
 #import <ulibdb/UMDbQueryType.h>

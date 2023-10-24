@@ -8,6 +8,7 @@
 #import <ulib/ulib.h>
 #import "ulibdb_defines.h"
 #import "UMDbResult.h"
+#import <ulibdb/ulibdb_config.h>
 
 @implementation UMDbResult
 @synthesize affectedRows;

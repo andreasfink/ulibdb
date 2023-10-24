@@ -15,6 +15,7 @@
 #import "UMDbPool.h"
 #import "UMDbQuery.h"
 #import "UMDbResult.h"
+#import <ulibdb/ulibdb_config.h>
 
 @implementation UMDbRedisSession
 

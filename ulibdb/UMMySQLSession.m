@@ -7,7 +7,7 @@
 
 //#include "../gw-config.h"
 #import <ulib/ulib.h>
-#import "ulibdb_defines.h"
+#import <ulibdb/ulibdb_config.h>
 
 #ifdef HAVE_MYSQL
 

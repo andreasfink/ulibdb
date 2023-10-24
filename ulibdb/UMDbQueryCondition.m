@@ -9,6 +9,7 @@
 #import "ulibdb_defines.h"
 #import "UMDbQueryCondition.h"
 #import "UMDbQueryPlaceholder.h"
+#import <ulibdb/ulibdb_config.h>
 
 @implementation UMDbQueryCondition
 
