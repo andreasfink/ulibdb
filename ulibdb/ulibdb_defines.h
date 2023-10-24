@@ -6,5 +6,5 @@
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 //
 
-#include <ulibdb/ulibdb_config.h>
+#import <ulibdb/ulibdb_config.h>
 
