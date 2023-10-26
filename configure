@@ -2290,7 +2290,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-COPYRIGHT="Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved."
+COPYRIGHT="Copyright © 2023 Andreas Fink (andreas@fink.org). All rights reserved."
 PROJECT_NAME="ulibdb"
 AUTHOR="Andreas Fink <andreas@fink.org>"
 CONFIG_DEFINE="ULIBDB_CONFIG"
@@ -2298,7 +2298,7 @@ VERSION=`head -n 1 VERSION`
 MAJORVER=`echo $VERSION | cut -f1 -d.`
 MINORVER=`echo $VERSION | cut -f2 -d.`
 REVISION=`echo $VERSION | cut -f3 -d.`
-CONFIG_HEADER=ulibdb/ulibdb_config.h
+CONFIG_HEADER=${PROJECT_NAME}/ulibdb_config.h
 DEPENDENT_PKGCONFIGS="ulib mariadb libpq"
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export PKG_CONFIG_PATH

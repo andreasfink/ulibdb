@@ -25,7 +25,7 @@ HFILES = version.h $(wildcard @PROJECT_NAME@/*.h) $(wildcard @PROJECT_NAME@/*/*.
 MOFILES  = $(MFILES:.m=.m.o)
 OFILES = $(MOFILES)
 
-INCLUDEDIRS = -I @PROJECT_NAME@
+INCLUDEDIRS = -I . -I @PROJECT_NAME@
 
 ${LIB}: ${OFILES}
 	./make_version
