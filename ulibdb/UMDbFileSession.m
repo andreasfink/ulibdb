@@ -9,6 +9,7 @@
 #import "UMDbFileSession.h"
 #import "UMDbQuery.h"
 #import "UMDbResult.h"
+#import <ulibdb/ulibdb_config.h>
 
 @implementation UMDbFileSession
 

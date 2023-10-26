@@ -11,6 +11,7 @@
 #import "UMDbQuery.h"
 #import "UMDbDriverType.h"
 #import "UMDbSession.h"
+#import <ulibdb/ulibdb_config.h>
 
 @implementation UMDbQueryPlaceholder
 

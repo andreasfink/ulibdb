@@ -12,6 +12,7 @@
 #import "UMDbResult.h"
 #import "UMDbQuery.h"
 #import "UMDbDriverType.h"
+#import <ulibdb/ulibdb_config.h>
 
 
 @implementation UMDbSession

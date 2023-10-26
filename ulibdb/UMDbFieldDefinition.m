@@ -6,8 +6,8 @@
 //
 //
 
-#import "UMDbFieldDefinition.h"
-#import "UMDbFieldDefinitions.h"
+#import <ulibdb/UMDbFieldDefinition.h>
+#import <ulibdb/ulibdb_config.h>
 
 @implementation UMDbFieldDefinition
 
@@ -44,7 +44,13 @@
     return self;
 }
 
-- (UMDbFieldDefinition *)initWithVarchar:(NSString *)name size:(int)size canBeNull:(BOOL)nullAllowed indexed:(BOOL)indexed primary:(BOOL)primary tag:(int)tag;
+
+- (UMDbFieldDefinition *)initWithVarchar:(NSString *)name
+                                    size:(int)size
+                               canBeNull:(BOOL)nullAllowed
+                                 indexed:(BOOL)indexed
+                                 primary:(BOOL)primary
+                                     tag:(int)tag
 {
     self=[super init];
     if(self)
@@ -59,7 +65,11 @@
     }
     return self;
 }
-- (UMDbFieldDefinition *)initWithInteger:(NSString *)name indexed:(BOOL)indexed canBeNull:(BOOL)nullAllowed  primary:(BOOL)primary tag:(int)tag
+- (UMDbFieldDefinition *)initWithInteger:(NSString *)name
+                               canBeNull:(BOOL)nullAllowed
+                                 indexed:(BOOL)indexed
+                                 primary:(BOOL)primary
+                                     tag:(int)tag
 {
     self=[super init];
     if(self)

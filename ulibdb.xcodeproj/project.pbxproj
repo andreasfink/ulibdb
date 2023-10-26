@@ -29,7 +29,7 @@
 		A69686801921953400217100 /* UMDbFieldDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = A696867E1921953400217100 /* UMDbFieldDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A69686811921953400217100 /* UMDbFieldDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = A696867F1921953400217100 /* UMDbFieldDefinition.m */; };
 		A6A143F2149B4EA400B007D0 /* ulibdb.h in Headers */ = {isa = PBXBuildFile; fileRef = A6A143F0149B4EA400B007D0 /* ulibdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6CD1F4225836AEE0087AF90 /* libmariadbclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CD1F4125836AEE0087AF90 /* libmariadbclient.a */; };
+		A6BCC8FD2AE7C0F700C34D40 /* libmysqlclient_r.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BCC8FC2AE7C0F700C34D40 /* libmysqlclient_r.a */; };
 		A6D8AD2A149AC77E0029E9CF /* UMDbTable.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC52149A9FBE0029E9CF /* UMDbTable.m */; };
 		A6D8AD2B149AC77E0029E9CF /* UMDbDriverType.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */; };
 		A6D8AD2C149AC77E0029E9CF /* UMDbPool.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC20149A95670029E9CF /* UMDbPool.m */; };
@@ -83,7 +83,7 @@
 		A6A143F0149B4EA400B007D0 /* ulibdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb.h; sourceTree = "<group>"; };
 		A6A7A770258BA9C7009E033F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = /usr/local/lib/libcrypto.a; sourceTree = "<absolute>"; };
 		A6A7A772258BA9D0009E033F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = /usr/local/lib/libssl.a; sourceTree = "<absolute>"; };
-		A6CD1F4125836AEE0087AF90 /* libmariadbclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmariadbclient.a; path = /usr/local/lib/mariadb/libmariadbclient.a; sourceTree = "<absolute>"; };
+		A6BCC8FC2AE7C0F700C34D40 /* libmysqlclient_r.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmysqlclient_r.a; path = ../../../../../usr/local/lib/mariadb/libmysqlclient_r.a; sourceTree = "<group>"; };
 		A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbDriverType.h; sourceTree = "<group>"; };
 		A6D8AC1E149A95670029E9CF /* UMDbDriverType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbDriverType.m; sourceTree = "<group>"; };
 		A6D8AC1F149A95670029E9CF /* UMDbPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbPool.h; sourceTree = "<group>"; };
@@ -125,9 +125,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6BCC8FD2AE7C0F700C34D40 /* libmysqlclient_r.a in Frameworks */,
 				A628EE302AA5B50000C34D40 /* libssl.a in Frameworks */,
 				A628EE312AA5B50400C34D40 /* libcrypto.a in Frameworks */,
-				A6CD1F4225836AEE0087AF90 /* libmariadbclient.a in Frameworks */,
 				2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */,
 				A65536CA1AC4615200FB1428 /* libpq.a in Frameworks */,
 			);
@@ -154,7 +154,7 @@
 				A6F693EB1B4E830C0090FC94 /* configure.in */,
 				A608E34E26CD4A2200F07A4F /* make_buildnr.sh */,
 				A608E34D26CD4A1800F07A4F /* make_buildnr.sh.in */,
-				A6D8AB34149A76BB0029E9CF /* Classes */,
+				A6D8AB34149A76BB0029E9CF /* ulibdb */,
 				A6D8AD60149AC8590029E9CF /* Libraries */,
 				A6D8AB06149A769B0029E9CF /* Frameworks */,
 				A6D8AB05149A769B0029E9CF /* Products */,
@@ -179,7 +179,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A6D8AB34149A76BB0029E9CF /* Classes */ = {
+		A6D8AB34149A76BB0029E9CF /* ulibdb */ = {
 			isa = PBXGroup;
 			children = (
 				A6A143F0149B4EA400B007D0 /* ulibdb.h */,
@@ -227,7 +227,7 @@
 				A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */,
 				A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */,
 			);
-			path = Classes;
+			path = ulibdb;
 			sourceTree = SOURCE_ROOT;
 		};
 		A6D8AD60149AC8590029E9CF /* Libraries */ = {
@@ -235,7 +235,7 @@
 			children = (
 				A6A7A772258BA9D0009E033F /* libssl.a */,
 				A6A7A770258BA9C7009E033F /* libcrypto.a */,
-				A6CD1F4125836AEE0087AF90 /* libmariadbclient.a */,
+				A6BCC8FC2AE7C0F700C34D40 /* libmysqlclient_r.a */,
 				A65536C91AC4615200FB1428 /* libpq.a */,
 			);
 			name = Libraries;
@@ -437,15 +437,16 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				DSTROOT = "/Library/Application Support";
-				DYLIB_COMPATIBILITY_VERSION = 1.5.1;
-				DYLIB_CURRENT_VERSION = 1.5.1;
+				DYLIB_COMPATIBILITY_VERSION = 2.0.0;
+				DYLIB_CURRENT_VERSION = 2.0.0;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -486,7 +487,7 @@
 					/usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Debug";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wimplicit-fallthrough";
@@ -517,15 +518,16 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				DSTROOT = "/Library/Application Support";
-				DYLIB_COMPATIBILITY_VERSION = 1.5.1;
-				DYLIB_CURRENT_VERSION = 1.5.1;
+				DYLIB_COMPATIBILITY_VERSION = 2.0.0;
+				DYLIB_CURRENT_VERSION = 2.0.0;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
@@ -575,8 +577,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 38L827M334;
+				DYLIB_COMPATIBILITY_VERSION = 2.0.0;
+				DYLIB_CURRENT_VERSION = 2.0.0;
 				ENABLE_MODULE_VERIFIER = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
@@ -598,6 +602,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.16.3;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Debug",
@@ -615,9 +620,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 38L827M334;
+				DYLIB_COMPATIBILITY_VERSION = 2.0.0;
+				DYLIB_CURRENT_VERSION = 2.0.0;
 				ENABLE_MODULE_VERIFIER = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
@@ -639,6 +646,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.16.3;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Release",
