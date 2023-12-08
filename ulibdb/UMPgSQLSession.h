@@ -10,7 +10,7 @@
 #ifdef HAVE_PGSQL
 
 #ifdef __APPLE__
-#import "libpq-fe.h"
+#import <libpq-fe.h>
 #else
 #import <postgresql/libpq-fe.h>
 #endif

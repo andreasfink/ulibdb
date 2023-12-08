@@ -10,7 +10,7 @@
 #import <ulibdb/ulibdb_defines.h>
 
 #ifdef HAVE_MYSQL
-#include "mariadb/mysql.h"
+#include <mariadb/mysql.h>
 @class UMDbMySqlInProgress;
 
 @interface UMMySQLSession : UMDbSession
