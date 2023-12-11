@@ -1,0 +1,58 @@
+# File: Makefile
+# Project "ulibdb"
+# Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
+# Create: Andreas Fink (andreas@fink.org)
+#
+#
+
+CC=clang
+CFLAGS= -D_REENTRANT=1 -DDARWIN=1 -arch x86_64 -g -O2 -DULIBDB_CONFIG=Release -I/usr/local/pgsql/include -I/opt/homebrew/Cellar/mariadb/11.1.2/include/mysql -I/opt/homebrew/Cellar/mariadb/11.1.2/include/mysql/.. 
+LDFLAGS= -g
+MAJORVER=2
+MINORVER=0
+REVISION=0
+LIB=libulibdb.dylib
+SLIB=libulibdb.a
+
+PKGCONFIGFILE=ulibdb.pc
+
+MFILES = $(wildcard Classes/*.m) $(wildcard Classes/*/*.m)
+HFILES = version.h $(wildcard Classes/*.h) $(wildcard Classes/*/*.h)
+MOFILES  = $(MFILES:.m=.m.o)
+OFILES = $(MOFILES)
+
+INCLUDEDIRS = -I Classes
+
+${LIB}: ${OFILES}
+	./make_version
+	${CC} -shared -o ${LIB}  ${LDFLAGS} ${OFILES} ${LIBS} ${STATIC_LIBS}
+
+${SLIB}: ${OFILES}
+	ar rcs ${SLIB} ${OFILES}
+	ranlib ${SLIB}
+
+install: ${LIB} ${SLIB}
+	-mkdir -p ${DESTDIR}/usr/local/lib/pkgconfig
+	rm -f "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}.${REVISION}"
+	rm -f "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}"
+	rm -f "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}"
+	rm -f "${DESTDIR}/usr/local/lib/${LIB}"
+	install -b -g wheel -o root -m 644 "${LIB}" "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}.${REVISION}"
+	install -b -g wheel -o root -m 644 "${SLIB}" "${DESTDIR}/usr/local/lib/${SLIB}"
+	ln -s "${LIB}.${MAJORVER}.${MINORVER}.${REVISION}" "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}.${MINORVER}"
+	ln -s "${LIB}.${MAJORVER}.${MINORVER}"             "${DESTDIR}/usr/local/lib/${LIB}.${MAJORVER}"
+	ln -s "${LIB}.${MAJORVER}"                         "${DESTDIR}/usr/local/lib/${LIB}"
+	-install -b -g wheel -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
+	-mkdir -p ${DESTDIR}/usr/local/include/ulibdb
+	cp $(HFILES) ${DESTDIR}/usr/local/include/ulibdb
+	ldconfig
+
+clean:
+	rm -f $(LIB) $(OFILES) $(SLIB)
+
+.SUFFIXES: .m.o .o .m .c
+
+%.m.o:	%.m
+	${CC} -c ${CFLAGS} -DULIBDB_FRAMEWORK_COMPILATION=1 -x objective-c -fobjc-arc $< ${INCLUDEDIRS} -o $@
+
+

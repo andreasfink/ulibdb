@@ -1,0 +1,41 @@
+##
+# File: Makefile
+# Project "ulibdb"
+# Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
+# Create: Andreas Fink (andreas@fink.org)
+#
+#
+
+PROJECT_NAME=ulibdb
+VERSION=`cat VERSION`
+PROJECT_ID=me.fink.ulibdb
+
+CC=clang
+
+all:
+	./codesign_environment.sh
+	xcodebuild ${XCODESIGN}
+	
+unlock:
+	security unlock-keychain ~/Library/Keychains/login.keychain
+
+clean:
+	rm -rf $(BUILD_DIR)
+	xcodebuild clean
+
+install:
+	./codesign_environment.sh
+	xcodebuild  ${XCODESIGN} install
+
+
+install_root_prepare:
+	-rm -rf install_root
+	mkdir -p install_root
+	./codesign_environment.sh
+	xcodebuild ${XCODESIGN} DSTROOT="install_root" install
+
+pkg:	install_root_prepare
+	./make_pkg.sh "$(PROJECT_NAME)" "$(PROJECT_ID)" install_root "`cat VERSION`" 
+
+pkg2: install_root_prepare
+	./make_pkg.sh "$(PROJECT_NAME)" "$(PROJECT_ID)" install_root "`cat VERSION`" "$(PROJECT_NAME).pkg"

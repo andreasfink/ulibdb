@@ -1,0 +1,16 @@
+#ulib pkg-config source file
+
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Cflags: -I${includedir} -I/opt/homebrew/Cellar/mariadb/11.1.2/include/mysql -I/opt/homebrew/Cellar/mariadb/11.1.2/include/mysql/..  -I/usr/local/pgsql/include
+Libs: -L${libdir} -l:libulibdb.so.2.0   
+
+Name: ulibdb
+Description: universal database library
+Version: 2.0.0
+Requires: ulib mariadb libpq
+
+
