@@ -4,13 +4,20 @@
 
 BUILDNR
 make_buildnr.sh
+Makefile
+Makefile.freebsd
+Makefile.linux
+Makefile.osx
+autom4te.cache
+config.log
+ulibdb.pc
+ulibdb/stamp-h1
+ulibdb/ulibdb_config.h
+version.h
 
 ## Build generated
 build/
 DerivedData/
-Classes/ulibdb_config.h
-BUILDNR
-make_buildnr.sh
 buildnumber.c
 buildnumber.h
 
