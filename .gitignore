@@ -14,6 +14,8 @@ ulibdb.pc
 ulibdb/stamp-h1
 ulibdb/ulibdb_config.h
 version.h
+*.m.d
+*.o
 
 ## Build generated
 build/
