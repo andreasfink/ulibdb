@@ -5,13 +5,13 @@
 #
 #
 
-CC=clang
-CFLAGS= -D_REENTRANT=1 -DDARWIN=1 -arch x86_64 -g -O2 -DULIBDB_CONFIG=Release -I/usr/local/pgsql/include -I/opt/homebrew/Cellar/mariadb/11.1.2/include/mysql -I/opt/homebrew/Cellar/mariadb/11.1.2/include/mysql/.. 
-LDFLAGS= -g
+CC=/usr/bin/clang
+CFLAGS=-g -O2 -g -O2 -DULIBDB_CONFIG=Release -I/usr/include/mariadb -I/usr/include/mariadb/mysql
+LDFLAGS=-fuse-ld=gold -g
 MAJORVER=2
 MINORVER=0
 REVISION=0
-LIB=libulibdb.dylib
+LIB=libulibdb.
 SLIB=libulibdb.a
 
 PKGCONFIGFILE=ulibdb.pc
