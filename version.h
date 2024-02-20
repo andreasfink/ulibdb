@@ -1,4 +1,8 @@
 #define VERSION "2.0.0"
 #define BUILD "1cebef484c48297d3c6a19f3cdebb4ca0dd02977"
 #define BUILDDATE "Fri Dec 15 15:36:11 2023 +0100"
+<<<<<<< HEAD
 #define COMPILEDATE "2023.12.15-15:38:06"
+=======
+#define COMPILEDATE "2024.02.20-12:14:06"
+>>>>>>> 80f025e9e7f01b3e31532b13da7867858f5bd865
