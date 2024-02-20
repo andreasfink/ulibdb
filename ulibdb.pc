@@ -5,7 +5,7 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
-Cflags: -I${includedir}  
+Cflags: -I${includedir} -I/usr/include/mariadb -I/usr/include/mariadb/mysql -I/usr/include/postgresql
 Libs: -L${libdir} -l:libulibdb.so.2.0   
 
 Name: ulibdb
