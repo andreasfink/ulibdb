@@ -21,6 +21,11 @@
 
 #import <ulibdb/UMDbTableDefinition.h>
 #import <ulibdb/UMDbFieldDefinition.h>
+#import <ulibdb/UMDbFileSession.h>
+#import <ulibdb/UMMySQLSession.h>
+#import <ulibdb/UMPgSQLSession.h>
+#import <ulibdb/ulibdb_defines.h>
+
 /*
  we dont want to include the requirement of having to find the mysql.h
  into a project which only uses ulibdb directly and doesnt ever call
