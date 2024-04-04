@@ -8,6 +8,9 @@
 
 #import <ulibdb/ulibdb.h>
 #import "../version.h"
+#ifdef HAVE_MYSQL
+#import <mariadb/mysql.h>
+#endif
 
 @implementation ulibdb
 

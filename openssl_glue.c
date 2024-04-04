@@ -13,6 +13,7 @@
 */
 
 extern void *SSL_get1_peer_certificate(void *ssl);
+void *SSL_get_peer_certificate(void *ssl);
 
 void *SSL_get_peer_certificate(void *ssl)
 {

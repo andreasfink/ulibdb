@@ -9,19 +9,21 @@
 #import <ulibdb/UMDbSession.h>
 #import <ulibdb/ulibdb_defines.h>
 
-#ifdef HAVE_MYSQL
-#include <mariadb/mysql.h>
+//#ifdef HAVE_MYSQL
+//#include "/usr/local/include/mariadb/mysql.h"
+//
+
 @class UMDbMySqlInProgress;
 
 @interface UMMySQLSession : UMDbSession
 {
-#ifdef HAVE_MYSQL
-    MYSQL             *mysql;
-    MYSQL             *connection;
-#else
+//#ifdef HAVE_MYSQL
+//    MYSQL             *mysql;
+//    MYSQL             *connection;
+//#else
     void              *mysql;
     void              *connection;
-#endif
+//#endif
     unsigned long     mysqlServerVer;
     unsigned long     mysqlClientVer;
 	NSString		  *type;
@@ -33,7 +35,7 @@
 @property(readwrite,strong)		UMLogHandler		*loghandler;
 @property(readwrite,strong)     UMDbMySqlInProgress *lastInProgress;
 
-- (MYSQL *)connection;
+- (void *)connection;
 - (char)fieldQuoteChar;
 - (UMMySQLSession *)initWithPool:(UMDbPool *)pool;
 - (void)dealloc;
@@ -52,4 +54,3 @@
 
 @end
 
-#endif

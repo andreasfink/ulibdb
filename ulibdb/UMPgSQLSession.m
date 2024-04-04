@@ -17,6 +17,7 @@
 #include <stdio.h>
 
 #ifdef HAVE_PGSQL
+#include  <libpq-fe.h>
 
 @implementation UMPgSQLSession
 

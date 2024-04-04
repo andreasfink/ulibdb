@@ -9,23 +9,13 @@
 
 #ifdef HAVE_PGSQL
 
-#ifdef __APPLE__
-#import <libpq-fe.h>
-#else
-#import <postgresql/libpq-fe.h>
-#endif
-
 #define DEFAULT_PGSQL_PORT 5432
 //#define PGSQL_DEBUG 1
 
 @interface UMPgSQLSession : UMDbSession
 {
     NSString        *pgtty;
-#ifdef HAVE_PGSQL
-    PGconn          *pgconn;
-#else
-    void            *pgconn;
-#endif
+    /* PGconn */ void            *pgconn;
 }
 
 

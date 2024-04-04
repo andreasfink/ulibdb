@@ -26,7 +26,7 @@
 @synthesize loghandler;
 @synthesize lastInProgress;
 
-- (MYSQL *)connection
+- (void *)connection
 {
     return connection;
 }
