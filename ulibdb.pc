@@ -5,7 +5,7 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
-Cflags: -I${includedir} -I/opt/homebrew/Cellar/mariadb/11.2.3/include/mysql -I/opt/homebrew/Cellar/mariadb/11.2.3/include/mysql/..  -I/usr/local/pgsql/include
+Cflags: -I${includedir}  -I/usr/local/pgsql/include
 Libs: -L${libdir} -l:libulibdb.so.2.0   
 
 Name: ulibdb

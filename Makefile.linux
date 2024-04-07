@@ -6,14 +6,14 @@
 #
 
 CC=clang
-CFLAGS= -D_REENTRANT=1 -DDARWIN=1 -arch x86_64 -g -O2 -DULIBDB_CONFIG=Release -I/usr/local/pgsql/include -I/opt/homebrew/Cellar/mariadb/11.2.3/include/mysql -I/opt/homebrew/Cellar/mariadb/11.2.3/include/mysql/.. 
+CFLAGS= -D_REENTRANT=1 -DDARWIN=1 -arch x86_64 -g -O2 -DULIBDB_CONFIG=Release -I/usr/local/pgsql/include 
 LDFLAGS= -g
 MAJORVER=2
 MINORVER=0
 REVISION=0
 HAVE_PGSQL=
 HAVE_MYSQL=
-LIBS= -L /usr/local/pgsql/lib/  -lpq -L/opt/homebrew/Cellar/mariadb/11.2.3/lib  -lmariadb -lssl -lcrypto
+LIBS= -L /usr/local/pgsql/lib/  -lpq 
 LIB=libulibdb.dylib
 SLIB=libulibdb.a
 STATIC_LIBS=
