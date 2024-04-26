@@ -597,10 +597,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
+					/usr/local/pgsql/include,
 					/usr/local/include/,
 					/usr/local/include/mariadb/,
-					/usr/local/pgsql/include,
 					/usr/local/postgresclient/include,
+					/usr/local/include/pgsql,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -623,6 +624,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.fink.ulibdb;
 				PRODUCT_NAME = ulibdb;
 				PROVISIONING_PROFILE = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/pgsql/include,
+					/usr/local/include/pgsql,
+				);
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -646,10 +651,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
+					/usr/local/pgsql/include,
 					/usr/local/include/,
 					/usr/local/include/mariadb/,
-					/usr/local/pgsql/include,
 					/usr/local/postgresclient/include,
+					/usr/local/include/pgsql,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -672,6 +678,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.fink.ulibdb;
 				PRODUCT_NAME = ulibdb;
 				PROVISIONING_PROFILE = "";
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					/usr/local/pgsql/include,
+					/usr/local/include/pgsql,
+				);
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
