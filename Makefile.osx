@@ -10,7 +10,7 @@ PROJECT_NAME=ulibdb
 VERSION=`cat VERSION`
 PROJECT_ID=me.fink.ulibdb
 
-CC=clang
+CC=/usr/bin/clang
 
 all:
 	./codesign_environment.sh
