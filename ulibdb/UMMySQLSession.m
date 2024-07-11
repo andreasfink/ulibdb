@@ -87,7 +87,7 @@
         MYSQL_ROW	row;
         int     state;
 
-        [_sessionLock lock];
+        UMMUTEX_LOCK(_sessionLock);
         @try
         {
             
@@ -172,7 +172,7 @@
         }
         @finally
         {
-            [_sessionLock unlock];
+            UMMUTEX_UNLOCK(_sessionLock);
         }
         return YES;
     }
@@ -468,7 +468,6 @@
     @autoreleasepool
     {
         BOOL success = YES;
-        //[_sessionLock lock];
 #ifdef MYSQL_DEBUG
         NSLog(@"SQL: %@",sql);
 #endif
@@ -647,7 +646,7 @@
         }
     
         long state;
-        [_sessionLock lock];
+        UMMUTEX_LOCK(_sessionLock);
         @try
         {
             self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:"ping" previousQuery:lastInProgress];
@@ -661,7 +660,7 @@
         }
         @finally
         {
-            [_sessionLock unlock];
+            UMMUTEX_UNLOCK(_sessionLock);
         }
         return YES;
     }

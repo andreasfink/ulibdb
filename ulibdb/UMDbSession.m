@@ -161,7 +161,7 @@
     {
         UMAssert(0,@"Query returns result but we are not expecting any");
     }
-    [_sessionLock lock];
+    UMMUTEX_LOCK(_sessionLock);
     @try
     {
         NSString *sql = [query sqlForType:query.type
@@ -184,7 +184,7 @@
     }
     @finally
     {
-        [_sessionLock unlock];
+        UMMUTEX_UNLOCK(_sessionLock);
     }
     return result;
 }
@@ -201,7 +201,7 @@
         UMAssert(0,@"Query returns result but we are not expecting any");
     }
 
-    [_sessionLock lock];
+    UMMUTEX_LOCK(_sessionLock);
     @try
     {
         NSString *sql = [query sqlForType:query.type
@@ -225,7 +225,7 @@
     }
     @finally
     {
-        [_sessionLock unlock];
+        UMMUTEX_UNLOCK(_sessionLock);
     }
     return result;
 }
@@ -281,7 +281,7 @@
         UMAssert(0,@"Query does not result but we are expecting a result");
     }
 
-    [_sessionLock lock];
+    UMMUTEX_LOCK(_sessionLock);
     @try
     {
         NSString *sql = NULL;
@@ -320,7 +320,7 @@
     }
     @finally
     {
-        [_sessionLock unlock];
+        UMMUTEX_UNLOCK(_sessionLock);
     }
     return result;
 

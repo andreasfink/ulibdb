@@ -122,7 +122,7 @@
 
 - (BOOL) connect
 {
-    [_sessionLock lock];
+    UMMUTEX_LOCK(_sessionLock);
     @try
     {
         NSFileManager *fmgr = [NSFileManager  defaultManager];
@@ -143,7 +143,7 @@
     }
     @finally
     {
-        [_sessionLock unlock];
+        UMMUTEX_UNLOCK(_sessionLock);
     }
     return YES;
 }
@@ -166,7 +166,7 @@
 - (BOOL)queryWithNoResult:(NSString *)sql allowFail:(BOOL)allowFail affectedRows:(unsigned long long *)count;
 {
     BOOL success = YES;
-    [_sessionLock lock];
+    UMMUTEX_LOCK(_sessionLock);
 
     @try
     {
@@ -214,7 +214,7 @@
     }
     @finally
     {
-        [_sessionLock unlock];
+        UMMUTEX_UNLOCK(_sessionLock);
     }
     return success;
 }
@@ -230,7 +230,7 @@
                                        line:(long)line
 {
     UMDbResult *res=NULL;
-    [_sessionLock lock];
+    UMMUTEX_LOCK(_sessionLock);
     @try
     {
         UMJsonParser *parser = [[UMJsonParser alloc]init];
@@ -266,7 +266,7 @@
     }
     @finally
     {
-        [_sessionLock unlock];
+        UMMUTEX_UNLOCK(_sessionLock);
     }
     return res;
 }

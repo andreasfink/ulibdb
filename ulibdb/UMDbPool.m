@@ -345,19 +345,19 @@ void umdbpool_null_session_returned(void)
 
 - (void) idleTask
 {
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     [self addConnectedSessions];
     [self removeDisconnectedSessions];
     [self pingAllUnusedSessions];
     [self pingAllDisconnectedSessions];
-    [_poolLock unlock];
+    UMMUTEX_UNLOCK(_poolLock);
 }
 
 // Move connected sessions to list of available sessions
 
 - (void) addConnectedSessions
 {
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     @try
     {
         UMDbSession *result = nil;
@@ -380,14 +380,14 @@ void umdbpool_null_session_returned(void)
     }
     @finally
     {
-        [_poolLock unlock];
+        UMMUTEX_UNLOCK(_poolLock);
     }
  }
 
 // Drop disconnected sessions from available connections
 - (void) removeDisconnectedSessions
 {
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     @try
     {
         UMDbSession *result = nil;
@@ -414,14 +414,14 @@ void umdbpool_null_session_returned(void)
     }
     @finally
     {
-        [_poolLock unlock];
+        UMMUTEX_UNLOCK(_poolLock);
     }
 }
 
 // Ping all unused sessions and mark discoonected, if ping did not work
 - (void) pingAllUnusedSessions
 {
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     @try
     {
         UMDbSession *s = nil;
@@ -443,7 +443,7 @@ void umdbpool_null_session_returned(void)
     }
     @finally
     {
-        [_poolLock unlock];
+        UMMUTEX_UNLOCK(_poolLock);
     }
 }
 
@@ -451,7 +451,7 @@ void umdbpool_null_session_returned(void)
  * Session returns into available pool only when all required resends are done.*/
 - (void) pingAllDisconnectedSessions
 {
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     @try
     {
         
@@ -474,14 +474,14 @@ void umdbpool_null_session_returned(void)
     }
     @finally
     {
-        [_poolLock unlock];
+        UMMUTEX_UNLOCK(_poolLock);
     }
 }
 
 
 - (UMDbSession *)newSession
 {
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     @try
     {
         UMDbSession *session = NULL;
@@ -516,7 +516,7 @@ void umdbpool_null_session_returned(void)
     }
     @finally
     {
-        [_poolLock unlock];
+        UMMUTEX_UNLOCK(_poolLock);
     }
 }
 
@@ -540,7 +540,7 @@ void umdbpool_null_session_returned(void)
     {
         noSessionAvailable=NO;
 
-        [_poolLock lock];
+        UMMUTEX_LOCK(_poolLock);
         if(self.sessionsAvailableCount>0)
         {
             result = [sessionsAvailable getFirst];
@@ -565,7 +565,7 @@ void umdbpool_null_session_returned(void)
                 noSessionAvailable=YES;
             }
         }
-        [_poolLock unlock];
+        UMMUTEX_UNLOCK(_poolLock);
 
         
         if(noSessionAvailable)
@@ -644,11 +644,11 @@ void umdbpool_null_session_returned(void)
 
     if(session)
     {
-        [_poolLock lock];
+        UMMUTEX_LOCK(_poolLock);
         [sessionsInUse removeObject:session];
         [session setUsedFrom:file line:line func:func];
         [sessionsAvailable append:session];
-        [_poolLock unlock];
+        UMMUTEX_UNLOCK(_poolLock);
 
     }
     else
@@ -667,18 +667,18 @@ void umdbpool_null_session_returned(void)
 
 - (void) startSessions
 {
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     for (int i=0;i<minSessions;i++)
     {
         UMDbSession *session = [self newSession];
         [sessionsAvailable append:session];
     }
-    [_poolLock unlock];
+    UMMUTEX_UNLOCK(_poolLock);
 }
 
 - (void) stopSessions
 {
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     UMDbSession *session = [sessionsInUse getFirst];
     while(session)
     {
@@ -692,7 +692,7 @@ void umdbpool_null_session_returned(void)
         [session disconnect];
         session = [sessionsAvailable getFirst];
     }
-    [_poolLock unlock];
+    UMMUTEX_UNLOCK(_poolLock);
 }
 
 - (void) removeSessions
@@ -897,14 +897,14 @@ void umdbpool_null_session_returned(void)
 - (NSString *)inUseDescription
 {
     NSMutableString *s = [NSMutableString stringWithString:[super description]];
-    [_poolLock lock];
+    UMMUTEX_LOCK(_poolLock);
     UMDbSession *session = [sessionsInUse getFirst];
     while(session)
     {
         [s appendFormat:@"%@\n",[session inUseDescription]];
         [sessionsInUse append:session];
     }
-    [_poolLock unlock];
+    UMMUTEX_UNLOCK(_poolLock);
     return s;
 }
 @end
