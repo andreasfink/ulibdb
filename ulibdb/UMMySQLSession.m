@@ -87,7 +87,7 @@
         MYSQL_ROW	row;
         int     state;
 
-        UMMUTEX_LOCK(_sessionLock);
+        ummutex_lock(_sessionLock);
         @try
         {
             
@@ -172,7 +172,7 @@
         }
         @finally
         {
-            UMMUTEX_UNLOCK(_sessionLock);
+            ummutex_unlock(_sessionLock);
         }
         return YES;
     }
@@ -646,7 +646,7 @@
         }
     
         long state;
-        UMMUTEX_LOCK(_sessionLock);
+        ummutex_lock(_sessionLock);
         @try
         {
             self.lastInProgress = [[UMDbMySqlInProgress alloc]initWithCString:"ping" previousQuery:lastInProgress];
@@ -660,7 +660,7 @@
         }
         @finally
         {
-            UMMUTEX_UNLOCK(_sessionLock);
+            ummutex_unlock(_sessionLock);
         }
         return YES;
     }
