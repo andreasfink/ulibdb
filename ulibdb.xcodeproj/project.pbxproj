@@ -621,7 +621,7 @@
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Debug",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.fink.ulibdb;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.--PRODUCT-NAME-rfc1034identifier-";
 				PRODUCT_NAME = ulibdb;
 				PROVISIONING_PROFILE = "";
 				SYSTEM_HEADER_SEARCH_PATHS = (
@@ -675,7 +675,7 @@
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Release",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.fink.ulibdb;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.--PRODUCT-NAME-rfc1034identifier-";
 				PRODUCT_NAME = ulibdb;
 				PROVISIONING_PROFILE = "";
 				SYSTEM_HEADER_SEARCH_PATHS = (
