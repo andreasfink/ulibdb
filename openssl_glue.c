@@ -11,7 +11,7 @@
    SSL_get_peer_certificate() was deprecated in 3.0.0.
    so we need to simulate the old for the new
 */
-#if 0
+#if 1
 extern void *SSL_get1_peer_certificate(void *ssl);
 void *SSL_get_peer_certificate(void *ssl);
 
