@@ -79,6 +79,7 @@
 		A67353591DE3B3E100161EAD /* ulibdb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_config.h; sourceTree = "<group>"; };
 		A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulibdb_config.h.in; sourceTree = "<group>"; };
 		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
+		A687B0122D3B7AC9005BE796 /* ulib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ulib.xcodeproj; path = ../ulib/ulib.xcodeproj; sourceTree = "<group>"; };
 		A696867A1921951000217100 /* UMDbTableDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbTableDefinition.h; sourceTree = "<group>"; };
 		A696867B1921951000217100 /* UMDbTableDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbTableDefinition.m; sourceTree = "<group>"; };
 		A696867E1921953400217100 /* UMDbFieldDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinition.h; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 				A6D8AB05149A769B0029E9CF /* Products */,
 				A6DDD9A01635FEBC002FA7CC /* SupportingFiles */,
 				A610865D16352F2100D0D9C6 /* Resources */,
+				A687B0122D3B7AC9005BE796 /* ulib.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
