@@ -489,6 +489,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/local/lib/mariadb/,
 					/usr/local/pgsql/lib/,
+					"\"/Library/Application Support/\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -566,6 +567,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/local/lib/mariadb/,
 					/usr/local/pgsql/lib/,
+					"\"/Library/Application Support/\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
