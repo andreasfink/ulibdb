@@ -121,6 +121,7 @@ typedef enum idle_status_T
 
 - (UMDbPool *) init;
 - (UMDbPool *)initWithConfig:(NSDictionary *)config;
+- (UMDbPool *)initWithConfig:(NSDictionary *)config logFeed:(UMLogFeed *)logFeed;
 - (void)dealloc;
 
 - (UMDbSession *)newSession;

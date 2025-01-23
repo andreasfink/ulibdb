@@ -81,7 +81,7 @@ void umdbpool_null_session_returned(void)
 
 - (UMDbPool *) init
 {
-    return [self initWithConfig:NULL];
+    return [self initWithConfig:NULL logFeed:NULL];
 }
 
 - (NSUInteger)sessionsAvailableCount
@@ -99,11 +99,18 @@ void umdbpool_null_session_returned(void)
     return [sessionsDisconnected count];
 }
 
+
 - (UMDbPool *)initWithConfig:(NSDictionary *)config
+{
+    return [self initWithConfig:config logFeed:NULL];
+}
+
+- (UMDbPool *)initWithConfig:(NSDictionary *)config logFeed:(UMLogFeed *)logFeed
 {
     self=[super init];
     if(self)
     {
+        _logFeed = logFeed;
         sessionsAvailable       = [[UMQueueSingle alloc]init];
         sessionsInUse           = [[UMQueueSingle alloc]init];
         sessionsDisconnected    = [[UMQueueSingle alloc]init];
@@ -671,6 +678,7 @@ void umdbpool_null_session_returned(void)
     for (int i=0;i<minSessions;i++)
     {
         UMDbSession *session = [self newSession];
+        session.logFeed = _logFeed;
         [sessionsAvailable append:session];
     }
     ummutex_unlock(_poolLock);
