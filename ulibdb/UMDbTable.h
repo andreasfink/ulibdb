@@ -19,7 +19,7 @@
     NSString *tableName;
     NSString *poolName;
  
-    UMThroughputCounter   *tcAllQueries;
+    UMThroughputCounter  *tcAllQueries;
     UMThroughputCounter  *tcSelects;
     UMThroughputCounter  *tcInserts;
     UMThroughputCounter  *tcUpdates;
@@ -41,7 +41,7 @@
 
     BOOL autoCreate;
     UMSynchronizedDictionary *pools;
-    UMDbPool *pool;
+    UMDbPool *_pool;
 }
 
 @property(readwrite,strong) NSString *tableName;
@@ -56,8 +56,6 @@
 
 - (void)autoCreate:(dbFieldDef *)fieldDef
            session:(UMDbSession *)session;
-
-- (UMDbPool *)pool;
 
 @property(readwrite,strong)    UMThroughputCounter   *tcAllQueries;
 @property(readwrite,strong)    UMThroughputCounter  *tcSelects;
@@ -78,5 +76,8 @@
 @property(readwrite,strong)    UMAverageDelay      *delaySets;
 @property(readwrite,strong)    UMAverageDelay      *delayRedisUpdates;
 @property(readwrite,strong)    UMAverageDelay      *delayDels;
+
+
+@property(readwrite,strong)    UMDbPool *pool;
 
 @end

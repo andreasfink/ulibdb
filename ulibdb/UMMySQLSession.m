@@ -596,36 +596,52 @@
             result = [[UMDbResult alloc]init];
         }
         [result setAffectedRows: affected];
+        MYSQL_FIELD *field;
+        long i = 0;
+        while((field = mysql_fetch_field(r)))
+        {
+            NSString *ourName = @(field->name);
+            [result setColumName:ourName forIndex:i];
+            [result setColumType:@(field->type) forIndex:i];
+            ++i;
+        }
+        
         if(r && affected > 0)
         {
             long columnsCount = mysql_num_fields(r);
             MYSQL_ROW row;
             while((row = mysql_fetch_row(r)))
             {
+                unsigned long *lengths;
+                lengths = mysql_fetch_lengths(r);
+                
                 NSMutableArray *arr = [[NSMutableArray alloc]init];
                 for(long i=0;i<columnsCount;i++)
                 {
+                    id value = [NSNull null];
                     char *cstr = row[i];
-                    NSString *value = cstr ? @(cstr) : @"NULL";
-                    if(value)
+                    NSNumber *n = [result columTypeForIndex:i];
+                    if(n)
                     {
-                        [arr addObject:value];
+                        switch(n.intValue)
+                        {
+                            case MYSQL_TYPE_NULL:
+                                break;
+                            case MYSQL_TYPE_BLOB:
+                            case MYSQL_TYPE_TINY_BLOB:
+                            case MYSQL_TYPE_MEDIUM_BLOB:
+                            case MYSQL_TYPE_LONG_BLOB:
+                                value  = [NSData dataWithBytes:cstr length:lengths[i]];
+                                break;
+                            default:
+                                /* we return integers etc as strings for backwards compatibility */
+                                value = cstr ? @(cstr) : @"NULL";
+                                break;
+                        }
                     }
-                    else
-                    {
-                        [arr addObject:@""];
-                    }
+                    [arr addObject:value];
                 }
                 [result addRow:arr];
-            }
-            
-            MYSQL_FIELD *field;
-            long i = 0;
-            while((field = mysql_fetch_field(r)))
-            {
-                NSString *ourName = @(field->name);
-                [result setColumName:ourName forIndex:i];
-                ++i;
             }
         }
         if(r)

@@ -184,18 +184,23 @@
 
 - (UMDbPool *)pool
 {
-    if(pool == NULL)
+    if(_pool == NULL)
     {
-        pool = pools[poolName];
+        _pool = pools[poolName];
     }
-    return pool;
+    return _pool;
 }
 
 - (void)setPoolName:(NSString *)pn
 {
     poolName = pn;
     
-    pool = NULL;
+    _pool = NULL;
+}
+
+- (void)setPool:(UMDbPool *)pool
+{
+    _pool = pool;
 }
 
 - (NSString *)poolName
@@ -215,7 +220,7 @@
                                                 session:session
                                        fieldsDefinition:fieldDef];
             [session queriesWithNoResult:sqlCommands allowFail:YES];
-            if(pool.dbDriverType==UMDBDRIVER_MYSQL)
+            if(_pool.dbDriverType==UMDBDRIVER_MYSQL)
             {
                 UMMySQLSession *mySession =(UMMySQLSession *)session;
                 NSDictionary *tableDef = [mySession explainTable:tableName];

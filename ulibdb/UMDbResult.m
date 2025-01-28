@@ -111,7 +111,38 @@
             [columNames addObject:n];
         }
     }
+}
 
+- (void)setColumType:(NSNumber *)type forIndex:(long)idx
+{
+    @autoreleasepool
+    {
+        if(idx == [columTypes count])
+        {
+            [columTypes addObject:type];
+        }
+        else if(idx < [columTypes count])
+        {
+            columTypes[idx] = type;
+        }
+        else
+        {
+            while([columTypes count] < (idx-1))
+            {
+                [columTypes addObject:[NSNull null]];
+            }
+            [columTypes addObject:type];
+        }
+    }
+}
+
+- (NSNumber *)columTypeForIndex:(long)idx
+{
+    if(columTypes.count > idx)
+    {
+        return columTypes[idx];
+    }
+    return NULL;
 }
 
 - (NSUInteger)rowsCount
