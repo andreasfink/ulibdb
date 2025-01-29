@@ -26,6 +26,7 @@
             _resultArray = [[NSMutableArray alloc]init];
             _columNames  = [[NSMutableArray alloc]init];
             _columTypes  = [[NSMutableArray alloc]init];
+            _columCharsets  = [[NSMutableArray alloc]init];
         }
         return self;
     }
@@ -39,6 +40,7 @@
         _resultArray = [[NSMutableArray alloc]init];
         _columNames  = [[NSMutableArray alloc]init];
         _columTypes  = [[NSMutableArray alloc]init];
+        _columCharsets  = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -52,6 +54,7 @@
     [s appendFormat:@"result array: %@\n", _resultArray];
     [s appendFormat:@"column names: %@\n", _columNames];
     [s appendFormat:@"column types: %@\n", _columTypes];
+    [s appendFormat:@"column charsets: %@\n", _columCharsets];
 	return s;
 }
 
@@ -136,11 +139,44 @@
     }
 }
 
+- (void)setColumCharset:(NSNumber *)type forIndex:(long)idx
+{
+    @autoreleasepool
+    {
+        if(idx == [_columCharsets count])
+        {
+            [_columCharsets addObject:type];
+        }
+        else if(idx < [_columCharsets count])
+        {
+            _columCharsets[idx] = type;
+        }
+        else
+        {
+            while([_columCharsets count] < (idx-1))
+            {
+                [_columCharsets addObject:[NSNull null]];
+            }
+            [_columCharsets addObject:type];
+        }
+    }
+}
+
 - (NSNumber *)columTypeForIndex:(long)idx
 {
     if(_columTypes.count > idx)
     {
         return _columTypes[idx];
+    }
+    return NULL;
+}
+
+
+- (NSNumber *)columCharsetForIndex:(long)idx
+{
+    if(_columCharsets.count > idx)
+    {
+        return _columCharsets[idx];
     }
     return NULL;
 }

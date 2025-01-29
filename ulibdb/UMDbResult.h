@@ -14,10 +14,13 @@
     NSMutableArray *_resultArray;
     NSMutableArray *_columNames;
     NSMutableArray *_columTypes;
+    NSMutableArray *_columCharsets;
 }
 
 @property (readwrite,assign) long long affectedRows;
 @property (readwrite,strong) NSMutableArray *columNames;
+@property (readwrite,strong) NSMutableArray *columTypes;
+@property (readwrite,strong) NSMutableArray *columCharsets;
 @property (readwrite,strong) NSMutableArray *resultArray;
 
 - (id)initForFile:(const char *)file line:(long)line;
@@ -25,7 +28,9 @@
 - (void)setRow:(NSArray *)arr forIndex:(long)idx;
 - (void)setColumName:(NSString *)name forIndex:(long)idx;
 - (void)setColumType:(NSNumber *)type forIndex:(long)idx;
+- (void)setColumCharset:(NSNumber *)type forIndex:(long)idx;
 - (NSNumber *)columTypeForIndex:(long)idx;
+- (NSNumber *)columCharsetForIndex:(long)idx;
 - (id)getRow:(long)idx;
 - (id)fetchRow;
 - (NSDictionary *)fetchRowAsDictionary;

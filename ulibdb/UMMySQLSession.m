@@ -603,6 +603,7 @@
             NSString *ourName = @(field->name);
             [result setColumName:ourName forIndex:i];
             [result setColumType:@(field->type) forIndex:i];
+            [result setColumCharset:@(field->charsetnr) forIndex:i];
             ++i;
         }
         
@@ -621,6 +622,7 @@
                     id value = [NSNull null];
                     char *cstr = row[i];
                     NSNumber *n = [result columTypeForIndex:i];
+                    NSNumber *cs = [result columCharsetForIndex:i];
                     if(n)
                     {
                         switch(n.intValue)
@@ -631,7 +633,14 @@
                             case MYSQL_TYPE_TINY_BLOB:
                             case MYSQL_TYPE_MEDIUM_BLOB:
                             case MYSQL_TYPE_LONG_BLOB:
-                                value  = [NSData dataWithBytes:cstr length:lengths[i]];
+                                if(cs.intValue==63) /* its a BLOB */
+                                {
+                                    value  = [NSData dataWithBytes:cstr length:lengths[i]];
+                                }
+                                else /* its a TEXT */
+                                {
+                                    value = cstr ? @(cstr) : @"NULL";
+                                }
                                 break;
                             default:
                                 /* we return integers etc as strings for backwards compatibility */
