@@ -625,6 +625,11 @@
                     NSNumber *cs = [result columCharsetForIndex:i];
                     if(n)
                     {
+                        NSData *data = NULL;
+                        if(cstr != NULL)
+                        {
+                             data = [NSData dataWithBytes:cstr length:lengths[i]];
+                        }
                         switch(n.intValue)
                         {
                             case MYSQL_TYPE_NULL:
@@ -633,19 +638,32 @@
                             case MYSQL_TYPE_TINY_BLOB:
                             case MYSQL_TYPE_MEDIUM_BLOB:
                             case MYSQL_TYPE_LONG_BLOB:
+                                /* https://dev.mysql.com/doc/c-api/8.0/en/c-api-data-structures.html
+                                 says:
+                                 To distinguish between binary and nonbinary data for string data types,
+                                 check whether the charsetnr value is 63. If so, the character set is binary,
+                                 which indicates binary rather than nonbinary data. This enables you to
+                                 distinguish BINARY from CHAR, VARBINARY from VARCHAR, and the BLOB types
+                                 from the TEXT types.
+                                 */
+
                                 if(cs.intValue==63) /* its a BLOB */
                                 {
-                                    value  = [NSData dataWithBytes:cstr length:lengths[i]];
+                                    value = data;
                                 }
-                                else /* its a TEXT */
+                                else
                                 {
-                                    value = cstr ? @(cstr) : @"NULL";
+                                    value = [data stringValue];
                                 }
                                 break;
                             default:
-                                /* we return integers etc as strings for backwards compatibility */
-                                value = cstr ? @(cstr) : @"NULL";
+                                /* we return everything as strings except for BLOB's */
+                                value = [data stringValue];
                                 break;
+                        }
+                        if(value==NULL)
+                        {
+                            value = [NSNull null];
                         }
                     }
                     [arr addObject:value];
