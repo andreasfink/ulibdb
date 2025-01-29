@@ -175,8 +175,7 @@
         [result addRow:row];
     }
     int affectedRows = [@(PQcmdTuples(res))intValue];
-    [result setAffectedRows:affectedRows];
-    
+    result.affectedRows = affectedRows;
     PQclear(res);
     return result;
 }

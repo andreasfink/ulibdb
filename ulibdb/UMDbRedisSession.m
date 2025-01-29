@@ -394,7 +394,7 @@
         {
             result = [[UMDbResult alloc]init];
         }
-        [result setAffectedRows:1];            //HGET would rety+urn only one row in the database sense
+        result.affectedRows=1;            //HGET would rety+urn only one row in the database sense
         
         NSUInteger i = 0;
         NSArray *keys = [reply allKeys];
@@ -710,8 +710,8 @@
         else
         {
             result = [[UMDbResult alloc]init];
-        }        [result setAffectedRows:[replyArray count]];
-    
+            result.affectedRows=replyArray.count;
+        }
         if(replyArray && [replyArray count] > 0)
         {
             long columnsCount = [replyArray count];
@@ -754,8 +754,7 @@
         {
             result = [[UMDbResult alloc]init];
         }
-        [result setAffectedRows:1];            //HGET would rety+urn only one row in the database sense
-        
+        result.affectedRows=1;
         long i = 0;
         NSArray *keys = [reply allKeys];
         for (NSString *key in keys)

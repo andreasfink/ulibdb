@@ -11,9 +11,6 @@
 #import <ulibdb/ulibdb_config.h>
 
 @implementation UMDbResult
-@synthesize affectedRows;
-@synthesize columNames;
-@synthesize resultArray;
 
 
 - (id)initForFile:(const char *)file line:(long)line
@@ -26,8 +23,9 @@
         self = [super init];
         if(self)
         {
-            resultArray = [[NSMutableArray alloc]init];
-            columNames  = [[NSMutableArray alloc]init];
+            _resultArray = [[NSMutableArray alloc]init];
+            _columNames  = [[NSMutableArray alloc]init];
+            _columTypes  = [[NSMutableArray alloc]init];
         }
         return self;
     }
@@ -38,8 +36,9 @@
     self = [super init];
     if(self)
     {
-        resultArray = [[NSMutableArray alloc]init];
-        columNames  = [[NSMutableArray alloc]init];
+        _resultArray = [[NSMutableArray alloc]init];
+        _columNames  = [[NSMutableArray alloc]init];
+        _columTypes  = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -48,22 +47,23 @@
 {
 	NSMutableString *s;
 	s = [[NSMutableString alloc] initWithFormat:@"UMDbResult: index pointer: %ld\n",
-         indexPointer];
-    [s appendFormat:@"affectedRows: %lld\n", affectedRows];
-    [s appendFormat:@"result array: %@\n", resultArray];
-    [s appendFormat:@"column names: %@\n", columNames];
+         _indexPointer];
+    [s appendFormat:@"affectedRows: %lld\n", _affectedRows];
+    [s appendFormat:@"result array: %@\n", _resultArray];
+    [s appendFormat:@"column names: %@\n", _columNames];
+    [s appendFormat:@"column types: %@\n", _columTypes];
 	return s;
 }
 
 - (void)addRow:(NSArray *)arr
 {
-    [resultArray addObject:arr];
+    [_resultArray addObject:arr];
 }
 
 - (void)addRow:(id)o columName:(NSString *)name
 {
-    [resultArray addObject:o];
-    [columNames addObject:name];
+    [_resultArray addObject:o];
+    [_columNames addObject:name];
 
 }
 
@@ -71,21 +71,21 @@
 {
     @autoreleasepool
     {
-        if(idx == [resultArray count])
+        if(idx == [_resultArray count])
         {
-            [resultArray addObject:arr];
+            [_resultArray addObject:arr];
         }
-        else if(idx < [resultArray count])
+        else if(idx < [_resultArray count])
         {
-            resultArray[idx] = arr;
+            _resultArray[idx] = arr;
         }
         else
         {
-            while([resultArray count] < (idx-1))
+            while([_resultArray count] < (idx-1))
             {
-                [resultArray addObject:[NSNull null]];
+                [_resultArray addObject:[NSNull null]];
             }
-            [resultArray addObject:arr];
+            [_resultArray addObject:arr];
         }
     }
 }
@@ -94,79 +94,79 @@
 {
     @autoreleasepool
     {
-        if(idx == [columNames count])
+        if(idx == [_columNames count])
         {
-            [columNames addObject:n];
+            [_columNames addObject:n];
         }
-        else if(idx < [columNames count])
+        else if(idx < [_columNames count])
         {
-            columNames[idx] = n;
+            _columNames[idx] = n;
         }
         else
         {
-            while([columNames count] < (idx-1))
+            while([_columNames count] < (idx-1))
             {
-                [columNames addObject:[NSNull null]];
+                [_columNames addObject:[NSNull null]];
             }
-            [columNames addObject:n];
+            [_columNames addObject:n];
         }
     }
 }
 
 - (void)setColumType:(NSNumber *)type forIndex:(long)idx
-{
+{    
     @autoreleasepool
     {
-        if(idx == [columTypes count])
+        if(idx == [_columTypes count])
         {
-            [columTypes addObject:type];
+            [_columTypes addObject:type];
         }
-        else if(idx < [columTypes count])
+        else if(idx < [_columTypes count])
         {
-            columTypes[idx] = type;
+            _columTypes[idx] = type;
         }
         else
         {
-            while([columTypes count] < (idx-1))
+            while([_columTypes count] < (idx-1))
             {
-                [columTypes addObject:[NSNull null]];
+                [_columTypes addObject:[NSNull null]];
             }
-            [columTypes addObject:type];
+            [_columTypes addObject:type];
         }
     }
 }
 
 - (NSNumber *)columTypeForIndex:(long)idx
 {
-    if(columTypes.count > idx)
+    if(_columTypes.count > idx)
     {
-        return columTypes[idx];
+        return _columTypes[idx];
     }
     return NULL;
 }
 
 - (NSUInteger)rowsCount
 {
-    return [resultArray count];
+    return [_resultArray count];
 }
 
 - (NSUInteger)columsCount
 {
-    return [columNames count];
+    return [_columNames count];
 }
 
 - (NSArray *)getRow:(long)idx
 {
-    if(idx >= [resultArray count])
+    if(idx >= [_resultArray count])
     {
         return NULL;
     }
-    return (NSArray *)resultArray[idx];
+    return (NSArray *)_resultArray[idx];
 }
 
 - (NSArray *)fetchRow
 {
-    return [self getRow:indexPointer++];
+    return [self getRow:_indexPointer++];
 }
 
 - (NSDictionary *)fetchRowAsDictionary
@@ -176,7 +176,7 @@
     for(NSInteger i=0;i<row.count;i++)
     {
         id value = row[i];
-        id name = columNames[i];
+        id name = _columNames[i];
         if(value == NULL)
         {
             value = [NSNull null];
@@ -192,7 +192,7 @@
 
 - (void)reset
 {
-    indexPointer = 0;
+    _indexPointer = 0;
 }
 
 @end

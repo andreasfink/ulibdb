@@ -595,7 +595,7 @@
         {
             result = [[UMDbResult alloc]init];
         }
-        [result setAffectedRows: affected];
+        result.affectedRows=affected;
         MYSQL_FIELD *field;
         long i = 0;
         while((field = mysql_fetch_field(r)))

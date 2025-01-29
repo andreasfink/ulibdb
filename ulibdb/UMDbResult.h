@@ -9,11 +9,11 @@
 
 @interface UMDbResult : UMObject
 {
-    long            indexPointer;
-    long long       affectedRows;    
-    NSMutableArray *resultArray;
-    NSMutableArray *columNames;
-    NSMutableArray *columTypes;
+    long            _indexPointer;
+    long long       _affectedRows;    
+    NSMutableArray *_resultArray;
+    NSMutableArray *_columNames;
+    NSMutableArray *_columTypes;
 }
 
 @property (readwrite,assign) long long affectedRows;
