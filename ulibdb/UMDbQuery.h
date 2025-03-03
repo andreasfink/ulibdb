@@ -182,6 +182,7 @@
 #define STRING_FROM_DOUBLE64(i)   [NSString stringWithFormat:@"%6.4lf",(double)i]
 #define STRING_FROM_DOUBLE(i)   [NSString stringWithFormat:@"%lf",(double)i]
 #define STRING_FROM_INT(i)      [NSString stringWithFormat:@"%ld",(long)i]
+#define STRING_FROM_NUMBER(i)      [NSString stringWithFormat:@"%ld",(long)i.intValue]
 #define STRING_FROM_DATE(d)      ( d ? [d stringValue] : [NSDate zeroDateString])
 #define STRING_FROM_UNSIGNEDLONG(i)      [NSString stringWithFormat:@"%lu",(unsigned long)i]
 #define STRING_01_FROM_BOOL(i)  ((i) ? @"1" : @"0")
