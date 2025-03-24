@@ -41,6 +41,7 @@
 - (void)dealloc;
 - (BOOL) connect;
 - (void) disconnect;
+/* returns YES on success */
 - (BOOL)queryWithNoResult:(NSString *)sql allowFail:(BOOL)allowFail affectedRows:(unsigned long long *)count;
 - (UMDbResult *)queryWithMultipleRowsResult:(NSString *)sql allowFail:(BOOL)failPermission;
 - (UMDbResult *)queryWithMultipleRowsResult:(NSString *)sql allowFail:(BOOL)failPermission file:(const char *)file line:(long)line;
