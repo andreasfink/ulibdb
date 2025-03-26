@@ -59,23 +59,6 @@
 		A6DFF69E1952B729008D0983 /* UMDbMySqlInProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A687B0462D3CE6B5005BE796 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A687B0122D3B7AC9005BE796 /* ulib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A69BA4552ABD850000C34D40;
-			remoteInfo = ulib;
-		};
-		A687B0482D3CE6B5005BE796 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A687B0122D3B7AC9005BE796 /* ulib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A69BA45F2ABD850000C34D40;
-			remoteInfo = ulibTests;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2206CE2818B21E350051C70D /* UMDbStorageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbStorageType.h; sourceTree = "<group>"; };
 		2206CE2918B21E350051C70D /* UMDbStorageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbStorageType.m; sourceTree = "<group>"; };
@@ -96,7 +79,6 @@
 		A67353591DE3B3E100161EAD /* ulibdb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_config.h; sourceTree = "<group>"; };
 		A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulibdb_config.h.in; sourceTree = "<group>"; };
 		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
-		A687B0122D3B7AC9005BE796 /* ulib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ulib.xcodeproj; path = ../ulib/ulib.xcodeproj; sourceTree = "<group>"; };
 		A696867A1921951000217100 /* UMDbTableDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbTableDefinition.h; sourceTree = "<group>"; };
 		A696867B1921951000217100 /* UMDbTableDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbTableDefinition.m; sourceTree = "<group>"; };
 		A696867E1921953400217100 /* UMDbFieldDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbFieldDefinition.h; sourceTree = "<group>"; };
@@ -166,15 +148,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		A687B0422D3CE6B4005BE796 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A687B0472D3CE6B5005BE796 /* ulib.framework */,
-				A687B0492D3CE6B5005BE796 /* ulibTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A6D8AAF8149A769A0029E9CF = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +166,6 @@
 				A6D8AB05149A769B0029E9CF /* Products */,
 				A6DDD9A01635FEBC002FA7CC /* SupportingFiles */,
 				A610865D16352F2100D0D9C6 /* Resources */,
-				A687B0122D3B7AC9005BE796 /* ulib.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -367,35 +339,12 @@
 			mainGroup = A6D8AAF8149A769A0029E9CF;
 			productRefGroup = A6D8AB05149A769B0029E9CF /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A687B0422D3CE6B4005BE796 /* Products */;
-					ProjectRef = A687B0122D3B7AC9005BE796 /* ulib.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				A6D8AD28149AC77E0029E9CF /* ulibdb */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A687B0472D3CE6B5005BE796 /* ulib.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ulib.framework;
-			remoteRef = A687B0462D3CE6B5005BE796 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A687B0492D3CE6B5005BE796 /* ulibTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ulibTests.xctest;
-			remoteRef = A687B0482D3CE6B5005BE796 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A6D8AD48149AC77E0029E9CF /* Resources */ = {

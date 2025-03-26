@@ -2,7 +2,7 @@
 //  UMDbRedisSession.h
 //  ulibdb
 //
-//  Created by Aarno Syvänen on 23.01.14.
+//  Created by Andreas Fink on 23.01.14.
 //
 //
 

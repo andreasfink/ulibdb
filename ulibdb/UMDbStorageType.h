@@ -2,7 +2,7 @@
 //  UMDbStorageType.h
 //  ulibdb
 //
-//  Created by Aarno Syvänen on 17.02.14.
+//  Created by Andreas Fink 17.02.14.
 //
 //
 
