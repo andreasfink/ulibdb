@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 21.10.2011.
 //  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 
-#import <Foundation/Foundation.h>
+#import <ulib/framework.h>
 
 typedef enum UMDbDriverType
 {
