@@ -480,9 +480,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = (
+					/opt/homebrew/Cellar/libpq/18.0/include,
 					/usr/local/include,
 					/usr/local/include/mariadb,
-					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = /FinkTelecomServices/frameworks;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -561,9 +561,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = (
+					/opt/homebrew/Cellar/libpq/18.0/include,
 					/usr/local/include,
 					/usr/local/include/mariadb,
-					/usr/local/pgsql/include,
 				);
 				INSTALL_PATH = /FinkTelecomServices/frameworks;
 				LD_RUNPATH_SEARCH_PATHS = (
