@@ -57,6 +57,10 @@
 		A6DB3E72191E41220090FC94 /* ulibdb.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DB3E71191E41220090FC94 /* ulibdb.m */; };
 		A6DFF69D1952B729008D0983 /* UMDbMySqlInProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DFF69E1952B729008D0983 /* UMDbMySqlInProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */; };
+		A6E39D122ECD37DE00453DA1 /* libmysqlclient.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E39D112ECD37DE00453DA1 /* libmysqlclient.dylib */; };
+		A6E39D142ECD37E600453DA1 /* libmysqlclient_r.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E39D132ECD37E600453DA1 /* libmysqlclient_r.dylib */; };
+		A6E39D172ECD37EF00453DA1 /* libmariadb.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E39D162ECD37EF00453DA1 /* libmariadb.3.dylib */; };
+		A6E39D182ECD37EF00453DA1 /* libmariadb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E39D152ECD37EF00453DA1 /* libmariadb.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +122,10 @@
 		A6DDD9A21635FEBC002FA7CC /* ulibdb-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ulibdb-Prefix.pch"; sourceTree = "<group>"; };
 		A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbMySqlInProgress.h; sourceTree = "<group>"; };
 		A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbMySqlInProgress.m; sourceTree = "<group>"; };
+		A6E39D112ECD37DE00453DA1 /* libmysqlclient.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysqlclient.dylib; sourceTree = "<group>"; };
+		A6E39D132ECD37E600453DA1 /* libmysqlclient_r.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysqlclient_r.dylib; sourceTree = "<group>"; };
+		A6E39D152ECD37EF00453DA1 /* libmariadb.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmariadb.dylib; sourceTree = "<group>"; };
+		A6E39D162ECD37EF00453DA1 /* libmariadb.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmariadb.3.dylib; sourceTree = "<group>"; };
 		A6F693EB1B4E830C0090FC94 /* configure.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = configure.in; sourceTree = "<group>"; };
 		A6F694151B4E85180090FC94 /* Makefile.linux.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.linux.in; sourceTree = "<group>"; };
 		A6F694161B4E85180090FC94 /* Makefile.osx.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.osx.in; sourceTree = "<group>"; };
@@ -129,9 +137,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E39D122ECD37DE00453DA1 /* libmysqlclient.dylib in Frameworks */,
 				A69FCEAA2D1FF4D9007BEACC /* libmysqlclient_r.a in Frameworks */,
 				A69FCEA82D1FF4C1007BEACC /* libssl.a in Frameworks */,
+				A6E39D142ECD37E600453DA1 /* libmysqlclient_r.dylib in Frameworks */,
 				A69FCEA42D1FF494007BEACC /* libcrypto.a in Frameworks */,
+				A6E39D172ECD37EF00453DA1 /* libmariadb.3.dylib in Frameworks */,
+				A6E39D182ECD37EF00453DA1 /* libmariadb.dylib in Frameworks */,
 				A69FCEAC2D1FF504007BEACC /* libpq.a in Frameworks */,
 				2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */,
 			);
@@ -239,6 +251,10 @@
 		A6D8AD60149AC8590029E9CF /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A6E39D152ECD37EF00453DA1 /* libmariadb.dylib */,
+				A6E39D162ECD37EF00453DA1 /* libmariadb.3.dylib */,
+				A6E39D132ECD37E600453DA1 /* libmysqlclient_r.dylib */,
+				A6E39D112ECD37DE00453DA1 /* libmysqlclient.dylib */,
 				A69FCEAB2D1FF504007BEACC /* libpq.a */,
 				A69FCEA92D1FF4D9007BEACC /* libmysqlclient_r.a */,
 				A69FCEA72D1FF4C1007BEACC /* libssl.a */,
@@ -602,6 +618,10 @@
 				DYLIB_CURRENT_VERSION = 2.0.0;
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				ENABLE_MODULE_VERIFIER = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/Library/Application Support/FinkTelecomServices/frameworks\"",
+					/opt/homebrew/lib,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -622,6 +642,7 @@
 					/usr/local/lib/mariadb,
 					/usr/local/pgsql/lib,
 					"$(PROJECT_DIR)",
+					/opt/homebrew/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.16.3;
@@ -660,6 +681,10 @@
 				DYLIB_CURRENT_VERSION = 2.0.0;
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				ENABLE_MODULE_VERIFIER = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/Library/Application Support/FinkTelecomServices/frameworks\"",
+					/opt/homebrew/lib,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -680,6 +705,7 @@
 					/usr/local/lib/mariadb,
 					/usr/local/pgsql/lib,
 					"$(PROJECT_DIR)",
+					/opt/homebrew/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.16.3;
