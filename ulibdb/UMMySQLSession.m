@@ -513,6 +513,7 @@
             }
             else
             {
+                self.lastInsertId = @(mysql_insert_id(connection));
 #if (ULIBDB_CONFIG==Debug)
                 [self.logFeed majorError:0 withText:[NSString stringWithFormat:@"query failed, sql = \"%@\", error=%s",sql,mysql_error(connection)]];
 #endif
