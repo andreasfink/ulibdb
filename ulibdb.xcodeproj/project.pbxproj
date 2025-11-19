@@ -20,6 +20,7 @@
 		A66538EF1950FE6700C10E07 /* UMDbFileSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A66538ED1950FE6700C10E07 /* UMDbFileSession.m */; };
 		A66639612B2B1BD200C34D40 /* openssl_glue.h in Headers */ = {isa = PBXBuildFile; fileRef = A666395F2B2B1BD200C34D40 /* openssl_glue.h */; };
 		A66639622B2B1BD200C34D40 /* openssl_glue.c in Sources */ = {isa = PBXBuildFile; fileRef = A66639602B2B1BD200C34D40 /* openssl_glue.c */; };
+		A67093112ECDAB470034D3B2 /* libmariadbclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67093102ECDAB470034D3B2 /* libmariadbclient.a */; };
 		A673535B1DE3B3E100161EAD /* ulibdb_config.h in Headers */ = {isa = PBXBuildFile; fileRef = A67353591DE3B3E100161EAD /* ulibdb_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E131934BD440090FC94 /* UMMySQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E141934BD660090FC94 /* UMPgSQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,7 +30,6 @@
 		A69686811921953400217100 /* UMDbFieldDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = A696867F1921953400217100 /* UMDbFieldDefinition.m */; };
 		A69FCEA42D1FF494007BEACC /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69FCEA32D1FF494007BEACC /* libcrypto.a */; };
 		A69FCEA82D1FF4C1007BEACC /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69FCEA72D1FF4C1007BEACC /* libssl.a */; };
-		A69FCEAA2D1FF4D9007BEACC /* libmysqlclient_r.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69FCEA92D1FF4D9007BEACC /* libmysqlclient_r.a */; };
 		A69FCEAC2D1FF504007BEACC /* libpq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69FCEAB2D1FF504007BEACC /* libpq.a */; };
 		A6A143F2149B4EA400B007D0 /* ulibdb.h in Headers */ = {isa = PBXBuildFile; fileRef = A6A143F0149B4EA400B007D0 /* ulibdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6D8AD2A149AC77E0029E9CF /* UMDbTable.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC52149A9FBE0029E9CF /* UMDbTable.m */; };
@@ -57,10 +57,6 @@
 		A6DB3E72191E41220090FC94 /* ulibdb.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DB3E71191E41220090FC94 /* ulibdb.m */; };
 		A6DFF69D1952B729008D0983 /* UMDbMySqlInProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DFF69E1952B729008D0983 /* UMDbMySqlInProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */; };
-		A6E39D122ECD37DE00453DA1 /* libmysqlclient.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E39D112ECD37DE00453DA1 /* libmysqlclient.dylib */; };
-		A6E39D142ECD37E600453DA1 /* libmysqlclient_r.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E39D132ECD37E600453DA1 /* libmysqlclient_r.dylib */; };
-		A6E39D172ECD37EF00453DA1 /* libmariadb.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E39D162ECD37EF00453DA1 /* libmariadb.3.dylib */; };
-		A6E39D182ECD37EF00453DA1 /* libmariadb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E39D152ECD37EF00453DA1 /* libmariadb.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +76,7 @@
 		A66538ED1950FE6700C10E07 /* UMDbFileSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFileSession.m; sourceTree = "<group>"; };
 		A666395F2B2B1BD200C34D40 /* openssl_glue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = openssl_glue.h; sourceTree = "<group>"; };
 		A66639602B2B1BD200C34D40 /* openssl_glue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = openssl_glue.c; sourceTree = "<group>"; };
+		A67093102ECDAB470034D3B2 /* libmariadbclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmariadbclient.a; path = /usr/local/lib/mariadb/libmariadbclient.a; sourceTree = "<absolute>"; };
 		A67353591DE3B3E100161EAD /* ulibdb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_config.h; sourceTree = "<group>"; };
 		A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulibdb_config.h.in; sourceTree = "<group>"; };
 		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
@@ -89,7 +86,6 @@
 		A696867F1921953400217100 /* UMDbFieldDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFieldDefinition.m; sourceTree = "<group>"; };
 		A69FCEA32D1FF494007BEACC /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = /usr/local/lib/libcrypto.a; sourceTree = "<absolute>"; };
 		A69FCEA72D1FF4C1007BEACC /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = /usr/local/lib/libssl.a; sourceTree = "<absolute>"; };
-		A69FCEA92D1FF4D9007BEACC /* libmysqlclient_r.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmysqlclient_r.a; path = /usr/local/lib/mariadb/libmysqlclient_r.a; sourceTree = "<absolute>"; };
 		A69FCEAB2D1FF504007BEACC /* libpq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpq.a; path = /usr/local/pgsql/lib/libpq.a; sourceTree = "<absolute>"; };
 		A6A143F0149B4EA400B007D0 /* ulibdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb.h; sourceTree = "<group>"; };
 		A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbDriverType.h; sourceTree = "<group>"; };
@@ -122,10 +118,6 @@
 		A6DDD9A21635FEBC002FA7CC /* ulibdb-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ulibdb-Prefix.pch"; sourceTree = "<group>"; };
 		A6DFF69B1952B729008D0983 /* UMDbMySqlInProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbMySqlInProgress.h; sourceTree = "<group>"; };
 		A6DFF69C1952B729008D0983 /* UMDbMySqlInProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbMySqlInProgress.m; sourceTree = "<group>"; };
-		A6E39D112ECD37DE00453DA1 /* libmysqlclient.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysqlclient.dylib; sourceTree = "<group>"; };
-		A6E39D132ECD37E600453DA1 /* libmysqlclient_r.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysqlclient_r.dylib; sourceTree = "<group>"; };
-		A6E39D152ECD37EF00453DA1 /* libmariadb.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmariadb.dylib; sourceTree = "<group>"; };
-		A6E39D162ECD37EF00453DA1 /* libmariadb.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmariadb.3.dylib; sourceTree = "<group>"; };
 		A6F693EB1B4E830C0090FC94 /* configure.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = configure.in; sourceTree = "<group>"; };
 		A6F694151B4E85180090FC94 /* Makefile.linux.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.linux.in; sourceTree = "<group>"; };
 		A6F694161B4E85180090FC94 /* Makefile.osx.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.osx.in; sourceTree = "<group>"; };
@@ -137,13 +129,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E39D122ECD37DE00453DA1 /* libmysqlclient.dylib in Frameworks */,
-				A69FCEAA2D1FF4D9007BEACC /* libmysqlclient_r.a in Frameworks */,
+				A67093112ECDAB470034D3B2 /* libmariadbclient.a in Frameworks */,
 				A69FCEA82D1FF4C1007BEACC /* libssl.a in Frameworks */,
-				A6E39D142ECD37E600453DA1 /* libmysqlclient_r.dylib in Frameworks */,
 				A69FCEA42D1FF494007BEACC /* libcrypto.a in Frameworks */,
-				A6E39D172ECD37EF00453DA1 /* libmariadb.3.dylib in Frameworks */,
-				A6E39D182ECD37EF00453DA1 /* libmariadb.dylib in Frameworks */,
 				A69FCEAC2D1FF504007BEACC /* libpq.a in Frameworks */,
 				2297FFC619757FDA00B1233B /* ulib.framework in Frameworks */,
 			);
@@ -251,12 +239,8 @@
 		A6D8AD60149AC8590029E9CF /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				A6E39D152ECD37EF00453DA1 /* libmariadb.dylib */,
-				A6E39D162ECD37EF00453DA1 /* libmariadb.3.dylib */,
-				A6E39D132ECD37E600453DA1 /* libmysqlclient_r.dylib */,
-				A6E39D112ECD37DE00453DA1 /* libmysqlclient.dylib */,
+				A67093102ECDAB470034D3B2 /* libmariadbclient.a */,
 				A69FCEAB2D1FF504007BEACC /* libpq.a */,
-				A69FCEA92D1FF4D9007BEACC /* libmysqlclient_r.a */,
 				A69FCEA72D1FF4C1007BEACC /* libssl.a */,
 				A69FCEA32D1FF494007BEACC /* libcrypto.a */,
 			);
