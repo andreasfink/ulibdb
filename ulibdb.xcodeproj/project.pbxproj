@@ -20,6 +20,7 @@
 		A66538EF1950FE6700C10E07 /* UMDbFileSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A66538ED1950FE6700C10E07 /* UMDbFileSession.m */; };
 		A66639612B2B1BD200C34D40 /* openssl_glue.h in Headers */ = {isa = PBXBuildFile; fileRef = A666395F2B2B1BD200C34D40 /* openssl_glue.h */; };
 		A66639622B2B1BD200C34D40 /* openssl_glue.c in Sources */ = {isa = PBXBuildFile; fileRef = A66639602B2B1BD200C34D40 /* openssl_glue.c */; };
+		A67093112ECDAB470034D3B2 /* libmariadbclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67093102ECDAB470034D3B2 /* libmariadbclient.a */; };
 		A673535B1DE3B3E100161EAD /* ulibdb_config.h in Headers */ = {isa = PBXBuildFile; fileRef = A67353591DE3B3E100161EAD /* ulibdb_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E131934BD440090FC94 /* UMMySQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2D149A95670029E9CF /* UMMySQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6793E141934BD660090FC94 /* UMPgSQLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A6D8AC2F149A95670029E9CF /* UMPgSQLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,7 +30,6 @@
 		A69686811921953400217100 /* UMDbFieldDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = A696867F1921953400217100 /* UMDbFieldDefinition.m */; };
 		A69FCEA42D1FF494007BEACC /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69FCEA32D1FF494007BEACC /* libcrypto.a */; };
 		A69FCEA82D1FF4C1007BEACC /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69FCEA72D1FF4C1007BEACC /* libssl.a */; };
-		A69FCEAA2D1FF4D9007BEACC /* libmysqlclient_r.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69FCEA92D1FF4D9007BEACC /* libmysqlclient_r.a */; };
 		A69FCEAC2D1FF504007BEACC /* libpq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A69FCEAB2D1FF504007BEACC /* libpq.a */; };
 		A6A143F2149B4EA400B007D0 /* ulibdb.h in Headers */ = {isa = PBXBuildFile; fileRef = A6A143F0149B4EA400B007D0 /* ulibdb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6D8AD2A149AC77E0029E9CF /* UMDbTable.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D8AC52149A9FBE0029E9CF /* UMDbTable.m */; };
@@ -76,6 +76,7 @@
 		A66538ED1950FE6700C10E07 /* UMDbFileSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFileSession.m; sourceTree = "<group>"; };
 		A666395F2B2B1BD200C34D40 /* openssl_glue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = openssl_glue.h; sourceTree = "<group>"; };
 		A66639602B2B1BD200C34D40 /* openssl_glue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = openssl_glue.c; sourceTree = "<group>"; };
+		A67093102ECDAB470034D3B2 /* libmariadbclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmariadbclient.a; path = /usr/local/lib/mariadb/libmariadbclient.a; sourceTree = "<absolute>"; };
 		A67353591DE3B3E100161EAD /* ulibdb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb_config.h; sourceTree = "<group>"; };
 		A673535A1DE3B3E100161EAD /* ulibdb_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulibdb_config.h.in; sourceTree = "<group>"; };
 		A6793DCA1934B08F0090FC94 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = "/Library/Application Support/FinkTelecomServices/frameworks/ulib.framework"; sourceTree = "<absolute>"; };
@@ -85,7 +86,6 @@
 		A696867F1921953400217100 /* UMDbFieldDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMDbFieldDefinition.m; sourceTree = "<group>"; };
 		A69FCEA32D1FF494007BEACC /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = /usr/local/lib/libcrypto.a; sourceTree = "<absolute>"; };
 		A69FCEA72D1FF4C1007BEACC /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = /usr/local/lib/libssl.a; sourceTree = "<absolute>"; };
-		A69FCEA92D1FF4D9007BEACC /* libmysqlclient_r.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmysqlclient_r.a; path = /usr/local/lib/mariadb/libmysqlclient_r.a; sourceTree = "<absolute>"; };
 		A69FCEAB2D1FF504007BEACC /* libpq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpq.a; path = /usr/local/pgsql/lib/libpq.a; sourceTree = "<absolute>"; };
 		A6A143F0149B4EA400B007D0 /* ulibdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ulibdb.h; sourceTree = "<group>"; };
 		A6D8AC1D149A95670029E9CF /* UMDbDriverType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMDbDriverType.h; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69FCEAA2D1FF4D9007BEACC /* libmysqlclient_r.a in Frameworks */,
+				A67093112ECDAB470034D3B2 /* libmariadbclient.a in Frameworks */,
 				A69FCEA82D1FF4C1007BEACC /* libssl.a in Frameworks */,
 				A69FCEA42D1FF494007BEACC /* libcrypto.a in Frameworks */,
 				A69FCEAC2D1FF504007BEACC /* libpq.a in Frameworks */,
@@ -239,8 +239,8 @@
 		A6D8AD60149AC8590029E9CF /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A67093102ECDAB470034D3B2 /* libmariadbclient.a */,
 				A69FCEAB2D1FF504007BEACC /* libpq.a */,
-				A69FCEA92D1FF4D9007BEACC /* libmysqlclient_r.a */,
 				A69FCEA72D1FF4C1007BEACC /* libssl.a */,
 				A69FCEA32D1FF494007BEACC /* libcrypto.a */,
 			);
@@ -321,7 +321,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 1620;
-				ORGANIZATIONNAME = "Andreas Fink (andreas@fink.org)";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					A6D8AD28149AC77E0029E9CF = {
 						ProvisioningStyle = Automatic;
@@ -329,7 +329,7 @@
 				};
 			};
 			buildConfigurationList = A6D8AAFD149A769A0029E9CF /* Build configuration list for PBXProject "ulibdb" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -448,6 +448,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2.1.1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = YES;
@@ -455,7 +456,7 @@
 				DEVELOPMENT_TEAM = 38L827M334;
 				DSTROOT = "/Library/Application Support";
 				DYLIB_COMPATIBILITY_VERSION = 2.0.0;
-				DYLIB_CURRENT_VERSION = 2.0.0;
+				DYLIB_CURRENT_VERSION = 2.1.1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -496,11 +497,12 @@
 					/usr/local/pgsql/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MARKETING_VERSION = 2.1.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Debug";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "xrsimulator xros watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = YES;
 				WARNING_CFLAGS = "-Wimplicit-fallthrough";
 			};
@@ -533,6 +535,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2.1.1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = YES;
@@ -540,7 +543,7 @@
 				DEVELOPMENT_TEAM = 38L827M334;
 				DSTROOT = "/Library/Application Support";
 				DYLIB_COMPATIBILITY_VERSION = 2.0.0;
-				DYLIB_CURRENT_VERSION = 2.0.0;
+				DYLIB_CURRENT_VERSION = 2.1.1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
@@ -577,11 +580,12 @@
 					/usr/local/pgsql/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MARKETING_VERSION = 2.1.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DULIBDB_CONFIG=Release";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "xrsimulator xros watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = YES;
 				WARNING_CFLAGS = "-Wimplicit-fallthrough";
 			};
@@ -590,18 +594,18 @@
 		A6D8AD4B149AC77E0029E9CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = HG8655K94F;
-				DYLIB_COMPATIBILITY_VERSION = 2.0.0;
-				DYLIB_CURRENT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = 38L827M334;
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				ENABLE_MODULE_VERIFIER = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/Library/Application Support/FinkTelecomServices/frameworks\"",
+					/opt/homebrew/lib,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -612,7 +616,6 @@
 					/usr/local/include/pgsql,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/local/mariadb/,
 					/usr/local/postgresclient/lib/,
@@ -622,24 +625,21 @@
 					/usr/local/lib/mariadb,
 					/usr/local/pgsql/lib,
 					"$(PROJECT_DIR)",
+					/opt/homebrew/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.16.3;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++14";
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Debug",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.db";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.ulibdb";
 				PRODUCT_NAME = ulibdb;
 				PROVISIONING_PROFILE = "";
-				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
 				SYSTEM_HEADER_SEARCH_PATHS = (
 					/usr/local/pgsql/include,
 					/usr/local/include/pgsql,
 				);
-				TVOS_DEPLOYMENT_TARGET = 18.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -647,19 +647,19 @@
 		A6D8AD4C149AC77E0029E9CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = HG8655K94F;
-				DYLIB_COMPATIBILITY_VERSION = 2.0.0;
-				DYLIB_CURRENT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = 38L827M334;
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				ENABLE_MODULE_VERIFIER = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/Library/Application Support/FinkTelecomServices/frameworks\"",
+					/opt/homebrew/lib,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SupportingFiles/ulibdb-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -670,7 +670,6 @@
 					/usr/local/include/pgsql,
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/local/mariadb/,
 					/usr/local/postgresclient/lib/,
@@ -680,24 +679,21 @@
 					/usr/local/lib/mariadb,
 					/usr/local/pgsql/lib,
 					"$(PROJECT_DIR)",
+					/opt/homebrew/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.16.3;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++14";
 				OTHER_CFLAGS = (
 					"-DULIBDB_FRAMEWORK_COMPILATION=1",
 					"-DULIBDB_CONFIG=Release",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.db";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.ulibdb";
 				PRODUCT_NAME = ulibdb;
 				PROVISIONING_PROFILE = "";
-				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
 				SYSTEM_HEADER_SEARCH_PATHS = (
 					/usr/local/pgsql/include,
 					/usr/local/include/pgsql,
 				);
-				TVOS_DEPLOYMENT_TARGET = 18.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;

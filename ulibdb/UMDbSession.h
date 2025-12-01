@@ -40,6 +40,7 @@ typedef enum UMDbSessionStatus
     NSString            *lastUsedQuery;
     NSString            *name;
     UMMutex             *_sessionLock;
+    NSNumber            *_lastInsertId;
 }
 
 @property (readwrite,strong)    UMDbPool    *pool;
@@ -55,6 +56,7 @@ typedef enum UMDbSessionStatus
 
 @property (readwrite,strong)    NSString    *name;
 @property (readwrite,assign)    UMDbSessionStatus   sessionStatus;
+@property (readwrite,strong)    NSNumber    *lastInsertId;
 
 - (char)fieldQuoteChar;
 - (UMDbSession *)initWithPool:(UMDbPool *)pool;
