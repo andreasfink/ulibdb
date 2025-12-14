@@ -326,6 +326,9 @@ void umdbpool_null_session_returned(void)
 
 - (void)idler:(id)unused
 {
+    NSString *s = [NSString stringWithFormat:@"dbpool-idler(%@)",self.poolName];
+    ulib_set_thread_name(s);
+
     @autoreleasepool
     {
         NSString *msg = [NSString stringWithFormat:@"starting idle task for database pool %@", poolName];
