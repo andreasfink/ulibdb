@@ -91,7 +91,7 @@
         @try
         {
             
-            my_bool  my_true = 1;
+            char  my_true = 1;
             if (mysql_options(mysql, MYSQL_OPT_RECONNECT, &my_true))
             {
                 NSLog(@"mysql_options (MYSQL_OPT_RECONNECT) failed");
@@ -158,7 +158,7 @@
             mysql_options(connection, MYSQL_SET_CHARSET_NAME,"UTF8");
             mysql_set_character_set(connection, "utf8");
             
-            my_bool b = 1;
+            char b = 1;
             mysql_options(connection, MYSQL_OPT_RECONNECT,&b);
             //    mysql_options(connection, MYSQL_OPT_CONNECT_TIMEOUT,"1800"); /* 30 minutes */
             //    mysql_options(connection, MYSQL_OPT_COMPRESS,NULL); /* enable compression */
