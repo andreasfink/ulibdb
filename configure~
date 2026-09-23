@@ -2304,7 +2304,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 COPYRIGHT="Copyright © 2023 Andreas Fink (andreas@fink.org). All rights reserved."
-PROJECT_NAME="ulibdb6"
+PROJECT_NAME="ulibdb"
 AUTHOR="Andreas Fink <andreas@fink.org>"
 CONFIG_DEFINE="ULIBDB_CONFIG"
 VERSION=`head -n 1 VERSION`
@@ -2312,7 +2312,7 @@ MAJORVER=`echo $VERSION | cut -f1 -d.`
 MINORVER=`echo $VERSION | cut -f2 -d.`
 REVISION=`echo $VERSION | cut -f3 -d.`
 CONFIG_HEADER=ulibdb/ulibdb_config.h
-DEPENDENT_PKGCONFIGS="ulib6 mariadb libpq"
+DEPENDENT_PKGCONFIGS="ulib mariadb libpq"
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export PKG_CONFIG_PATH
 
@@ -4072,7 +4072,7 @@ ac_config_files="$ac_config_files Makefile.linux"
 
 ac_config_files="$ac_config_files Makefile.freebsd"
 
-ac_config_files="$ac_config_files ulibdb6.pc"
+ac_config_files="$ac_config_files ulibdb.pc"
 
 ac_config_files="$ac_config_files make_buildnr.sh"
 
@@ -4768,7 +4768,7 @@ do
     "Makefile.osx") CONFIG_FILES="$CONFIG_FILES Makefile.osx" ;;
     "Makefile.linux") CONFIG_FILES="$CONFIG_FILES Makefile.linux" ;;
     "Makefile.freebsd") CONFIG_FILES="$CONFIG_FILES Makefile.freebsd" ;;
-    "ulibdb6.pc") CONFIG_FILES="$CONFIG_FILES ulibdb6.pc" ;;
+    "ulibdb.pc") CONFIG_FILES="$CONFIG_FILES ulibdb.pc" ;;
     "make_buildnr.sh") CONFIG_FILES="$CONFIG_FILES make_buildnr.sh" ;;
 
   *) as_fn_error $? "invalid argument: '$ac_config_target'" "$LINENO" 5;;
