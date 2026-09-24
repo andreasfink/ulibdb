@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'ulibdb' target in the 'ulibdb' project
-//
-
-#ifdef __OBJC__
-    #import <ulib/ulib.h>
-#endif
